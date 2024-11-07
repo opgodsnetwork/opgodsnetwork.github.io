@@ -1,61 +1,16 @@
-.contact-form {
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-.contact-form h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+body {
+    background-color: #f8f8f8;
 }
 
-.contact-form .form-group {
-    margin-bottom: 20px;
-}
-
-.contact-form label {
-    font-size: 1rem;
-    color: #555;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 5px;
-    color: #333;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contact-form button:hover {
-    background-color: #16a34a;
-}
-
+/* Navbar Styles */
 .navbar {
     background-color: #1a202c; /* Dark background */
     padding: 15px 0;
@@ -104,7 +59,7 @@
 }
 
 .navbar .nav-links a:hover {
-    background-color: #38b2ac; /* Light Teal */
+    background-color: #38b2ac;
     color: white;
 }
 
@@ -119,27 +74,126 @@
 
 .navbar .btn-nav-login:hover {
     background-color: #2c7a7b;
-    transform: scale(1.05); /* Slight scaling on hover */
+    transform: scale(1.05);
 }
 
 .navbar .nav-links a.active {
-    background-color: #2c7a7b; /* Active link color */
+    background-color: #2c7a7b;
     color: white;
 }
 
-@media (max-width: 768px) {
-    .navbar .nav-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    .navbar .btn-nav-login {
-        margin-top: 15px;
-    }
+/* Hero Section */
+.hero {
+    background: #38b2ac;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
 }
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* Contact Form Section */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.contact-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #38b2ac;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: #38b2ac;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2c7a7b;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a202c;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer .footer-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .footer-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer .footer-subtitle {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.footer-links {
+    list-style-type: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.
