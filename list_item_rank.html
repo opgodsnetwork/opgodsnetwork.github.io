@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yako Store - Rank</title>
+    <link rel="stylesheet" href="list_rank.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>⚔️ Rank Store ⚔️</h1>
+        <p>Tingkatkan pengalaman bermain Anda dengan rank eksklusif!</p>
+    </header>
+
+    <div class="container">
+        <div class="rank-grid">
+            <div class="rank-card vip">
+                <div class="rank-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="rank-name">VIP</div>
+                <div class="rank-price">Rp 25.000</div>
+                <ul class="rank-features">
+                    <li>Prefix [VIP] di chat</li>
+                    <li>Akses ke /fly di spawn</li>
+                    <li>Kit VIP setiap 24 jam</li>
+                    <li>2 home tambahan</li>
+                    <li>Akses ke VIP chat</li>
+                </ul>
+                <button onclick="showPaymentModal('VIP', 25000)">Beli VIP</button>
+            </div>
+
+            <div class="rank-card vip-plus">
+                <div class="rank-icon">
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="rank-name">VIP+</div>
+                <div class="rank-price">Rp 50.000</div>
+                <ul class="rank-features">
+                    <li>Semua fitur VIP</li>
+                    <li>Prefix [VIP+] di chat</li>
+                    <li>Kit VIP+ setiap 20 jam</li>
+                    <li>4 home tambahan</li>
+                    <li>Custom nick color basic</li>
+                    <li>Akses ke toko khusus VIP+</li>
+                </ul>
+                <button onclick="showPaymentModal('VIP+', 50000)">Beli VIP+</button>
+            </div>
+
+            <div class="rank-card mvp">
+                <div class="rank-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="rank-name">MVP</div>
+                <div class="rank-price">Rp 75.000</div>
+                <ul class="rank-features">
+                    <li>Semua fitur VIP+</li>
+                    <li>Prefix [MVP] di chat</li>
+                    <li>Kit MVP setiap 16 jam</li>
+                    <li>6 home tambahan</li>
+                    <li>Custom nick color plus</li>
+                    <li>/hat command</li>
+                </ul>
+                <button onclick="showPaymentModal('MVP', 75000)">Beli MVP</button>
+            </div>
+
+            <div class="rank-card mvp-plus">
+                <div class="rank-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="rank-name">MVP+</div>
+                <div class="rank-price">Rp 100.000</div>
+                <ul class="rank-features">
+                    <li>Semua fitur MVP</li>
+                    <li>Prefix [MVP+] di chat</li>
+                    <li>Kit MVP+ setiap 12 jam</li>
+                    <li>8 home tambahan</li>
+                    <li>Akses ke /spawn command</li>
+                </ul>
+                <button onclick="showPaymentModal('MVP+', 100000)">Beli MVP+</button>
+            </div>
+
+            <div class="rank-card mvp-plusplus">
+                <div class="rank-icon">
+                    <i class="fas fa-star-of-david"></i>
+                </div>
+                <div class="rank-name">MVP++</div>
+                <div class="rank-price">Rp 150.000</div>
+                <ul class="rank-features">
+                    <li>Semua fitur MVP+</li>
+                    <li>Prefix [MVP++] di chat</li>
+                    <li>Kit MVP++ setiap 10 jam</li>
+                    <li>10 home tambahan</li>
+                    <li>Akses ke /god mode</li>
+                </ul>
+                <button onclick="showPaymentModal('MVP++', 150000)">Beli MVP++</button>
+            </div>
+
+            <div class="rank-card tiktok">
+                <div class="rank-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="rank-name">TikTok</div>
+                <div class="rank-price">Rp 200.000</div>
+                <ul class="rank-features">
+                    <li>Semua fitur MVP++</li>
+                    <li>Prefix [TikTok] di chat</li>
+                    <li>Kit TikTok setiap 6 jam</li>
+                    <li>15 home tambahan</li>
+                    <li>Custom cosmetic effects</li>
+                    <li>Exclusive TikTok emotes</li>
+                    <li>Special broadcast messages</li>
+                    <li>Creator tag di scoreboard</li>
+                </ul>
+                <button onclick="showTikTokModal('TikTok', 200000)">Beli TikTok</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TikTok Modal -->
+    <div id="tiktokModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTikTokModal()">&times;</span>
+            <div style="text-align: center; padding: 2rem;">
+                <i class="fab fa-tiktok" style="font-size: 3rem; color: #FE2C55; margin-bottom: 1.5rem;"></i>
+                <h2 style="margin-bottom: 1.5rem; color: #FE2C55;">Persyaratan Rank TikTok</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">Untuk mendapatkan rank TikTok, kamu harus live selama 1 menit dan memiliki maksimal 3000 followers.</p>
+                <button onclick="openTikTokLive()" style="background-color: #FE2C55; padding: 1rem 2rem; font-size: 1.2rem; font-weight: bold; border-radius: 25px; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; width: 80%; margin: 0 auto;">
+                    <i class="fas fa-video"></i> Live Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mendapatkan elemen modal
+        const tiktokModal = document.getElementById('tiktokModal');
+
+        // Fungsi untuk menampilkan modal TikTok
+        function showTikTokModal(rank, price) {
+            tiktokModal.style.display = 'block';
+        }
+
+        // Fungsi untuk menutup modal TikTok
+        function closeTikTokModal() {
+            tiktokModal.style.display = 'none';
+        }
+
+        // Event untuk menutup modal ketika mengklik di luar modal
+        window.onclick = function(event) {
+            if (event.target == tiktokModal) {
+                closeTikTokModal();
+            }
+        }
+
+        function openTikTokLive() {
+            // Implementasi untuk membuka live TikTok
+            alert("Silakan mulai live di TikTok!");
+        }
+    </script>
+</body>
+</html>
