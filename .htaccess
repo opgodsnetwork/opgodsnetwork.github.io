@@ -1,0 +1,46 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Force HTTPS (redirect all HTTP requests to HTTPS)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect from www to non-www (optional)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# Set a custom 404 error page (replace '404.html' with the path to your custom page)
+ErrorDocument 404 /404.html
+
+# Directory listing (disable directory browsing)
+Options -Indexes
+
+# Cache control - Set caching for specific file types
+<FilesMatch "\.(jpg|jpeg|png|gif|js|css|html|pdf)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# Rewrite rules for friendly URLs (example for PHP site structure)
+RewriteRule ^products$ index.html [L]
+RewriteRule ^product/([0-9]+)$ index.html?id=$1 [L]
+
+# Protect sensitive files (e.g., .env, .git, etc.)
+<FilesMatch "^(\.git|\.env)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Prevent access to .htaccess file itself
+<Files ".htaccess">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Disable image hotlinking (prevents other websites from embedding your images)
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourdomain\.com/ [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
+
+# Redirect old URLs to new URLs (example: old URL to new URL)
+# RewriteRule ^old-page$ /new-page [L,R=301]
+
