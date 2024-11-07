@@ -55,3 +55,91 @@
 .contact-form button:hover {
     background-color: #16a34a;
 }
+
+.navbar {
+    background-color: #1a202c; /* Dark background */
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.navbar .logo img {
+    margin-right: 10px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #38b2ac; /* Light Teal */
+    color: white;
+}
+
+.navbar .btn-nav-login {
+    background-color: #38b2ac;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .btn-nav-login:hover {
+    background-color: #2c7a7b;
+    transform: scale(1.05); /* Slight scaling on hover */
+}
+
+.navbar .nav-links a.active {
+    background-color: #2c7a7b; /* Active link color */
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .navbar .btn-nav-login {
+        margin-top: 15px;
+    }
+}
