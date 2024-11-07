@@ -1,0 +1,127 @@
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #141414;
+            background-image: url('1080.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #4AAE4A;
+            border-bottom: 3px solid #4AAE4A;
+        }
+
+        .forms {
+            position: relative;
+        }
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        h2 {
+            color: #4AAE4A;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .input-group input:focus {
+            outline: 2px solid #4AAE4A;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: #4AAE4A;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3d933d;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 1rem;
+            color: white;
+        }
+
+        .message a {
+            color: #4AAE4A;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 10px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border-radius: 4px;
+        }
