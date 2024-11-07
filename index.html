@@ -21,24 +21,11 @@
                     <a href="/products">Products</a>
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
-                    <a href="#" class="btn-nav-login" onclick="openModal()">Login</a>
+                    <a href="/login" class="btn-nav-login">Login</a>
                 </div>
             </div>
         </div>
     </nav>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 20px;">Welcome to Yako Store</h2>
-            <p style="text-align: center;">Sebelum mengakses halaman ini, Mohon login atau register dulu!</p>
-            <div class="modal-buttons">
-                <button class="btn btn-login" onclick="redirectToLogin('login')">Login</button>
-                <button class="btn btn-register" onclick="redirectToLogin('register')">Register</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -116,43 +103,6 @@
     </footer>
 
     <script>
-        // Modal functionality
-        const modal = document.getElementById("loginModal");
-
-        // Show modal when page loads
-        window.onload = function() {
-            openModal();
-        };
-
-        function openModal() {
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
-        }
-
-        function closeModal() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto"; // Re-enable scrolling
-        }
-
-        function redirectToLogin(type) {
-            window.location.href = 'login_register.php?type=' + type;
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        // Prevent product cards from being clickable until login
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal();
-            });
-        });
-
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
