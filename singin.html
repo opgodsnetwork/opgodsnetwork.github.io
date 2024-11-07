@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="singin.css">
+    <title>Login and Register</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showForm('login')">Masuk</button>
+            <button class="tab" onclick="showForm('register')">Daftar</button>
+        </div>
+
+        <!-- Error message -->
+        <div class="error" id="error-message" style="display: none;">
+            <!-- Error message will be shown here -->
+        </div>
+
+        <div class="forms">
+            <!-- Login Form -->
+            <form id="loginForm" class="form active" method="POST" action="login_action.php">
+                <h2>Masuk</h2>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Masuk</button>
+                <p class="message">Belum punya akun? <a href="#" onclick="showForm('register')">Daftar sekarang</a></p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="form" method="POST" action="register_action.php">
+                <h2>Daftar</h2>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label>Konfirmasi Password</label>
+                    <input type="password" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn">Daftar</button>
+                <p class="message">Sudah punya akun? <a href="#" onclick="showForm('login')">Masuk</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update forms
+            document.querySelectorAll('.form').forEach(form => {
+                form.classList.remove('active');
+            });
+            if (formId === 'login') {
+                document.getElementById('loginForm').classList.add('active');
+            } else {
+                document.getElementById('registerForm').classList.add('active');
+            }
+        }
+
+        // Example error handling function
+        function showError(message) {
+            const errorMessageElement = document.getElementById('error-message');
+            errorMessageElement.style.display = 'block';
+            errorMessageElement.textContent = message;
+        }
+    </script>
+</body>
+</html>
