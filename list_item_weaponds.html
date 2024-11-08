@@ -6,6 +6,211 @@
     <title>Opgods Store | Senjata Legends</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo img {
+            margin-right: 10px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .btn-nav-login {
+            background-color: #0077b6;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-color: #f8f8f8;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #0077b6;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #005a87;
+        }
+
+        /* Products Section Styles */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 24px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background-color: #f2f2f2;
+            color: #666;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            display: inline-block;
+            background-color: #0077b6;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Mythic Title Styling */
+        .mythic-title {
+            color: #ffcc00;  /* Gold color for Mythic Tier */
+            font-weight: bold;
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00; /* Glow effect */
+            animation: pulse 1.5s infinite; /* Pulse animation */
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00;
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 15px #ffcc00, 0 0 25px #ffcc00, 0 0 35px #ffcc00, 0 0 45px #ffcc00;
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 40px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-subtitle {
+            font-size: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -43,7 +248,7 @@
                 <img src="Sin_Of_Wrath.webp" alt="Senjata Legends - Sin Of Wrath" class="product-image">
                 <div class="product-info">
                     <span class="category-tag tag-weapon">Weapon</span>
-                    <h3 class="product-title">Doombringer Axe [Awakened Stage]</h3>
+                    <h3 class="product-title mythic-title">Doombringer Axe [Awakened Stage]</h3>
                     <span class="product-price">Rp 1.290.000</span>
                     <a href="/pembayaran" class="btn btn-primary">Buy Now</a>
                 </div>
