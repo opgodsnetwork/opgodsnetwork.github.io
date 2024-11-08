@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opgods Store | Senjata Legends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="120.png" alt="Opgods Store Logo" width="80" height="80">
+                    <span>Opgods Store</span>
+                </a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/products">Products</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/signin" class="btn-nav-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Welcome to Opgods Store</h1>
+            <p>Discover the best Minecraft items for your adventure</p>
+        </div>
+    </div>
+
+    <!-- Senjata Legends Section -->
+    <div class="container" id="products">
+        <div class="products-grid">
+            <!-- Product 1: Senjata Legends -->
+            <div class="product-card" data-product-id="1" data-url="pembayaran.html">
+                <img src="Sin_Of_Wrath.webp" alt="Senjata Legends - Sin Of Wrath" class="product-image">
+                <div class="product-info">
+                    <span class="category-tag tag-weapon">Weapon</span>
+                    <h3 class="product-title">Sin Of Wrath</h3>
+                    <span class="product-price">1000 Emeralds</span>
+                    <a href="pembayaran.html" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Product 2: Senjata Legends -->
+            <div class="product-card" data-product-id="2" data-url="pembayaran.html">
+                <img src="Wrath_Of_Fury.webp" alt="Senjata Legends - Wrath Of Fury" class="product-image">
+                <div class="product-info">
+                    <span class="category-tag tag-weapon">Weapon</span>
+                    <h3 class="product-title">Wrath Of Fury</h3>
+                    <span class="product-price">1200 Emeralds</span>
+                    <a href="pembayaran.html" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Product 3: Senjata Legends -->
+            <div class="product-card" data-product-id="3" data-url="pembayaran.html">
+                <img src="Blade_Of_Justice.webp" alt="Senjata Legends - Blade Of Justice" class="product-image">
+                <div class="product-info">
+                    <span class="category-tag tag-weapon">Weapon</span>
+                    <h3 class="product-title">Blade Of Justice</h3>
+                    <span class="product-price">1500 Emeralds</span>
+                    <a href="pembayaran.html" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Product 4: Senjata Legends -->
+            <div class="product-card" data-product-id="4" data-url="pembayaran.html">
+                <img src="Sword_Of_Vengeance.webp" alt="Senjata Legends - Sword of Vengeance" class="product-image">
+                <div class="product-info">
+                    <span class="category-tag tag-weapon">Weapon</span>
+                    <h3 class="product-title">Sword of Vengeance</h3>
+                    <span class="product-price">1800 Emeralds</span>
+                    <a href="pembayaran.html" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">About Opgods Store</h3>
+                    <p class="footer-subtitle">Your one-stop shop for all Minecraft items. Quality guaranteed.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products">Products</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
