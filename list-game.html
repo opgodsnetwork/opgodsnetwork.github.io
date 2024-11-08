@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game List</title>
+    <link rel="stylesheet" href="game-ist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Audio Player -->
+    <audio id="background-audio" loop>
+        <source src="background_music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="game_controller.png" alt="Game List Logo" width="80" height="80">
+                    <span>Game List</span>
+                </a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/games">Games</a>
+                    <a href="/genres">Genres</a>
+                    <a href="/platforms">Platforms</a>
+                    <a href="/about" class="btn-nav-login">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Welcome to Game List</h1>
+            <p>Discover the best games across all platforms</p>
+            <a href="#games" class="btn btn-primary">Explore Games</a>
+        </div>
+    </div>
+
+    <!-- Games Section -->
+    <div class="container" id="games">
+        <!-- Game cards content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">About Game List</h3>
+                    <p class="footer-subtitle">Discover the best games across all platforms.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/games">Games</a></li>
+                        <li><a href="/genres">Genres</a></li>
+                        <li><a href="/platforms">Platforms</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Play background music when the page loads
+        window.addEventListener('load', function() {
+            var backgroundAudio = document.getElementById('background-audio');
+            backgroundAudio.volume = 0.2; // Adjust the volume as needed
+            backgroundAudio.play();
+        });
+    </script>
+</body>
+</html>
