@@ -206,22 +206,34 @@
             }
         }
 
-        /* Styling for the video container and border */
+        /* Styling for the video container with 9:16 aspect ratio */
         .video-container {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 0;
+            padding-bottom: 177.78%; /* 9:16 aspect ratio (height = width * 16/9) */
             margin-bottom: 20px;
-            border: 3px solid #4f46e5; /* Border color */
-            border-radius: 10px; /* Rounded corners */
+            border: 3px solid #4f46e5;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* Style for the buttons separation */
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
         }
 
         @media (max-width: 768px) {
@@ -255,7 +267,7 @@
                     <h3 class="card-title">PRESET KECE 2024 #1</h3>
                     <span class="file-size">Size: 23.0 KB</span>
 
-                    <!-- Video with Border -->
+                    <!-- Video with Border and 9:16 aspect ratio -->
                     <div class="video-container">
                         <video controls>
                             <source src="preset1.mp4" type="video/mp4">
@@ -263,16 +275,16 @@
                         </video>
                     </div>
 
-                    <div><a href="https://drive.usercontent.google.com/download?id=18SBoqO890brymnmWm8zrhx1Tw-TK4d6O&export=download" class="download-button">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
-                        Download Now 🚀 [XML]
-                    </a>
-                    </div>
-
-                    <div><a href="https://alight.link/vCdfY1qswEtSNGKv9" class="download-button">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
-                        Download Now 🚀 [5 MB]
-                    </a>
+                    <!-- Download buttons -->
+                    <div class="download-buttons">
+                        <a href="https://drive.usercontent.google.com/download?id=18SBoqO890brymnmWm8zrhx1Tw-TK4d6O&export=download" class="download-button">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
+                            Download Now 🚀 [XML]
+                        </a>
+                        <a href="https://alight.link/vCdfY1qswEtSNGKv9" class="download-button">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
+                            Download Now 🚀 [5 MB]
+                        </a>
                     </div>
                 </div>
             </div>
