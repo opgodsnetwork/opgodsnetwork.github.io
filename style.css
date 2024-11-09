@@ -70,6 +70,11 @@
             background-color: #16a34a;
         }
 
+        .nav-links .btn-nav-login:hover {
+            background-color: #16a34a;
+
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
