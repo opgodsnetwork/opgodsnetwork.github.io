@@ -68,10 +68,19 @@
 
         .nav-links .btn-nav-login:hover {
             background-color: #16a34a;
+
         }
 
-        .nav-links .btn-nav-login:hover {
-            background-color: #16a34a;
+        .nav-links .btn-nav-informasi {
+            background-color: #22c55e;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+  
+        }
+
+        .nav-links .btn-nav-informasi:hover {
+            background-color: red;
 
         }
 
