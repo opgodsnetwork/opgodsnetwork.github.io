@@ -206,17 +206,19 @@
             }
         }
 
-        /* Styling for the video container with 9:16 aspect ratio */
+        /* Styling for the video container with 9:16 aspect ratio, smaller size */
         .video-container {
             position: relative;
-            width: 100%;
+            width: 80%; /* Smaller width (80% of the container) */
             height: 0;
             padding-bottom: 177.78%; /* 9:16 aspect ratio (height = width * 16/9) */
             margin-bottom: 20px;
-            border: 3px solid #4f46e5;
+            border: 2px solid #4f46e5; /* Smaller border */
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-left: auto;
+            margin-right: auto; /* Centering the video container */
         }
 
         .video-container video {
@@ -245,6 +247,11 @@
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
             }
+
+            .video-container {
+                width: 100%; /* Full width on smaller screens */
+                padding-bottom: 177.78%; /* Maintain 9:16 ratio */
+            }
         }
     </style>
 </head>
@@ -267,7 +274,7 @@
                     <h3 class="card-title">PRESET KECE 2024 #1</h3>
                     <span class="file-size">Size: 23.0 KB</span>
 
-                    <!-- Video with Border and 9:16 aspect ratio -->
+                    <!-- Video with Border (Adjusted Size) -->
                     <div class="video-container">
                         <video controls>
                             <source src="preset1.mp4" type="video/mp4">
@@ -275,7 +282,6 @@
                         </video>
                     </div>
 
-                    <!-- Download buttons -->
                     <div class="download-buttons">
                         <a href="https://drive.usercontent.google.com/download?id=18SBoqO890brymnmWm8zrhx1Tw-TK4d6O&export=download" class="download-button">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
