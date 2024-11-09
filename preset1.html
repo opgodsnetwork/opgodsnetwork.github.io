@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Download Template Jedag Jedug</title>
+    <title>Template Jedag Jedug</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
+        
         * {
             margin: 0;
             padding: 0;
@@ -68,7 +68,7 @@
             animation: cardJedagJedug 1s infinite;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            cursor: pointer;
         }
 
         .card:nth-child(odd) {
@@ -131,20 +131,7 @@
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
         }
 
-        .card-info {
-            color: #94a3b8;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .file-size {
-            color: #4f46e5;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .download-button {
+        .card-button {
             display: inline-block;
             padding: 12px 25px;
             background: linear-gradient(45deg, #4f46e5, #7c3aed);
@@ -155,20 +142,11 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .download-button:hover {
+        .card-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-
-        .download-button img {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
         }
 
         .badge {
@@ -184,17 +162,6 @@
             animation: badgePulse 2s infinite;
         }
 
-        .downloads-count {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
         @keyframes badgePulse {
             0%, 100% {
                 transform: scale(1);
@@ -206,52 +173,79 @@
             }
         }
 
-        /* Styling for the video container with 9:16 aspect ratio, smaller size */
-        .video-container {
-            position: relative;
-            width: 80%; /* Container width (80% of the parent container) */
-            height: 0;
-            padding-bottom: 177.78%; /* 9:16 aspect ratio (height = width * 16/9) */
-            margin-bottom: 20px;
-            border: 1px solid #4f46e5; /* Smaller border */
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            margin-left: auto;
-            margin-right: auto; /* Centering the video container */
-       }
-
-       .video-container video {
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%); /* Center the video */
-           width: 60%; /* Reduce the width of the video */
-           height: 60%; /* Reduce the height of the video */
-           object-fit: cover;
+        /* Pop-up Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
 
-        /* Style for the buttons separation */
-        .download-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
+        .modal-content {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            width: 80%;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #4f46e5;
+        }
+
+        .modal h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .modal p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .modal-button:hover {
+            background: #7c3aed;
+        }
+
+        /* Close button for the modal */
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5rem;
             }
-
             .grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
-            }
-
-            .video-container {
-                width: 100%; /* Full width on smaller screens */
-                padding-bottom: 177.78%; /* Maintain 9:16 ratio */
             }
         }
     </style>
@@ -259,43 +253,102 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔥 Download Template Jedag Jedug</h1>
-            <p>Template Keren & Responsif Siap Pakai!</p>
+            <h1>🔥 Template Jedag Jedug</h1>
+            <p>Template Keren Bikin Website Makin Gacor!</p>
         </div>
         
         <div class="grid">
             <!-- Template 1 -->
-            <div class="card">
+            <div class="card" onclick="showModal('Gaming Zone', 'Gaming Creator', '/images/gaming.jpg', 'https://gamingtemplate.com')">
                 <div class="card-image">
-                    <img src="/api/placeholder/400/320" alt="Gaming Template">
+                    <img src="/images/gaming.jpg" alt="Gaming Template">
                     <span class="badge">HOT! 🔥</span>
-                    <span class="downloads-count">5.2K Downloads</span>
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">PRESET KECE 2024 #1</h3>
-                    <span class="file-size">Size: 23.0 KB</span>
-
-                    <!-- Video with Border (Adjusted Size) -->
-                    <div class="video-container">
-                        <video controls>
-                            <source src="preset1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <div class="download-buttons">
-                        <a href="https://drive.usercontent.google.com/download?id=18SBoqO890brymnmWm8zrhx1Tw-TK4d6O&export=download" class="download-button">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
-                            Download Now 🚀 [XML]
-                        </a>
-                        <a href="https://alight.link/vCdfY1qswEtSNGKv9" class="download-button">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
-                            Download Now 🚀 [5 MB]
-                        </a>
-                    </div>
+                    <h3 class="card-title">Gaming Zone</h3>
+                    <a href="#" class="card-button">Gas Bang! 🚀</a>
                 </div>
             </div>
+
+            <!-- Template 2 -->
+            <div class="card" onclick="showModal('Music Vibe', 'Music Creator', '/images/music.jpg', 'https://musicthemes.com')">
+                <div class="card-image">
+                    <img src="/images/music.jpg" alt="Music Template">
+                    <span class="badge">VIRAL 🌟</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Music Vibe</h3>
+                    <a href="#" class="card-button">Gas Cuy! 🎵</a>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="card" onclick="showModal('Stream Pro', 'Streaming Creator', '/images/stream.jpg', 'https://streamtemplate.com')">
+                <div class="card-image">
+                    <img src="/images/stream.jpg" alt="Stream Template">
+                    <span class="badge">NEW ✨</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Stream Pro</h3>
+                    <a href="#" class="card-button">Gas Kuy! 📺</a>
+                </div>
+            </div>
+
+            <!-- Template 4 -->
+            <div class="card" onclick="showModal('Vlog Master', 'Vlog Creator', '/images/vlog.jpg', 'https://vlogtemplate.com')">
+                <div class="card-image">
+                    <img src="/images/vlog.jpg" alt="Vlog Template">
+                    <span class="badge">BEST 🏆</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Vlog Master</h3>
+                    <a href="#" class="card-button">Gas Skuy! 🎥</a>
+                </div>
+            </div>
+
+            <!-- More templates can go here (Templates 5-10) -->
         </div>
     </div>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <img class="modal-image" id="modalImage" src="" alt="Template Image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalCreator"></p>
+            <a id="modalLink" href="#" class="modal-button">Visit Template</a>
+            <button class="modal-button" onclick="importTemplate()">Import And Use</button>
+            <button class="modal-button" onclick="shareWebsite()">Share Website</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show modal
+        function showModal(templateName, creatorName, imageSrc, link) {
+            document.getElementById('templateModal').style.display = 'flex';
+            document.getElementById('modalTitle').textContent = templateName;
+            document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('modalLink').href = link; // Update the link
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('templateModal').style.display = 'none';
+        }
+
+        // Placeholder function for "Import And Use"
+        function importTemplate() {
+            alert("Template Imported!");
+            closeModal();
+        }
+
+        // Placeholder function for "Share Website"
+        function shareWebsite() {
+            alert("Website Shared!");
+            closeModal();
+        }
+    </script>
 </body>
 </html>
