@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opgods Store | About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar .logo img {
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        .navbar .nav-links a.active, .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn-primary {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn-primary:hover {
+            background-color: #e67e22;
+        }
+
+        /* About Us Section */
+        #about h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #about p, #about ul {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        #about ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer .footer-grid {
+            width: 45%;
+        }
+
+        .footer .footer-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-links {
+            list-style: none;
+        }
+
+        .footer .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn-nav-login {
+            background-color: #f39c12;
+            padding: 8px 20px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-nav-login:hover {
+            background-color: #e67e22;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer .footer-grid {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="120.png" alt="Opgods Store Logo" width="80" height="80">
+                    <span>Opgods Store</span>
+                </a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/products">Products</a>
+                    <a href="/about" class="active">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/signin" class="btn-nav-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>About Opgods Store</h1>
+            <p>We are dedicated to providing the best Minecraft items and resources for your adventure.</p>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="container" id="about">
+        <h2>Our Mission</h2>
+        <p>At Opgods Store, we are passionate about bringing Minecraft players high-quality and unique in-game items to enhance their gaming experience. Whether you're seeking powerful weapons, rare collectibles, or special in-game perks, we have it all!</p>
+
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li><strong>Wide Range of Products:</strong> From ranks and coins to weapons and special items, our store has a diverse catalog of products to suit every player's needs.</li>
+            <li><strong>Quality Guaranteed:</strong> All our items are carefully curated to ensure they meet the highest standards of quality and in-game value.</li>
+            <li><strong>Secure and Easy Transactions:</strong> Our platform offers a seamless and safe shopping experience, with multiple payment options available.</li>
+            <li><strong>Customer Support:</strong> We pride ourselves on offering top-notch customer support, ensuring you have the best experience shopping with us.</li>
+        </ul>
+
+        <h2>Our Story</h2>
+        <p>Opgods Store was founded with the mission of providing Minecraft players a reliable and trustworthy platform for purchasing in-game items. We understand the importance of having the right tools and gear to succeed in your Minecraft world, and we aim to provide you with just that.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us through our <a href="/contact">Contact</a> page. Our support team is always ready to help!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">About Opgods Store</h3>
+                    <p class="footer-subtitle">Your one-stop shop for all Minecraft items. Quality guaranteed.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products">Products</a></li>
+                        <li><a href="/about" class="active">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
