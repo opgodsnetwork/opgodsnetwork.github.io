@@ -280,6 +280,13 @@
             margin-bottom: 0.5rem;
         }
 
+        .active {
+            text-decoration: underline;
+            color: orange;
+            font-family: Georgia, serif;
+
+        }
+
         .footer-links a {
             color: #666;
             text-decoration: none;
@@ -299,4 +306,5 @@
             .hero h1 {
                 font-size: 2rem;
             }
+
         }
