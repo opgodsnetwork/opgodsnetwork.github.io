@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: titleBounce 2s infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #4f46e5;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .upload-area {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 3px dashed rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-subtext {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background: #4f46e5;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.1);
+            background: #7c3aed;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-bottom: 20px;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .modal-button {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            .modal-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 Editor Jedag Jedug</h1>
+            <p>Bikin Video Jedag Jedug Keren!</p>
+        </div>
+
+        <label for="fileInput" class="upload-area">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drop atau Klik untuk Upload Foto</div>
+            <div class="upload-subtext">Format: JPG, PNG (Max 5MB)</div>
+        </label>
+        <input type="file" id="fileInput" accept="image/*">
+
+        <!-- Preview video in a modal -->
+        <div class="modal" id="previewModal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()">×</button>
+                <div class="video-container">
+                    <video id="previewVideo" controls>
+                        <source src="https://alight.link/JYQS536eeM3RVnuX6?source=link" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="playVideo()">
+                        <span id="playIcon">▶️</span>
+                        <span id="playText">Play Video</span>
+                    </button>
+                    <button class="modal-button" onclick="downloadVideo()">
+                        💾 Download Video
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Example Templates -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Template 1">
+                    <span class="badge">HOT! 🔥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Gaming Style</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Template 2">
+                    <span class="badge">VIRAL 🌟</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Music Style</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Template 3">
+                    <span class="badge">NEW ✨</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Stream Style</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const modal = document.getElementById('previewModal');
+        const video = document.getElementById('previewVideo');
+        const playButton = document.querySelector('.modal-button');
+        const playIcon = document.getElementById('playIcon');
+        const playText = document.getElementById('playText');
+
+        // Handle file upload
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                // Here you would typically upload the file and process it
+                // For demo purposes, we'll just show the modal with the example video
+                showModal();
+            }
+        });
+
+        // Upload area drag and drop functionality
+        const uploadArea = document.querySelector('.upload-area');
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = 'rgba(255, 255, 255, 0.2)';
+        });
+
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = 'rgba(255, 255, 255, 0.1)';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = 'rgba(255, 255, 255, 0.1)';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                fileInput.files = e.dataTransfer.files;
+                showModal();
+            }
+        });
+
+        // Modal functions
+        function showModal() {
+            modal.classList.add('active');
+            video.currentTime = 0;
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            video.pause();
+            updatePlayButton(false);
+        }
+
+        function playVideo() {
+            if (video.paused) {
+                video.play();
+                updatePlayButton(true);
+            } else {
+                video.pause();
+                updatePlayButton(false);
+            }
+        }
+
+        function updatePlayButton(isPlaying) {
+            playIcon.textContent = isPlaying ? '⏸️' : '▶️';
+            playText.textContent = isPlaying ? 'Pause Video' : 'Play Video';
+        }
+
+        function downloadVideo() {
+            // In a real implementation, you would generate and download the edited video
+            // For demo purposes, we'll just download the example video
+            const link = document.createElement('a');
+            link.href = video.src;
+            link.download = 'jedag-jedug-video.mp4';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Video event listeners
+        video.addEventListener('play', () => updatePlayButton(true));
+        video.addEventListener('pause', () => updatePlayButton(false));
+        video.addEventListener('ended', () => updatePlayButton(false));
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+            if (e.key === ' ' && modal.classList.contains('active')) {
+                e.preventDefault();
+                playVideo();
+            }
+        });
+    </script>
+</body>
+</html>
