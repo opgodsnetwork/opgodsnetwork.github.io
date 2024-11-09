@@ -1,239 +1,286 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Download Template Jedag Jedug</title>
     <style>
-        /* Previous styles remain the same */
-        
-        .template-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: titleBounce 2s infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #4f46e5;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: cardJedagJedug 1s infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .card:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes cardJedagJedug {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .card:hover {
+            animation: cardShake 0.5s infinite;
+        }
+
+        @keyframes cardShake {
+            0%, 100% {
+                transform: translateX(0) scale(1.05);
+            }
+            25% {
+                transform: translateX(-10px) scale(1.05);
+            }
+            75% {
+                transform: translateX(10px) scale(1.05);
+            }
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-        }
-
-        .template-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a2234;
-            padding: 20px;
-            border-radius: 12px;
-            width: 80%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .template-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .template-item:hover {
-            transform: scale(1.05);
-        }
-
-        .template-thumbnail {
-            width: 100%;
-            height: 150px;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .template-info {
-            padding: 10px;
-            color: white;
+        .card:hover .card-image img {
+            transform: scale(1.2);
         }
 
-        .template-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .template-description {
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .download-link {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a2234;
+        .card-content {
             padding: 20px;
-            border-radius: 12px;
-            color: white;
             text-align: center;
-            z-index: 1000;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+
+        .card-info {
+            color: #94a3b8;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .file-size {
+            color: #4f46e5;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .download-button {
-            margin-top: 15px;
-            padding: 10px 20px;
+            display: inline-block;
+            padding: 12px 25px;
             background: linear-gradient(45deg, #4f46e5, #7c3aed);
             color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .download-button img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: badgePulse 2s infinite;
+        }
+
+        .downloads-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>JJ Video Editor</h1>
-        <div class="header-buttons">
-            <button class="button" id="openTemplateBtn">📂 Templates</button>
-            <button class="button" id="exportBtn">💾 Export</button>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Download Template Jedag Jedug</h1>
+            <p>Template Keren & Responsif Siap Pakai!</p>
         </div>
-    </div>
-
-    <!-- Template Modal -->
-    <div class="template-modal" id="templateModal">
-        <div class="template-container">
-            <button class="close-modal">&times;</button>
-            <h2 style="color: white; margin-bottom: 20px;">Choose a Template</h2>
-            <div class="template-grid">
-                <!-- Template items will be added dynamically -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Download Link Modal -->
-    <div class="download-link" id="downloadModal">
-        <h3>Your video is ready!</h3>
-        <p>Click below to download your edited video</p>
-        <button class="download-button" id="downloadBtn">Download Video</button>
-    </div>
-
-    <!-- Rest of the previous HTML content remains the same -->
-
-    <script>
-        // Previous script content remains the same
-
-        // Template data
-        const templates = [
-            {
-                id: 1,
-                title: "Music Video Beat",
-                description: "Perfect for musical content with beat-synced effects",
-                thumbnail: "/api/placeholder/200/150",
-                videoUrl: "https://example.com/template1.mp4"
-            },
-            {
-                id: 2,
-                title: "Gaming Highlights",
-                description: "Ideal for gaming clips and montages",
-                thumbnail: "/api/placeholder/200/150",
-                videoUrl: "https://example.com/template2.mp4"
-            },
-            {
-                id: 3,
-                title: "Travel Vlog",
-                description: "Smooth transitions for travel content",
-                thumbnail: "/api/placeholder/200/150",
-                videoUrl: "https://example.com/template3.mp4"
-            },
-            // Add more templates as needed
-        ];
-
-        // Initialize template modal
-        const templateModal = document.getElementById('templateModal');
-        const openTemplateBtn = document.getElementById('openTemplateBtn');
-        const closeModalBtn = document.querySelector('.close-modal');
-        const templateGrid = document.querySelector('.template-grid');
-
-        // Initialize download modal
-        const downloadModal = document.getElementById('downloadModal');
-        const exportBtn = document.getElementById('exportBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-
-        // Populate templates
-        templates.forEach(template => {
-            const templateItem = document.createElement('div');
-            templateItem.className = 'template-item';
-            templateItem.innerHTML = `
-                <img src="${template.thumbnail}" alt="${template.title}" class="template-thumbnail">
-                <div class="template-info">
-                    <div class="template-title">${template.title}</div>
-                    <div class="template-description">${template.description}</div>
+        
+        <div class="grid">
+            <!-- Template 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Gaming Template">
+                    <span class="badge">HOT! 🔥</span>
+                    <span class="downloads-count">5.2K Downloads</span>
                 </div>
-            `;
-            
-            templateItem.addEventListener('click', () => {
-                // Load template video
-                const videoPreview = document.querySelector('.video-preview');
-                videoPreview.src = template.videoUrl;
-                templateModal.style.display = 'none';
-            });
-            
-            templateGrid.appendChild(templateItem);
-        });
+                <div class="card-content">
+                    <h3 class="card-title">Gaming Zone Template</h3>
+                    <p class="card-info">Template gaming keren dengan efek jedag jedug & responsif</p>
+                    <span class="file-size">Size: 2.5 MB</span>
 
-        // Template modal controls
-        openTemplateBtn.addEventListener('click', () => {
-            templateModal.style.display = 'block';
-        });
+                    <!-- Video -->
+                    <div class="video-container">
+                        <video controls>
+                            <source src="your-video-url.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
 
-        closeModalBtn.addEventListener('click', () => {
-            templateModal.style.display = 'none';
-        });
+                    <a href="#" class="download-button">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Alight_Motion_Logo.svg" alt="Alight Motion Logo"> 
+                        Download Now 🚀
+                    </a>
+                </div>
+            </div>
 
-        // Export functionality
-        exportBtn.addEventListener('click', () => {
-            // Simulate video processing
-            setTimeout(() => {
-                downloadModal.style.display = 'block';
-            }, 2000);
-        });
+            <!-- Template 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Music Template">
+                    <span class="badge">VIRAL 🌟</span>
+                    <span class="downloads-count">3.8K Downloads</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Music Vibe Template</h3>
+                    <p class="card-info">Template musik dengan animasi beat yang keren</p>
+                    <span class="file-size">Size: 3.1 MB</span>
 
-        downloadBtn.addEventListener('click', () => {
-            // Generate temporary download link
-            const downloadUrl = URL.createObjectURL(new Blob([''], { type: 'video/mp4' }));
-            const a = document.createElement('a');
-            a.href = downloadUrl;
-            a.download = 'edited_video.mp4';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(downloadUrl);
-            downloadModal.style.display = 'none';
-        });
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === templateModal) {
-                templateModal.style.display = 'none';
-            }
-            if (e.target === downloadModal) {
-                downloadModal.style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+                    <!-- Video -->
+                    <div class="video-container">
+                        <video controls>
+                            <source src="your-video-url.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
