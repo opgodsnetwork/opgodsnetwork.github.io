@@ -71,7 +71,7 @@
 
         }
 
-        .nav-links .btn-nav-informasi {
+        .nav-links .btn-nav-informasi:hover {
             background-color: #22c55e;
             color: white;
             padding: 0.5rem 1rem;
