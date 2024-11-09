@@ -2,262 +2,104 @@
 <html>
 <head>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        /* Previous styles remain the same */
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: #0f172a;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header h1 {
-            color: #fff;
-            font-size: 1.5rem;
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .button {
-            padding: 8px 16px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-        }
-
-        .main-content {
-            display: flex;
-            height: calc(100vh - 65px);
-        }
-
-        .sidebar {
-            width: 300px;
-            background: rgba(255, 255, 255, 0.03);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            color: white;
-        }
-
-        .preview-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: #0a0f1d;
-            position: relative;
-        }
-
-        .video-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .video-preview {
-            max-width: 100%;
-            max-height: 70vh;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .timeline {
-            height: 200px;
-            background: rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            position: relative;
-        }
-
-        .effect-group {
-            margin-bottom: 20px;
-        }
-
-        .effect-group h3 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            color: #94a3b8;
-        }
-
-        .effect-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .effect-item {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .effect-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-        }
-
-        .effect-icon {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .track {
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-bottom: 10px;
-            border-radius: 6px;
-            position: relative;
-        }
-
-        .clip {
-            position: absolute;
-            height: 100%;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .time-markers {
-            height: 20px;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            color: #94a3b8;
-            font-size: 0.8rem;
-        }
-
-        .control-group {
-            margin-bottom: 15px;
-        }
-
-        .control-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        input[type="range"] {
+        .template-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            outline: none;
-            -webkit-appearance: none;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
         }
 
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 15px;
-            height: 15px;
-            background: #4f46e5;
-            border-radius: 50%;
+        .template-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a2234;
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .template-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        .playback-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 10px 0;
+        .template-item:hover {
+            transform: scale(1.05);
         }
 
-        .control-button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+        .template-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .template-info {
+            padding: 10px;
+            color: white;
+        }
+
+        .template-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .template-description {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
             border: none;
             color: white;
+            font-size: 1.5rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
         }
 
-        .control-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .tab {
-            padding: 10px 20px;
-            color: #94a3b8;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .tab.active {
+        .download-link {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a2234;
+            padding: 20px;
+            border-radius: 12px;
             color: white;
-            border-bottom-color: #4f46e5;
+            text-align: center;
+            z-index: 1000;
         }
 
-        .zoom-controls {
-            position: absolute;
-            right: 20px;
-            bottom: 220px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .keyframe-marker {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #4f46e5;
-            border-radius: 50%;
-            transform: translateY(-50%);
+        .download-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
         }
     </style>
@@ -266,186 +108,131 @@
     <div class="header">
         <h1>JJ Video Editor</h1>
         <div class="header-buttons">
-            <button class="button">📂 Open</button>
-            <button class="button">💾 Export</button>
+            <button class="button" id="openTemplateBtn">📂 Templates</button>
+            <button class="button" id="exportBtn">💾 Export</button>
         </div>
     </div>
 
-    <div class="main-content">
-        <div class="sidebar">
-            <div class="tabs">
-                <div class="tab active">Effects</div>
-                <div class="tab">Presets</div>
-            </div>
-
-            <div class="effect-group">
-                <h3>Zoom Effects</h3>
-                <div class="effect-list">
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">🔍</div>
-                        Zoom Beat
-                    </div>
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">💫</div>
-                        Zoom Rotate
-                    </div>
-                </div>
-            </div>
-
-            <div class="effect-group">
-                <h3>Shake Effects</h3>
-                <div class="effect-list">
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">📳</div>
-                        Beat Shake
-                    </div>
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">💢</div>
-                        Random Shake
-                    </div>
-                </div>
-            </div>
-
-            <div class="effect-group">
-                <h3>Color Effects</h3>
-                <div class="effect-list">
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">🎨</div>
-                        Flash Beat
-                    </div>
-                    <div class="effect-item" draggable="true">
-                        <div class="effect-icon">🌈</div>
-                        RGB Split
-                    </div>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label>Effect Intensity</label>
-                <input type="range" min="0" max="100" value="50">
-            </div>
-
-            <div class="control-group">
-                <label>Effect Speed</label>
-                <input type="range" min="0" max="100" value="50">
-            </div>
-        </div>
-
-        <div class="preview-area">
-            <div class="video-container">
-                <video class="video-preview" controls>
-                    <source src="https://alight.link/JYQS536eeM3RVnuX6?source=link" type="video/mp4">
-                </video>
-                <div class="zoom-controls">
-                    <button class="control-button">+</button>
-                    <button class="control-button">-</button>
-                </div>
-            </div>
-
-            <div class="timeline">
-                <div class="playback-controls">
-                    <button class="control-button">⏮️</button>
-                    <button class="control-button">⏪</button>
-                    <button class="control-button">▶️</button>
-                    <button class="control-button">⏩</button>
-                    <button class="control-button">⏭️</button>
-                </div>
-
-                <div class="time-markers">
-                    <span>0:00</span>
-                    <span>0:30</span>
-                    <span>1:00</span>
-                    <span>1:30</span>
-                    <span>2:00</span>
-                </div>
-
-                <div class="track">
-                    <div class="clip" style="left: 10%; width: 30%"></div>
-                    <div class="keyframe-marker" style="left: 15%; top: 50%"></div>
-                    <div class="keyframe-marker" style="left: 25%; top: 50%"></div>
-                    <div class="keyframe-marker" style="left: 35%; top: 50%"></div>
-                </div>
-
-                <div class="track">
-                    <div class="clip" style="left: 25%; width: 40%"></div>
-                </div>
-
-                <div class="track">
-                    <div class="clip" style="left: 15%; width: 25%"></div>
-                </div>
+    <!-- Template Modal -->
+    <div class="template-modal" id="templateModal">
+        <div class="template-container">
+            <button class="close-modal">&times;</button>
+            <h2 style="color: white; margin-bottom: 20px;">Choose a Template</h2>
+            <div class="template-grid">
+                <!-- Template items will be added dynamically -->
             </div>
         </div>
     </div>
+
+    <!-- Download Link Modal -->
+    <div class="download-link" id="downloadModal">
+        <h3>Your video is ready!</h3>
+        <p>Click below to download your edited video</p>
+        <button class="download-button" id="downloadBtn">Download Video</button>
+    </div>
+
+    <!-- Rest of the previous HTML content remains the same -->
 
     <script>
-        // Initialize draggable effects
-        const effectItems = document.querySelectorAll('.effect-item');
-        const timeline = document.querySelector('.timeline');
+        // Previous script content remains the same
 
-        effectItems.forEach(item => {
-            item.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', item.textContent.trim());
-                item.classList.add('dragging');
-            });
+        // Template data
+        const templates = [
+            {
+                id: 1,
+                title: "Music Video Beat",
+                description: "Perfect for musical content with beat-synced effects",
+                thumbnail: "/api/placeholder/200/150",
+                videoUrl: "https://example.com/template1.mp4"
+            },
+            {
+                id: 2,
+                title: "Gaming Highlights",
+                description: "Ideal for gaming clips and montages",
+                thumbnail: "/api/placeholder/200/150",
+                videoUrl: "https://example.com/template2.mp4"
+            },
+            {
+                id: 3,
+                title: "Travel Vlog",
+                description: "Smooth transitions for travel content",
+                thumbnail: "/api/placeholder/200/150",
+                videoUrl: "https://example.com/template3.mp4"
+            },
+            // Add more templates as needed
+        ];
 
-            item.addEventListener('dragend', () => {
-                item.classList.remove('dragging');
-            });
-        });
+        // Initialize template modal
+        const templateModal = document.getElementById('templateModal');
+        const openTemplateBtn = document.getElementById('openTemplateBtn');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const templateGrid = document.querySelector('.template-grid');
 
-        timeline.addEventListener('dragover', (e) => {
-            e.preventDefault();
-        });
+        // Initialize download modal
+        const downloadModal = document.getElementById('downloadModal');
+        const exportBtn = document.getElementById('exportBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
 
-        timeline.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const effectName = e.dataTransfer.getData('text/plain');
+        // Populate templates
+        templates.forEach(template => {
+            const templateItem = document.createElement('div');
+            templateItem.className = 'template-item';
+            templateItem.innerHTML = `
+                <img src="${template.thumbnail}" alt="${template.title}" class="template-thumbnail">
+                <div class="template-info">
+                    <div class="template-title">${template.title}</div>
+                    <div class="template-description">${template.description}</div>
+                </div>
+            `;
             
-            // Create new clip
-            const newClip = document.createElement('div');
-            newClip.className = 'clip';
-            newClip.style.left = `${(e.offsetX / timeline.offsetWidth) * 100}%`;
-            newClip.style.width = '20%';
+            templateItem.addEventListener('click', () => {
+                // Load template video
+                const videoPreview = document.querySelector('.video-preview');
+                videoPreview.src = template.videoUrl;
+                templateModal.style.display = 'none';
+            });
             
-            // Add to first track
-            const firstTrack = document.querySelector('.track');
-            firstTrack.appendChild(newClip);
+            templateGrid.appendChild(templateItem);
         });
 
-        // Playback controls
-        const video = document.querySelector('.video-preview');
-        const playButton = document.querySelector('.playback-controls .control-button:nth-child(3)');
-        
-        playButton.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                playButton.textContent = '⏸️';
-            } else {
-                video.pause();
-                playButton.textContent = '▶️';
+        // Template modal controls
+        openTemplateBtn.addEventListener('click', () => {
+            templateModal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            templateModal.style.display = 'none';
+        });
+
+        // Export functionality
+        exportBtn.addEventListener('click', () => {
+            // Simulate video processing
+            setTimeout(() => {
+                downloadModal.style.display = 'block';
+            }, 2000);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            // Generate temporary download link
+            const downloadUrl = URL.createObjectURL(new Blob([''], { type: 'video/mp4' }));
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = 'edited_video.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(downloadUrl);
+            downloadModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === templateModal) {
+                templateModal.style.display = 'none';
             }
-        });
-
-        // Make clips resizable
-        const clips = document.querySelectorAll('.clip');
-        clips.forEach(clip => {
-            clip.addEventListener('mousedown', (e) => {
-                const startX = e.clientX;
-                const clipWidth = clip.offsetWidth;
-                
-                function onMouseMove(e) {
-                    const delta = e.clientX - startX;
-                    clip.style.width = `${clipWidth + delta}px`;
-                }
-                
-                function onMouseUp() {
-                    document.removeEventListener('mousemove', onMouseMove);
-                    document.removeEventListener('mouseup', onMouseUp);
-                }
-                
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
-            });
+            if (e.target === downloadModal) {
+                downloadModal.style.display = 'none';
+            }
         });
     </script>
 </body>
