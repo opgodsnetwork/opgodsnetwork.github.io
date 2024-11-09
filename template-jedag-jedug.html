@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: titleBounce 2s infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #4f46e5;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: cardJedagJedug 1s infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes cardJedagJedug {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .card:hover {
+            animation: cardShake 0.5s infinite;
+        }
+
+        @keyframes cardShake {
+            0%, 100% {
+                transform: translateX(0) scale(1.05);
+            }
+            25% {
+                transform: translateX(-10px) scale(1.05);
+            }
+            75% {
+                transform: translateX(10px) scale(1.05);
+            }
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.2);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Template Jedag Jedug</h1>
+            <p>Template Keren Bikin Website Makin Gacor!</p>
+        </div>
+        
+        <div class="grid">
+            <!-- Template 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Gaming Template">
+                    <span class="badge">HOT! 🔥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Gaming Zone</h3>
+                    <a href="#" class="card-button">Gas Bang! 🚀</a>
+                </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Music Template">
+                    <span class="badge">VIRAL 🌟</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Music Vibe</h3>
+                    <a href="#" class="card-button">Gas Cuy! 🎵</a>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Stream Template">
+                    <span class="badge">NEW ✨</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Stream Pro</h3>
+                    <a href="#" class="card-button">Gas Kuy! 📺</a>
+                </div>
+            </div>
+
+            <!-- Template 4 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Vlog Template">
+                    <span class="badge">BEST 🏆</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Vlog Master</h3>
+                    <a href="#" class="card-button">Gas Skuy! 🎥</a>
+                </div>
+            </div>
+
+            <!-- Template 5 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Portfolio Template">
+                    <span class="badge">PREMIUM ⭐</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Portfolio Lit</h3>
+                    <a href="#" class="card-button">Gas Boss! 💼</a>
+                </div>
+            </div>
+
+            <!-- Template 6 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="/api/placeholder/400/320" alt="Store Template">
+                    <span class="badge">TRENDING 📈</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Store Gacor</h3>
+                    <a href="#" class="card-button">Gas Lah! 🛍️</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
