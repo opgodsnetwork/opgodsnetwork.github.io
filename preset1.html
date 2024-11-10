@@ -381,44 +381,75 @@
     </div>
 
     <!-- Modal Structure -->
-    <div class="modal" id="templateModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <img class="modal-image" id="modalImage" src="" alt="Template Image">
-            <h2 id="modalTitle"></h2>
-            <p id="modalCreator"></p>
-            <a id="modalLink" href="#" class="modal-button" target="_blank">Visit Template</a>
-            <button class="modal-button" onclick="importTemplate()">Import And Use</button>
-            <button class="modal-button" onclick="shareWebsite()">Share Website</button>
-        </div>
+<div class="modal" id="templateModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <img class="modal-image" id="modalImage" src="" alt="Template Image">
+        <h2 id="modalTitle"></h2>
+        <p id="modalCreator"></p>
+        <button class="modal-button" onclick="redirectToTemplate()">Download Template</button>
+        <button class="modal-button" onclick="copyTemplateLink()">Share Template</button>
     </div>
+</div>
 
-    <script>
-        // Function to show modal
-        function showModal(templateName, creatorName, imageSrc, link) {
-            document.getElementById('templateModal').style.display = 'flex';
-            document.getElementById('modalTitle').textContent = templateName;
-            document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
-            document.getElementById('modalImage').src = imageSrc;
-            document.getElementById('modalLink').href = link; // Update the link
-        }
+<!-- Toast Notification -->
+<div id="toastNotification" style="
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4f46e5;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 10000;
+">Link berhasil disalin!</div>
 
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById('templateModal').style.display = 'none';
-        }
+<script>
+    // Function to show modal
+    function showModal(templateName, creatorName, imageSrc, link) {
+        document.getElementById('templateModal').style.display = 'flex';
+        document.getElementById('modalTitle').textContent = templateName;
+        document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
+        document.getElementById('modalImage').src = imageSrc;
+        document.getElementById('templateModal').setAttribute('data-link', link); // Store the link as a data attribute
+    }
 
-        // Placeholder function for "Import And Use"
-        function importTemplate() {
-            alert("Template Imported!");
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('templateModal').style.display = 'none';
+    }
+
+    // Function to redirect to template link
+    function redirectToTemplate() {
+        const link = document.getElementById('templateModal').getAttribute('data-link');
+        window.open(link, '_blank');
+    }
+
+    // Function to copy template link and show toast
+    function copyTemplateLink() {
+        const link = document.getElementById('templateModal').getAttribute('data-link');
+        navigator.clipboard.writeText(link).then(() => {
+            // Show toast notification
+            const toast = document.getElementById('toastNotification');
+            toast.style.display = 'block';
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        });
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('templateModal');
+        if (event.target === modal) {
             closeModal();
         }
-
-        // Placeholder function for "Share Website"
-        function shareWebsite() {
-            alert("Website Shared!");
-            closeModal();
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
