@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none';">
+    <title>Halaman Keamanan</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 50px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Selamat datang di Halaman Keamanan</h1>
+        <p>Konten ini hanya untuk pengunjung yang sah. Cobalah untuk melindungi website Anda dengan baik!</p>
+    </div>
+
+    <script>
+        // Mencegah penggunaan Developer Tools (F12, Ctrl+Shift+I, dll)
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();  // Nonaktifkan klik kanan
+        });
+
+        document.onkeydown = function(e) {
+            // Cegah F12
+            if (e.keyCode == 123) {
+                return false;
+            }
+            // Cegah Ctrl+Shift+I (DevTools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                return false;
+            }
+            // Cegah Ctrl+U (view-source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                return false;
+            }
+        }
+
+        // Mengunci penggunaan inspeksi dan debug di console
+        console.log = function() {};
+        Object.defineProperty(console, 'log', { get: function() { return function() {}; }});
+
+        // Menampilkan pesan ke console jika script dijalankan
+        console.log("Keamanan Halaman: Script Diaktifkan!");
+    </script>
+
+</body>
+</html>
