@@ -26,6 +26,113 @@
             margin: 0 auto;
         }
 
+        /* New Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(79, 70, 229, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .new-update-badge {
+            position: relative;
+        }
+
+        .new-update-badge::before {
+            content: '•';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            color: #4f46e5;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Adjust existing styles to accommodate navbar */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Keep all existing styles below this line */
+        /* ... (rest of your existing styles) ... */
+
         /* Header Styles */
         .header {
             text-align: center;
@@ -236,12 +343,17 @@
     </style>
 </head>
 <body>
-    <!-- Contoh 4: Form dengan PHP -->
-    <form action="process.php" method="POST">
-        <input type="text" name="search" 
-               value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-        <button type="submit">Cari</button>
-    </form>
+    <!-- New Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">🔥 Jedag Jedug</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#updates" class="nav-link new-update-badge">New Update</a>
+            </div>
+        </div>
+    </nav>
     
     <div class="container">
         <div class="header">
