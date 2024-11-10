@@ -236,7 +236,13 @@
     </style>
 </head>
 <body>
-        
+    <!-- Contoh 4: Form dengan PHP -->
+    <form action="process.php" method="POST">
+        <input type="text" name="search" 
+               value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+        <button type="submit">Cari</button>
+    </form>
+    
     <div class="container">
         <div class="header">
             <h1>🔥 Template Jedag Jedug</h1>
