@@ -6,6 +6,107 @@
     <title>Template Jedag Jedug</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+         /* Add new navbar styles */
+         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+         .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link.new::after {
+            content: 'NEW';
+            position: absolute;
+            top: -8px;
+            right: -20px;
+            background: #4f46e5;
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Adjust body padding to account for fixed navbar */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.95);
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
         /* Reset & Base Styles */
         * {
             margin: 0;
@@ -123,58 +224,6 @@
             animation: badgePulse 2s infinite;
         }
 
-        /* Navbar Styles */
-        .navbar-right {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px 10px;
-            border-radius: 30px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-tooltip {
-            position: absolute;
-            right: 60px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(20px);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -288,29 +337,19 @@
     </style>
 </head>
 <body>
-    <nav class="navbar-right">
-        <div class="nav-item" onclick="scrollToSection('home')">
-            <div class="nav-icon">🏠</div>
-            <span class="nav-tooltip">Beranda</span>
-        </div>
-        <div class="nav-item" onclick="scrollToSection('trending')">
-            <div class="nav-icon">🔥</div>
-            <span class="nav-tooltip">Trending</span>
-        </div>
-        <div class="nav-item" onclick="scrollToSection('new')">
-            <div class="nav-icon">✨</div>
-            <span class="nav-tooltip">Terbaru</span>
-        </div>
-        <div class="nav-item" onclick="scrollToSection('categories')">
-            <div class="nav-icon">📂</div>
-            <span class="nav-tooltip">Kategori</span>
-        </div>
-        <div class="nav-item" onclick="scrollToSection('favorites')">
-            <div class="nav-icon">❤️</div>
-            <span class="nav-tooltip">Favorit</span>
+    <!--Add Navbar-->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">🔥 Jedag Jedug</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link" onclick="scrollToSection('about')">About</a>
+                <a href="#contact" class="nav-link" onclick="scrollToSection('contact')">Contact</a>
+                <a href="#updates" class="nav-link new" onclick="scrollToSection('updates')">New Update</a>
+            </div>
         </div>
     </nav>
-
+        
     <div class="container">
         <div class="header">
             <h1>🔥 Template Jedag Jedug</h1>
@@ -408,6 +447,41 @@
     <div id="toastNotification">Link berhasil disalin!</div>
 
     <script>
+        // Previous scripts remain the same
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Update scrollToSection function
+        function scrollToSection(section) {
+            switch(section) {
+                case 'about':
+                    alert('About Us:\nKami adalah platform template editing video terbaik untuk content creator!');
+                    break;
+                case 'contact':
+                    alert('Contact Us:\nEmail: support@jedagjedug.com\nInstagram: @jedagjedug\nDiscord: discord.gg/jedagjedug');
+                    break;
+                case 'updates':
+                    alert('🎉 New Updates:\n- 6 Template baru ditambahkan\n- Peningkatan performa\n- Fitur sharing yang lebih mudah');
+                    break;
+                // Previous cases remain the same
+            }
+            toggleMobileMenu(); // Close mobile menu after clicking
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!event.target.closest('.nav-links') && 
+                !event.target.closest('.mobile-menu-btn') && 
+                navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+            
         // Modal Functions
         function showModal(templateName, creatorName, imageSrc, link) {
             const modal = document.getElementById('templateModal');
@@ -466,20 +540,6 @@
                 closeModal();
             }
         }
-
-        // Scroll handling for navbar
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar-right');
-            const st = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (st > lastScrollTop) {
-                navbar.style.transform = 'translateY(100%)';
-            } else {
-                navbar.style.transform = 'translateY(-50%)';
-            }
-            lastScrollTop = st <= 0 ? 0 : st;
-        });
     </script>
 </body>
 </html>
