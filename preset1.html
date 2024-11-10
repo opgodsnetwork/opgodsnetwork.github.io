@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Jedag Jedug</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-        
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -26,19 +26,11 @@
             margin: 0 auto;
         }
 
+        /* Header Styles */
         .header {
             text-align: center;
             margin-bottom: 50px;
             animation: titleBounce 2s infinite;
-        }
-
-        @keyframes titleBounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
         }
 
         .header h1 {
@@ -53,6 +45,7 @@
             font-size: 1.2rem;
         }
 
+        /* Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -60,6 +53,7 @@
             padding: 20px;
         }
 
+        /* Card Styles */
         .card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -75,31 +69,6 @@
             animation-delay: 0.5s;
         }
 
-        @keyframes cardJedagJedug {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .card:hover {
-            animation: cardShake 0.5s infinite;
-        }
-
-        @keyframes cardShake {
-            0%, 100% {
-                transform: translateX(0) scale(1.05);
-            }
-            25% {
-                transform: translateX(-10px) scale(1.05);
-            }
-            75% {
-                transform: translateX(10px) scale(1.05);
-            }
-        }
-
         .card-image {
             width: 100%;
             height: 250px;
@@ -112,10 +81,6 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-        }
-
-        .card:hover .card-image img {
-            transform: scale(1.2);
         }
 
         .card-content {
@@ -144,11 +109,7 @@
             letter-spacing: 1px;
         }
 
-        .card-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-
+        /* Badge Styles */
         .badge {
             position: absolute;
             top: 10px;
@@ -162,18 +123,59 @@
             animation: badgePulse 2s infinite;
         }
 
-        @keyframes badgePulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
+        /* Navbar Styles */
+        .navbar-right {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 10px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
         }
 
-        /* Pop-up Modal */
+        .nav-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            right: 60px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -225,126 +227,48 @@
             margin: 5px;
         }
 
-        .modal-button:hover {
-            background: #7c3aed;
+        /* Toast Notification */
+        #toastNotification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 10000;
         }
 
-        /* Close button for the modal */
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
+        /* Animations */
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
+        @keyframes cardJedagJedug {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Media Queries */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5rem;
             }
+
             .grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
             }
 
-        /*Tampilkan Navbar*/
-        .navbar-right {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px 10px;
-            border-radius: 30px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
- 
-        .nav-item {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-item:hover {
-            transform: translateX(-5px);
-        }
-
-        .nav-item:hover .nav-icon {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-        }
-
-        .nav-item:hover .nav-tooltip {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-10px);
-        }
-
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-         }
-
-         .nav-tooltip {
-             position: absolute;
-             right: 60px;
-             background: linear-gradient(45deg, #4f46e5, #7c3aed);
-             color: white;
-             padding: 8px 15px;
-             border-radius: 15px;
-             font-size: 0.9rem;
-             opacity: 0;
-             visibility: hidden;
-             transform: translateX(20px);
-             transition: all 0.3s ease;
-             white-space: nowrap;
-         }
-
-         .nav-tooltip::after {
-             content: '';
-             position: absolute;
-             right: -5px;
-             top: 50%;
-             transform: translateY(-50%);
-             border-left: 5px solid #7c3aed;
-             border-top: 5px solid transparent;
-             border-bottom: 5px solid transparent;
-         }
-
-         /* Animasi kedip untuk notifikasi */
-         @keyframes pulse {
-             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-           100% { transform: scale(1); }
-        } 
-
-        .notification-dot {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            width: 12px;
-           height: 12px;
-           background-color: #ef4444;
-           border-radius: 50%;
-           animation: pulse 1.5s infinite;
-        }
-
-        /* Media Query untuk responsivitas */
-        @media (max-width: 768px) {
             .navbar-right {
                 bottom: 0;
                 right: 0;
@@ -357,19 +281,13 @@
                 padding: 15px;
             }
 
-            .nav-item {
-                margin: 0;
-            } 
-
             .nav-tooltip {
                 display: none;
             }
-         
         }
     </style>
 </head>
 <body>
-    <!--navbar-->
     <nav class="navbar-right">
         <div class="nav-item" onclick="scrollToSection('home')">
             <div class="nav-icon">🏠</div>
@@ -398,12 +316,12 @@
             <h1>🔥 Template Jedag Jedug</h1>
             <p>Template Keren Bikin Website Makin Gacor!</p>
         </div>
-
+        
         <div class="grid">
-            <!-- Template 1 -->
-            <div class="card" onclick="showModal('PRESET AM KECE PARAH 😈 - NEW STYLE DIBAWAH 5MB - SOUND MENGKANE KECE TIKTOK🔥', 'GOKAN GMG', '120.jpg', 'https://alight.link/mbeAKqiBRJgmTLFj8')">
+            <!-- Example Card -->
+            <div class="card" onclick="showModal('PRESET AM KECE PARAH 😈', 'GOKAN GMG', '120.jpg', 'https://alight.link/mbeAKqiBRJgmTLFj8')">
                 <div class="card-image">
-                    <img src="120.jpg" alt="Gaming Template">
+                    <img src="/api/placeholder/400/320" alt="Template Preview">
                     <span class="badge">HOT! 🔥</span>
                 </div>
                 <div class="card-content">
@@ -411,263 +329,97 @@
                     <a href="#" class="card-button">Klick Cuy 🚀</a>
                 </div>
             </div>
-
-            <!-- Template 2 -->
-            <div class="card" onclick="showModal('Music Vibe', 'Music Creator', '/images/music.jpg', 'https://musicthemes.com')">
-                <div class="card-image">
-                    <img src="/images/music.jpg" alt="Music Template">
-                    <span class="badge">VIRAL 🌟</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Music Vibe</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 3 -->
-            <div class="card" onclick="showModal('Stream Pro', 'Streaming Creator', '/images/stream.jpg', 'https://streamtemplate.com')">
-                <div class="card-image">
-                    <img src="/images/stream.jpg" alt="Stream Template">
-                    <span class="badge">NEW ✨</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Stream Pro</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 4 -->
-            <div class="card" onclick="showModal('Creative Portfolio', 'Designer Studio', '/images/creative.jpg', 'https://creativetemplate.com')">
-                <div class="card-image">
-                    <img src="/images/creative.jpg" alt="Creative Template">
-                    <span class="badge">TRENDING 🏆</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Creative Portfolio</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 5 -->
-            <div class="card" onclick="showModal('Dark Mode Gaming', 'Game Designer', '/images/gaming.jpg', 'https://gamingtemplate.com')">
-                <div class="card-image">
-                    <img src="/images/gaming.jpg" alt="Gaming Template">
-                    <span class="badge">HOT 🔥</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Dark Mode Gaming</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 6 -->
-            <div class="card" onclick="showModal('Personal Portfolio', 'Web Developer', '/images/portfolio.jpg', 'https://portfolio.com')">
-                <div class="card-image">
-                    <img src="/images/portfolio.jpg" alt="Portfolio Template">
-                    <span class="badge">NEW ✨</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Personal Portfolio</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 7 -->
-            <div class="card" onclick="showModal('Fashion Store', 'Fashion Designer', '/images/fashion.jpg', 'https://fashionstore.com')">
-                <div class="card-image">
-                    <img src="/images/fashion.jpg" alt="Fashion Template">
-                    <span class="badge">TRENDING 🛍️</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Fashion Store</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 8 -->
-            <div class="card" onclick="showModal('Tech Blog', 'Tech Enthusiast', '/images/techblog.jpg', 'https://techblog.com')">
-                <div class="card-image">
-                    <img src="/images/techblog.jpg" alt="Tech Blog Template">
-                    <span class="badge">TECHIE 💻</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Tech Blog</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 9 -->
-            <div class="card" onclick="showModal('Photography', 'Photographer', '/images/photography.jpg', 'https://photography.com')">
-                <div class="card-image">
-                    <img src="/images/photography.jpg" alt="Photography Template">
-                    <span class="badge">CREATIVE 🎨</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Photography</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!-- Template 10 -->
-            <div class="card" onclick="showModal('Business Startup', 'Business Guru', '/images/business.jpg', 'https://startupbusiness.com')">
-                <div class="card-image">
-                    <img src="/images/business.jpg" alt="Business Template">
-                    <span class="badge">SUCCESS 💼</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Business Startup</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
+            <!-- Add more cards as needed -->
         </div>
     </div>
 
-    <!-- Modal Structure -->
-   <div class="modal" id="templateModal">
-       <div class="modal-content">
-           <span class="close-modal" onclick="closeModal()">×</span>
-           <img class="modal-image" id="modalImage" src="" alt="Template Image">
-           <h2 id="modalTitle"></h2>
-           <p id="modalCreator"></p>
-           <button class="modal-button" onclick="redirectToTemplate()">Import And Use</button>
-           <button class="modal-button" onclick="copyTemplateLink()">Share Template</button>
-       </div>
-   </div>
+    <!-- Modal -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <img class="modal-image" id="modalImage" src="" alt="Template Image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalCreator"></p>
+            <button class="modal-button" onclick="redirectToTemplate()">Import And Use</button>
+            <button class="modal-button" onclick="copyTemplateLink()">Share Template</button>
+        </div>
+    </div>
 
-   <!-- Toast Notification -->
-   <div id="toastNotification" style="
-       display: none;
-       position: fixed;
-       bottom: 20px;
-       left: 50%;
-       transform: translateX(-50%);
-       background-color: #4f46e5;
-       color: white;
-       padding: 15px 25px;
-       border-radius: 8px;
-       font-size: 14px;
-       z-index: 10000;
-   ">Link berhasil disalin!</div>
+    <div id="toastNotification">Link berhasil disalin!</div>
 
-   <script>
-       // Function to show modal
-       function showModal(templateName, creatorName, imageSrc, link) {
-           document.getElementById('templateModal').style.display = 'flex';
-           document.getElementById('modalTitle').textContent = templateName;
-           document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
-           document.getElementById('modalImage').src = imageSrc;
-           document.getElementById('templateModal').setAttribute('data-link', link); // Store the link as a data attribute
-       }
+    <script>
+        // Modal Functions
+        function showModal(templateName, creatorName, imageSrc, link) {
+            const modal = document.getElementById('templateModal');
+            modal.style.display = 'flex';
+            document.getElementById('modalTitle').textContent = templateName;
+            document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
+            document.getElementById('modalImage').src = imageSrc;
+            modal.setAttribute('data-link', link);
+        }
 
-       // Function to close the modal
-       function closeModal() {
-           document.getElementById('templateModal').style.display = 'none';
-       }
+        function closeModal() {
+            document.getElementById('templateModal').style.display = 'none';
+        }
 
-       // Function to redirect to template link
-       function redirectToTemplate() {
-           const link = document.getElementById('templateModal').getAttribute('data-link');
-           window.open(link, '_blank');
-       }
+        function redirectToTemplate() {
+            const link = document.getElementById('templateModal').getAttribute('data-link');
+            window.open(link, '_blank');
+        }
 
-       // Function to copy template link and show toast
-       function copyTemplateLink() {
-           const link = document.getElementById('templateModal').getAttribute('data-link');
-           navigator.clipboard.writeText(link).then(() => {
-               // Show toast notification
-               const toast = document.getElementById('toastNotification');
-               toast.style.display = 'block';
+        function copyTemplateLink() {
+            const link = document.getElementById('templateModal').getAttribute('data-link');
+            navigator.clipboard.writeText(link).then(() => {
+                const toast = document.getElementById('toastNotification');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+            });
+        }
+
+        // Navigation Functions
+        function scrollToSection(section) {
+            switch(section) {
+                case 'home':
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    break;
+                case 'trending':
+                    const trendingCard = document.querySelector('.badge');
+                    if(trendingCard) {
+                        trendingCard.parentElement.parentElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    break;
+                case 'categories':
+                    alert('Kategori: Gaming, Music, Stream, Creative, Tech, Photography, Business');
+                    break;
+                case 'favorites':
+                    alert('Fitur Favorit akan segera hadir!');
+                    break;
+            }
+        }
+
+        // Event Listeners
+        window.onclick = function(event) {
+            const modal = document.getElementById('templateModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Scroll handling for navbar
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-right');
+            const st = window.pageYOffset || document.documentElement.scrollTop;
             
-               // Hide toast after 3 seconds
-               setTimeout(() => {
-                  toast.style.display = 'none';
-              }, 3000);
-           });
-       }
-
-       // Close modal when clicking outside
-       window.onclick = function(event) {
-           const modal = document.getElementById('templateModal');
-           if (event.target === modal) {
-               closeModal();
-           }
-       }
-
-       // Tambahkan JavaScript untuk fungsi scroll //
-       function scrollToSection(section) {
-           // Implementasi scroll ke section yang sesuai
-           switch(section) {
-               case 'home':
-                   window.scrollTo({ top: 0, behavior: 'smooth' });
-                   break;
-               case 'trending':
-                   // Scroll ke section trending
-                  const trendingCards = document.querySelectorAll('.badge');
-                  trendingCards.forEach(badge => {
-                      if(badge.textContent.includes('HOT') || badge.textContent.includes('TRENDING')) {
-                          badge.parentElement.parentElement.scrollIntoView({ behavior: 'smooth' });
-                          return;
-                      }
-                  });
-                  break;
-              case 'new':
-                  // Scroll ke section new
-                  const newCards = document.querySelectorAll('.badge');
-                  newCards.forEach(badge => {
-                      if(badge.textContent.includes('NEW')) {
-                          badge.parentElement.parentElement.scrollIntoView({ behavior: 'smooth' });
-                          return;
-                      }
-                  });
-                  break;
-              case 'categories':
-                  // Tampilkan modal kategori
-                  showCategoriesModal();
-                  break;
-              case 'favorites':
-                // Implementasi sistem favorit
-                toggleFavorites();
-                break;
-           }
-       }
-
-       // Fungsi untuk menampilkan modal kategori
-       function showCategoriesModal() {
-            // Implementasi modal kategori
-            alert('Kategori: Gaming, Music, Stream, Creative, Tech, Photography, Business');
-       }
-
-       // Fungsi untuk mengelola favorit
-       function toggleFavorites() {
-           // Implementasi sistem favorit
-           alert('Fitur Favorit akan segera hadir!');
-       }
-
-       // Tambahkan event listener untuk mengubah navbar saat scroll
-       let lastScrollTop = 0;
-       window.addEventListener('scroll', function() {
-           const navbar = document.querySelector('.navbar-right');
-           const st = window.pageYOffset || document.documentElement.scrollTop;
-        
-           if (st > lastScrollTop) {
-               // Scroll ke bawah
-              navbar.style.transform = 'translateY(100%)';
-           } else {
-              // Scroll ke atas
-              navbar.style.transform = 'translateY(-50%)';
-           }
-           lastScrollTop = st <= 0 ? 0 : st;
-       }, false);
-
-       // Tambahkan animasi smooth scroll untuk semua link anchor
-       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-           anchor.addEventListener('click', function (e) {
-               e.preventDefault();
-               document.querySelector(this.getAttribute('href')).scrollIntoView({
-                   behavior: 'smooth'
-               });
-           });
-       });
-   </script>
+            if (st > lastScrollTop) {
+                navbar.style.transform = 'translateY(100%)';
+            } else {
+                navbar.style.transform = 'translateY(-50%)';
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        });
+    </script>
 </body>
 </html>
