@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Jedag Jedug</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(79, 70, 229, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Badge Popup Styles */
+        .badge-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 23, 42, 0.98);
+            padding: 2rem;
+            border-radius: 15px;
+            z-index: 1100;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid rgba(79, 70, 229, 0.3);
+        }
+
+        .badge-popup h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-button {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .badge-button:hover {
+            transform: scale(1.05);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: titleBounce 2s infinite;
+            margin-top: 80px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #4f46e5;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: cardJedagJedug 1s infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .card:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Badge Styles */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: badgePulse 2s infinite;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-content {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            width: 80%;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #4f46e5;
+        }
+
+        .modal h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .modal p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        /* Toast Notification */
+        #toastNotification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 10000;
+        }
+
+        /* Animations */
+        @keyframes titleBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes cardJedagJedug {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes badgePulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .badge-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Enhanced Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">
+                <img src="/api/placeholder/30/30" alt="Logo">
+                Opgods | Preset Alight Motion
+            </a>
+            <div class="nav-links">
+                <a href="#store" class="nav-link">
+                    <img src="/api/placeholder/24/24" alt="Store" class="social-icon">
+                    Store
+                </a>
+                <a href="#" class="nav-link" onclick="showBadgePopup(event)">
+                    <img src="/api/placeholder/24/24" alt="Badges" class="social-icon">
+                    Badges
+                </a>
+                <a href="https://youtube.com/@yourchannel" target="_blank" class="nav-link">
+                    <img src="/api/placeholder/24/24" alt="YouTube" class="social-icon">
+                    YouTube
+                </a>
+                <a href="https://wa.me/yourwhatsapp" target="_blank" class="nav-link">
+                    <img src="/api/placeholder/24/24" alt="WhatsApp" class="social-icon">
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Badge Popup -->
+    <div class="badge-popup" id="badgePopup">
+        <button class="close-popup" onclick="closeBadgePopup()">×</button>
+        <h2>Preset Badges</h2>
+        <div class="badge-grid">
+            <button class="badge-button">KECE! 🔥</button>
+            <button class="badge-button">ROMANTIS ❤️</button>
+            <button class="badge-button">VIRAL 🌟</button>
+            <button class="badge-button">TREND 📈</button>
+            <button class="badge-button">NEW ✨</button>
+            <button class="badge-button">PRO 💎</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Template Jedag Jedug</h1>
+            <p>Template Keren Bikin Kamu Makin Gacor!</p>
+        </div>
+
+        <div class="grid">
+            <!-- Preset 1 -->
+            <div class="card" onclick="showModal('PRESET AM KECE PARAH 😈', 'GOKAN GMG', 'preset1.jpeg', 'https://alight.link/mbeAKqiBRJgmTLFj8')">
+                <div class="card-image">
+                    <img src="preset1.jpeg" alt="Template Preview">
+                    <span class="badge">KECE! 🔥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Preset AM Kece Parah 😈</h3>
+                    <a href="#" class="card-button">Klick Cuy 🚀</a>
+                </div>
+            </div>
+
+            <!-- More presets... -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <img class="modal-image" id="modalImage" src="" alt="Template Image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalCreator"></p>
+            <button class="modal-button" onclick="redirectToTemplate()">Import And Use</button>
+            <button class="modal-button" onclick="copyTemplateLink()">Share Template</button>
+        </div>
+    </div>
+
+    <div id="toastNotification">Link berhasil disalin!</div>
+
+    <script>
+        // Modal Functions
+        function showModal(templateName, creatorName, imageSrc, link) {
+            const modal = document.getElementById('templateModal');
+            modal.style.display = 'flex';
+            document.getElementById('modalTitle').textContent = templateName;
+            document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
+            document.getElementById('modalImage').src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('templateModal').style.display = 'none';
+        }
+
+        function redirectToTemplate() {
+            window.location.href = 'https://alight.link/mbeAKqiBRJgmTLFj8';
+        }
+
+        function copyTemplateLink() {
+            const tempInput = document.createElement('input');
+            tempInput.value = 'https://alight.link/mbeAKqiBRJgmTLFj8';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast();
+        }
+
+        // Toast Notification
+        function showToast() {
+            const toast = document.getElementById('toastNotification');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+        // Badge Popup Functions
+        function showBadgePopup(event) {
+            event.preventDefault();
+            document.getElementById('badgePopup').style.display = 'flex';
+        }
+
+        function closeBadgePopup() {
+            document.getElementById('badgePopup').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
