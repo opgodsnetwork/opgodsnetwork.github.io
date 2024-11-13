@@ -94,6 +94,17 @@
             text-align: center;
         }
 
+        /* Mobile Menu Button (Hamburger) */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
         /* Main Content Styles */
         .main-content {
             margin-left: 280px;
@@ -222,6 +233,11 @@
         </div>
     </aside>
 
+     <!-- Hamburger Menu Icon -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
     <main class="main-content">
         <div class="templates-grid">
             <!-- Preset Card 1 -->
@@ -275,6 +291,17 @@
             </div>
             
             <script src="apk.js"></script>
-    </main
+            <script>
+                // Toggle sidebar on mobile
+                const menuToggle = document.querySelector('.menu-toggle');
+                const sidebar = document.querySelector('.sidebar');
+                const mainContent = document.querySelector('.main-content');
+
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                    mainContent.classList.toggle('active');
+                });
+            </script>
+    </main>
 </body>
 </html>
