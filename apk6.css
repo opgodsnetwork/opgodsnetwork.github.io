@@ -1,77 +1,88 @@
- /* CSS untuk Sidebar dan Konten */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+/* CSS untuk menyesuaikan zoom 50% */
+html, body {
+    height: 100%;
+    width: 100%;
+}
 
-        body {
-            background: #0f172a;
-            min-height: 100vh;
-            display: flex;
-        }
+body {
+    transform: scale(0.5);  /* Mengurangi tampilan menjadi 50% */
+    transform-origin: top left;  /* Menjaga asal transformasi dari sudut kiri atas */
+    width: 200%;  /* Memperbesar lebar body agar tidak terpotong */
+    height: 200%; /* Memperbesar tinggi body agar tetap penuh */
+    overflow: hidden; /* Menyembunyikan overflow yang muncul karena scaling */
+}
 
-        /* Sidebar Styles */
-        .sidebar {
-            width: 280px;
-            background: rgba(15, 23, 42, 0.95);
-            border-right: 2px solid rgba(79, 70, 229, 0.1);
-            padding: 20px;
-            height: 100vh;
-            position: fixed;
-            overflow-y: auto;
-            transform: translateX(-100%); /* Sidebar tersembunyi secara default */
-            transition: transform 0.3s ease; /* Animasi transisi */
-        }
+/* Kode lainnya tetap sama seperti sebelumnya */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .sidebar.active {
-            transform: translateX(0); /* Sidebar muncul ketika aktif */
-        }
+body {
+    background: #0f172a;
+    min-height: 100vh;
+    display: flex;
+}
 
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 30px;
-        }
+.sidebar {
+    width: 280px;
+    background: rgba(15, 23, 42, 0.95);
+    border-right: 2px solid rgba(79, 70, 229, 0.1);
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    transform: translateX(-100%); /* Sidebar tersembunyi secara default */
+    transition: transform 0.3s ease; /* Animasi transisi */
+}
 
-        /* Tombol Hamburger */
-        .menu-toggle {
-            font-size: 1.5rem;
-            color: #fff;
-            cursor: pointer;
-            margin-left: 20px;
-        }
+.sidebar.active {
+    transform: translateX(0); /* Sidebar muncul ketika aktif */
+}
 
-        /* Sidebar Close Button */
-        .sidebar-close {
-            font-size: 2rem;
-            color: red;
-            cursor: pointer;
-            margin-left: auto;
-            margin-bottom: 20px;
-        }
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 30px;
+}
 
-        .sidebar-close:hover {
-            color: #ff0000;
-        }
+.menu-toggle {
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 20px;
+}
 
-        .main-content {
-            margin-left: 280px;
-            padding: 30px;
-            flex: 1;
-        }
+.sidebar-close {
+    font-size: 2rem;
+    color: red;
+    cursor: pointer;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
 
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                z-index: 1000;
-            }
+.sidebar-close:hover {
+    color: #ff0000;
+}
 
-            .main-content {
-                margin-left: 0;
-            }
-        }
+.main-content {
+    margin-left: 280px;
+    padding: 30px;
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
