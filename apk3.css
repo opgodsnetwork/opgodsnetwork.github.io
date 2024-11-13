@@ -20,26 +20,6 @@
             height: 100vh;
             position: fixed;
             overflow-y: auto;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .sidebar.active {
-            transform: translateX(0);
-        }
-
-        .sidebar .sidebar-close {
-            display: none;
-        }
-
-        .sidebar .sidebar-close.active {
-            display: block;
-            font-size: 1.5rem;
-            color: #fff;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 999;
         }
 
         .logo {
@@ -50,6 +30,58 @@
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
             display: block;
             margin-bottom: 30px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            outline: none;
+        }
+
+        .search-bar::placeholder {
+            color: #94a3b8;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(79, 70, 229, 0.1);
+            color: #fff;
+        }
+
+        .sidebar-link i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
         }
 
         /* Main Content Styles */
@@ -66,19 +98,60 @@
             padding: 20px;
         }
 
-        /* Hamburger Menu Icon */
-        .menu-toggle {
-            display: none;
+        .template-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .template-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        .template-info {
+            padding: 20px;
+        }
+
+        .template-title {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .template-description {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .template-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(79, 70, 229, 0.2);
+            color: #818cf8;
+            border: 1px solid rgba(79, 70, 229, 0.4);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .template-button:hover {
+            background: rgba(79, 70, 229, 0.3);
         }
 
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
                 z-index: 1000;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
             }
 
             .main-content {
@@ -88,28 +161,20 @@
             .templates-grid {
                 grid-template-columns: 1fr;
             }
-
-            .menu-toggle {
-                display: block;
-                font-size: 2rem;
-                color: #fff;
-                padding: 10px;
-                cursor: pointer;
-            }
-
-            /* Tambahkan atau ubah bagian berikut di CSS */
-            .sidebar-close {
-                font-size: 2rem; /* Membuat tombol lebih besar */
-                color: red; /* Mengubah warna menjadi merah */
-                cursor: pointer; /* Menunjukkan bahwa ini adalah tombol yang bisa diklik */
-                display: block;
-                margin-left: auto;
-                margin-bottom: 20px; /* Memberi sedikit jarak di bawah */
-                transition: color 0.3s ease; /* Efek transisi warna */
-            }
-
-            .sidebar-close:hover {
-                color: #ff0000; /* Mengubah warna menjadi merah terang saat di-hover */
         }
-   }
-   
+
+        /* Custom Sidebar Close Button */
+        .sidebar-close {
+            font-size: 2rem; /* Membuat tombol lebih besar */
+            color: red; /* Mengubah warna menjadi merah */
+            cursor: pointer; /* Menunjukkan bahwa ini adalah tombol yang bisa diklik */
+            display: block;
+            margin-left: auto;
+            margin-bottom: 20px; /* Memberi sedikit jarak di bawah */
+            transition: color 0.3s ease; /* Efek transisi warna */
+        }
+
+        .sidebar-close:hover {
+            color: #ff0000; /* Mengubah warna menjadi merah terang saat di-hover */
+        }
+}
