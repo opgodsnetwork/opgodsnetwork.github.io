@@ -92,6 +92,56 @@
             height: 24px;
         }
 
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 2px solid rgba(79, 70, 229, 0.3);
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Nav Icons */
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-icon {
+            color: #94a3b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-icon:hover {
+            color: #fff;
+        }
+
+        .nav-icon i {
+            font-size: 1.2rem;
+        }
+
         /* Badge Popup Styles */
         .badge-popup {
             display: none;
@@ -405,6 +455,26 @@
     <nav class="navbar">
         <div class="nav-content">
             <a href="#" class="nav-logo">🔥 Opgods | Preset Alight Motion</a>
+            
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="search-preset...">
+            </div>
+
+            <div class="nav-icons">
+                <a href="https://wa.me/your-number" class="nav-icon">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                 <a href="/store" class="nav-icon">
+                    <i class="fas fa-store"></i>
+                    Store
+                </a>
+                <div class="nav-icon badge-container" onclick="toggleBadgePopup()">
+                   <i class="fas fa-medal"></i>
+                    Badge
+                    <span class="badge-count">3</span>
+                </div>
+                
             <div class="nav-links">
                 <a href="/about" class="nav-link">About</a>
                 <a href="/contact" class="nav-link">Contact</a>
@@ -412,6 +482,34 @@
             </div>
         </div>
     </nav>
+
+    <!-- Badge Popup -->
+    <div class="badge-popup" id="badgePopup">
+        <button class="close-popup" onclick="toggleBadgePopup()">×</button>
+        <h2>Badge Presets</h2>
+        <div class="badge-grid">
+            <div class="badge-item">
+                <img src="/api/placeholder/60/60" alt="Newbie Badge">
+                <h3>Newbie Creator</h3>
+                <p>Create your first preset</p>
+            </div>
+            <div class="badge-item">
+                <img src="/api/placeholder/60/60" alt="Popular Badge">
+                <h3>Popular Creator</h3>
+                <p>Get 1000+ downloads</p>
+            </div>
+            <div class="badge-item">
+                <img src="/api/placeholder/60/60" alt="Elite Badge">
+                <h3>Elite Creator</h3>
+                <p>Featured in trending</p>
+            </div>
+            <div class="badge-item">
+                <img src="/api/placeholder/60/60" alt="Master Badge">
+                <h3>Master Creator</h3>
+                <p>Create 50+ presets</p>
+            </div>
+        </div>
+    </div>
     
     <div class="container">
         <div class="header">
