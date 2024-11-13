@@ -97,7 +97,19 @@
                 cursor: pointer;
             }
 
+            /* Tambahkan atau ubah bagian berikut di CSS */
             .sidebar-close {
+                font-size: 2rem; /* Membuat tombol lebih besar */
+                color: red; /* Mengubah warna menjadi merah */
+                cursor: pointer; /* Menunjukkan bahwa ini adalah tombol yang bisa diklik */
                 display: block;
+                margin-left: auto;
+                margin-bottom: 20px; /* Memberi sedikit jarak di bawah */
+                transition: color 0.3s ease; /* Efek transisi warna */
             }
+
+            .sidebar-close:hover {
+                color: #ff0000; /* Mengubah warna menjadi merah terang saat di-hover */
         }
+   }
+   
