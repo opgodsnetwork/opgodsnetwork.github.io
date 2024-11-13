@@ -22,6 +22,152 @@
             padding-top: 80px;
         }
 
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 250px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 2px solid rgba(79, 70, 229, 0.1);
+            padding: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-hidden {
+            transform: translateX(-250px);
+        }
+
+        .toggle-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            background: rgba(79, 70, 229, 0.9);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(79, 70, 229, 0.1);
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .menu-item i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .menu-item.active {
+            background: rgba(79, 70, 229, 0.2);
+            color: #fff;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15px 0;
+        }
+
+        .badge-count {
+            background: #4f46e5;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        /* Main Content Wrapper */
+        .content-wrapper {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content-wrapper.full-width {
+            margin-left: 0;
+        }
+
+        /* Search Bar in Sidebar */
+        .sidebar-search {
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(79, 70, 229, 0.3);
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-250px);
+            }
+
+            .toggle-sidebar {
+                display: block;
+            }
+
+            .content-wrapper {
+                margin-left: 0;
+                padding-top: 70px;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -111,30 +257,6 @@
         .social-icon {
             width: 24px;
             height: 24px;
-        }
-
-        /* Search Bar */
-        .search-container {
-            position: relative;
-            flex: 1;
-            max-width: 400px;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            border: 2px solid rgba(79, 70, 229, 0.3);
-            background: rgba(15, 23, 42, 0.8);
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar:focus {
-            outline: none;
-            border-color: #4f46e5;
-            box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
         }
 
         /* Nav Icons */
@@ -472,22 +594,72 @@
     </style>
 </head>
 <body>
-    <!-- New Navbar -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <a href="#" class="nav-logo">🔥 Opgods | Preset Alight Motion</a>
-            
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="search-preset...">
-            </div>
+    <!-- Sidebar Toggle Button -->
+    <button class="toggle-sidebar" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
 
-            <div class="nav-links">
-                <a href="/about" class="nav-link">About</a>
-                <a href="/contact" class="nav-link">Contact</a>
-                <a href="/updates" class="nav-link new-update-badge">New Update</a>
-            </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="sidebar-logo">
+            🔥 Opgods Preset
+        </a>
+
+        <div class="sidebar-search">
+            <input type="text" class="search-bar" placeholder="Search preset...">
         </div>
-    </nav>
+
+        <div class="sidebar-menu">
+            <!-- Main Menu -->
+            <a href="#" class="menu-item active">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-fire"></i>
+                Trending
+                <span class="badge-count">5</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-th-large"></i>
+                Categories
+            </a>
+
+            <div class="menu-divider"></div>
+
+            <!-- Communication -->
+            <a href="https://wa.me/your-number" class="menu-item">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                WhatsApp
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-store" style="color: #4f46e5;"></i>
+                Store
+            </a>
+            <a href="#" class="menu-item" onclick="toggleBadgePopup()">
+                <i class="fas fa-medal" style="color: #FFD700;"></i>
+                Badges
+                <span class="badge-count">New</span>
+            </a>
+
+            <div class="menu-divider"></div>
+
+            <!-- Additional Links -->
+            <a href="/about" class="menu-item">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="/contact" class="menu-item">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+            <a href="/updates" class="menu-item">
+                <i class="fas fa-bell"></i>
+                Updates
+                <span class="badge-count">1</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Badge Popup -->
     <div class="badge-popup" id="badgePopup">
