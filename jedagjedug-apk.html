@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Jedag Jedug</title>
-    <link rel="stylesheet" src="sidebar.css">
+    <title>Templates - Opgods Preset Alight Motion</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -18,712 +17,272 @@
         body {
             background: #0f172a;
             min-height: 100vh;
-            padding: 40px 20px;
-            overflow-x: hidden;
-            padding-top: 80px;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-250px);
-            }
-
-            .toggle-sidebar {
-                display: block;
-            }
-
-            .content-wrapper {
-                margin-left: 0;
-                padding-top: 70px;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Animated Background */
-        .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, #0f172a, #1e293b);
-            animation: gradientBG 15s ease infinite;
-            background-size: 400% 400%;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* New Navbar Styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(79, 70, 229, 0.1);
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .nav-logo {
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            border-right: 2px solid rgba(79, 70, 229, 0.1);
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .logo {
             color: #fff;
             font-size: 1.5rem;
             font-weight: 800;
             text-decoration: none;
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
-            white-space: nowrap;
+            display: block;
+            margin-bottom: 30px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+        .search-container {
+            margin-bottom: 30px;
         }
 
-        .nav-link {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #fff;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
+        .search-bar {
             width: 100%;
-        }
-
-        .social-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Nav Icons */
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-icon {
-            color: #94a3b8;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-icon:hover {
-            color: #fff;
-        }
-
-        .nav-icon i {
-            font-size: 1.2rem;
-        }
-
-        /* Badge Popup Styles */
-        .badge-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(15, 23, 42, 0.98);
-            padding: 2rem;
-            border-radius: 15px;
-            z-index: 1100;
-            width: 90%;
-            max-width: 500px;
-            border: 2px solid rgba(79, 70, 229, 0.3);
-        }
-
-        .badge-popup h2 {
-            color: #fff;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .badge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .badge-button {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.2rem;
+            padding: 10px 15px;
             border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.2s ease;
-        }
-
-        .badge-button:hover {
-            transform: scale(1.05);
-        }
-
-        .close-popup {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
-            cursor: pointer;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
+            outline: none;
         }
 
-        .new-update-badge {
-            position: relative;
-        }
-
-        .new-update-badge::before {
-            content: '•';
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            color: #4f46e5;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        /* Adjust existing styles to accommodate navbar */
-        body {
-            padding-top: 80px;
-        }
-
-        /* Mobile responsive styles */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-
-            .nav-logo {
-                font-size: 1.2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-link {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Header Styles */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: titleBounce 2s infinite;
-            margin-top: 80px; /* Added to account for fixed navbar */
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            color: #fff;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px #4f46e5;
-        }
-
-        .header p {
+        .search-bar::placeholder {
             color: #94a3b8;
-            font-size: 1.2rem;
         }
 
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px;
+        .sidebar-section {
+            margin-bottom: 30px;
         }
 
-        /* Card Styles */
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: cardJedagJedug 1s infinite;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
-
-        .card:nth-child(odd) {
-            animation-delay: 0.5s;
-        }
-
-        .card-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .card-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #fff;
+        .section-title {
+            color: #94a3b8;
+            font-size: 0.9rem;
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
-        }
-
-        .card-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Badge Styles */
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            animation: badgePulse 2s infinite;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
+        .sidebar-link {
+            display: flex;
             align-items: center;
-            z-index: 9999;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
         }
 
-        .modal-content {
-            background-color: #2c3e50;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 500px;
-            width: 80%;
-            position: relative;
-        }
-
-        .modal-image {
-            width: 100%;
-            max-width: 200px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border: 2px solid #4f46e5;
-        }
-
-        .modal h2 {
+        .sidebar-link:hover {
+            background: rgba(79, 70, 229, 0.1);
             color: #fff;
+        }
+
+        .sidebar-link i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .template-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .template-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        .template-info {
+            padding: 20px;
+        }
+
+        .template-title {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .template-description {
+            color: #94a3b8;
+            font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
-        .modal p {
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .modal-button {
-            padding: 10px 20px;
-            background: #4f46e5;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        /* Toast Notification */
-        #toastNotification {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4f46e5;
-            color: white;
-            padding: 15px 25px;
+        .template-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(79, 70, 229, 0.2);
+            color: #818cf8;
+            border: 1px solid rgba(79, 70, 229, 0.4);
             border-radius: 8px;
-            font-size: 14px;
-            z-index: 10000;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        /* Animations */
-        @keyframes titleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .template-button:hover {
+            background: rgba(79, 70, 229, 0.3);
         }
 
-        @keyframes cardJedagJedug {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes badgePulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        /* Media Queries */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1000;
             }
 
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
+            .main-content {
+                margin-left: 0;
             }
 
-            .navbar-right {
-                bottom: 0;
-                right: 0;
-                top: auto;
-                transform: none;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-                border-radius: 20px 20px 0 0;
-                padding: 15px;
-            }
-
-            .nav-tooltip {
-                display: none;
+            .templates-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar Toggle Button -->
-    <button class="toggle-sidebar" onclick="toggleSidebar()">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <a href="#" class="sidebar-logo">
-            🔥 Opgods Preset
-        </a>
-        <div class="sidebar-search">
-            <input type="text" class="search-bar" placeholder="Search preset...">
-        </div>
-        <div class="sidebar-menu">
-            <!-- Main Menu -->
-            <a href="#" class="menu-item active">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-fire"></i>
-                Trending
-                <span class="badge-count">5</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-th-large"></i>
-                Categories
-            </a>
-            <div class="menu-divider"></div>
-            <!-- Communication -->
-            <a href="https://wa.me/your-number" class="menu-item">
-                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                WhatsApp
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-store" style="color: #4f46e5;"></i>
-                Store
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-medal" style="color: #FFD700;"></i>
-                Badges
-                <span class="badge-count">New</span>
-            </a>
-            <div class="menu-divider"></div>
-            <!-- Additional Links -->
-            <a href="/about" class="menu-item">
-                <i class="fas fa-info-circle"></i>
-                About
-            </a>
-            <a href="/contact" class="menu-item">
-                <i class="fas fa-envelope"></i>
-                Contact
-            </a>
-            <a href="/updates" class="menu-item">
-                <i class="fas fa-bell"></i>
-                Updates
-                <span class="badge-count">1</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="header">
-            <h1>🔥 Template Jedag Jedug</h1>
-            <p>Template Keren Bikin Kamu Makin Gacor!</p>
-        </div>
+    <aside class="sidebar">
+        <a href="index.html" class="logo">🔥 Opgods | AM</a>
         
-        <div class="grid">
-            <!-- Preset 1 -->
-            <div class="card" onclick="showModal('PRESET AM KECE PARAH 😈', 'GOKAN GMG', 'preset1.jpeg', 'https://alight.link/mbeAKqiBRJgmTLFj8')">
-                <div class="card-image">
-                    <img src="preset1.jpeg" alt="Template Preview">
-                    <span class="badge">KECE! 🔥</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Preset AM Kece Parah 😈</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!--Preset 2 -->
-            <div class="card" onclick="showModal('Preset Sorry - Justin Bieber 😔❤️', 'TOXIC ARMY', 'preset2.jpeg', 'https://alight.link/zKhjiPYYk1zm1HM38')">
-                <div class="card-image">
-                    <img src="preset2.jpeg" alt="Template Preview">
-                    <span class="badge">KECE! 🔥</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Preset Sorry - Justin Bieber 😔❤️</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!--Preset 3-->
-            <div class="card" onclick="showModal('PRESET AM SOUND SEREM KANE KECE😎☝️ VIRAL TIKTOK❗❗', 'Wznuu', 'preset3.jpeg', 'https://alight.link/YoNE4A6NHCQ2pef49')">
-                <div class="card-image">
-                    <img src="preset3.jpeg" alt="Template Preview">
-                    <span class="badge">KECE! 🔥</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">PRESET AM SOUND SEREM KANE KECE😎☝️ VIRAL TIKTOK❗❗</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!--Preset 4-->
-            <div class="card" onclick="showModal('PRESET AM TERBARU🎟️ || DIBAWAH 5MB/XML🌱 PAKAI FOTO📸 || SOUND KANE🤤', 'Ichal25', 'preset4.jpeg', 'https://alight.link/F7sPMB4AkFLKn19o9')">
-                <div class="card-image">
-                    <img src="preset4.jpeg" alt="Template Preview">
-                    <span class="badge">KECE! 🔥</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">PRESET AM TERBARU🎟️ || DIBAWAH 5MB/XML🌱 PAKAI FOTO📸 || SOUND KANE🤤</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!--Preset 5-->
-            <div class="card" onclick="showModal('PRESET AM FF BUCIN AESTHETIC - DARI MATAMU - TREND?', 'ANGGA EDITZ', 'preset5.jpeg', 'https://alight.link/kUN1FzDw9ivcCPf49')">
-                <div class="card-image">
-                    <img src="preset5.jpeg" alt="Templates Preview">
-                    <span class="badge">ROMANTIS ❤️</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">PRESET AM FF BUCIN AESTHETIC - DARI MATAMU - TREND?</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-
-            <!--Preset 6-->
-            <div class="card" onclick="showModal('YOU ARE MY HIGH PRESET', 'Joiii', 'preset6.jpeg', 'https://drive.usercontent.google.com/download?id=1jK-CqLs2ax_ijB1sMIgtZOJZqzR9B8nG&export=download&authuser=0')">
-                <div class="card-image">
-                    <img src="preset6.jpeg" alt="Templates Preview">
-                    <span class="badge">ROMANTIS ❤️</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">YOU ARE MY HIGH PRESET</h3>
-                    <a href="#" class="card-button">Klick Cuy 🚀</a>
-                </div>
-            </div>
-            <!-- Add more cards as needed -->
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search templates...">
         </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal" id="templateModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <img class="modal-image" id="modalImage" src="" alt="Template Image">
-            <h2 id="modalTitle"></h2>
-            <p id="modalCreator"></p>
-            <button class="modal-button" onclick="redirectToTemplate()">Import And Use</button>
-            <button class="modal-button" onclick="copyTemplateLink()">Share Template</button>
+        <div class="sidebar-section">
+            <h3 class="section-title">Menu</h3>
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i>Home
+            </a>
+            <a href="#trending" class="sidebar-link">
+                <i class="fas fa-fire"></i>Trending
+            </a>
+            <a href="store.html" class="sidebar-link">
+                <i class="fas fa-store"></i>Store
+            </a>
         </div>
-    </div>
 
-    <div id="toastNotification">Link berhasil disalin!</div>
+        <div class="sidebar-section">
+            <h3 class="section-title">Social Media</h3>
+            <a href="#youtube" class="sidebar-link">
+                <i class="fab fa-youtube"></i>YouTube
+            </a>
+            <a href="#whatsapp" class="sidebar-link">
+                <i class="fab fa-whatsapp"></i>WhatsApp
+            </a>
+            <a href="#instagram" class="sidebar-link">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
+        </div>
 
-    
-    <script src="sidebar.js"></script>
-    <script>
-        // Modal Functions
-        function showModal(templateName, creatorName, imageSrc, link) {
-            const modal = document.getElementById('templateModal');
-            modal.style.display = 'flex';
-            document.getElementById('modalTitle').textContent = templateName;
-            document.getElementById('modalCreator').textContent = 'Creator: ' + creatorName;
-            document.getElementById('modalImage').src = imageSrc;
-            modal.setAttribute('data-link', link);
-        }
+        <div class="sidebar-section">
+            <h3 class="section-title">Options</h3>
+            <a href="about.html" class="sidebar-link">
+                <i class="fas fa-info-circle"></i>About
+            </a>
+            <a href="contact.html" class="sidebar-link">
+                <i class="fas fa-envelope"></i>Contact
+            </a>
+            <a href="updates.html" class="sidebar-link">
+                <i class="fas fa-clock-rotate-left"></i>Updates
+            </a>
+        </div>
+    </aside>
 
-        function closeModal() {
-            document.getElementById('templateModal').style.display = 'none';
-        }
+    <main class="main-content">
+        <div class="templates-grid">
+            <!-- Template 1 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 1" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">Jedag Jedug Style</h3>
+                    <p class="template-description">Template AM dengan efek jedag jedug keren dan transisi smooth.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
 
-        function redirectToTemplate() {
-            const link = document.getElementById('templateModal').getAttribute('data-link');
-            window.open(link, '_blank');
-        }
+            <!-- Template 2 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 2" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">Smooth Transition</h3>
+                    <p class="template-description">Preset dengan transisi halus dan efek yang memukau.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
 
-        function copyTemplateLink() {
-            const link = document.getElementById('templateModal').getAttribute('data-link');
-            navigator.clipboard.writeText(link).then(() => {
-                const toast = document.getElementById('toastNotification');
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 3000);
-            });
-        }
+            <!-- Template 3 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 3" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">Epic Bass Drop</h3>
+                    <p class="template-description">Template dengan efek bass drop yang epic untuk konten musik.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
 
-        // Navigation Functions
-        function scrollToSection(section) {
-            switch(section) {
-                case 'home':
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    break;
-                case 'trending':
-                    const trendingCard = document.querySelector('.badge');
-                    if(trendingCard) {
-                        trendingCard.parentElement.parentElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    break;
-                case 'categories':
-                    alert('Kategori: Gaming, Music, Stream, Creative, Tech, Photography, Business');
-                    break;
-                case 'favorites':
-                    alert('Fitur Favorit akan segera hadir!');
-                    break;
-            }
-        }
+            <!-- Template 4 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 4" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">Glitch Effect</h3>
+                    <p class="template-description">Preset dengan efek glitch modern dan transisi dinamis.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
 
-        // Event Listeners
-        window.onclick = function(event) {
-            const modal = document.getElementById('templateModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
+            <!-- Template 5 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 5" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">Color Beat</h3>
+                    <p class="template-description">Template dengan perubahan warna mengikuti beat musik.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            sidebar.classList.toggle('active');
-            content.classList.toggle('full-width');
-        }
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const toggleBtn = document.querySelector('.toggle-sidebar');
-            
-            if (window.innerWidth <= 768) {
-                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-                    sidebar.classList.remove('active');
-                }
-            }
-        });
-
-        // Optional: Close sidebar when window is resized
-        window.addEventListener('resize', function() {
-            const sidebar = document.getElementById('sidebar');
-            if (window.innerWidth > 768) {
-                sidebar.classList.remove('active');
-            }
-        });
-
-        // script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Menunggu beberapa detik (misalnya 3 detik) sebelum menampilkan konten utama
-    setTimeout(function() {
-        // Menyembunyikan splash screen dan menampilkan konten utama
-        document.getElementById('splash-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-    }, 3000); // 3000 ms = 3 detik
-});
-    </script>
+            <!-- Template 6 -->
+            <div class="template-card">
+                <img src="/api/placeholder/400/320" alt="Template 6" class="template-image">
+                <div class="template-info">
+                    <h3 class="template-title">3D Zoom</h3>
+                    <p class="template-description">Preset dengan efek zoom 3D yang memukau.</p>
+                    <a href="#download" class="template-button">Download Template</a>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
