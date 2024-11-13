@@ -1,0 +1,78 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            position: fixed;
+            height: 100vh;
+            transform: translateX(-100%); /* Menyembunyikan sidebar secara default */
+            transition: transform 0.3s ease; /* Animasi untuk membuka sidebar */
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            transform: translateX(0); /* Menampilkan sidebar */
+        }
+
+        .main-content {
+            margin-left: 0;
+            flex: 1;
+            padding: 30px;
+            transition: margin-left 0.3s ease; /* Animasi untuk konten utama */
+        }
+
+        .main-content.active {
+            margin-left: 280px; /* Geser konten utama ketika sidebar terbuka */
+        }
+
+        /* Tombol Hamburger */
+        .menu-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* Tombol Close Sidebar (X) */
+        .sidebar-close {
+            font-size: 2rem;
+            color: red;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-close:hover {
+            color: #ff0000;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Menampilkan tombol hamburger di perangkat kecil */
+            }
+
+            .main-content.active {
+                margin-left: 0; /* Konten utama tidak geser di perangkat kecil */
+            }
+        }
