@@ -19,11 +19,31 @@
             min-height: 100vh;
             padding: 40px 20px;
             overflow-x: hidden;
+            padding-top: 80px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* Animated Background */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f172a, #1e293b);
+            animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* New Navbar Styles */
