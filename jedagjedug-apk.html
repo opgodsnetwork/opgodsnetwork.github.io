@@ -661,6 +661,17 @@
         </div>
     </div>
 
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper" id="content">
+        <!-- Your existing content here -->
+        <div class="header">
+            <h1>🔥 Template Jedag Jedug</h1>
+            <p>Template Keren Bikin Kamu Makin Gacor!</p>
+        </div>
+        
+        <!-- Rest of your content -->
+    </div>
+
     <!-- Badge Popup -->
     <div class="badge-popup" id="badgePopup">
         <button class="close-popup" onclick="toggleBadgePopup()">×</button>
@@ -844,6 +855,34 @@
                 closeModal();
             }
         }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('active');
+            content.classList.toggle('full-width');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.toggle-sidebar');
+            
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Optional: Close sidebar when window is resized
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+            }
+        });
 
         // script.js
 document.addEventListener('DOMContentLoaded', function() {
