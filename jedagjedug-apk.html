@@ -287,16 +287,19 @@
 
     <script src="apk.js"></script>
     <script>
-        // Toggle sidebar on mobile
+        // Script untuk menu toggle (buka/tutup sidebar)
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
         const mainContent = document.querySelector('.main-content');
+        const closeButton = document.querySelector('.sidebar-close');
 
+        // Toggle sidebar saat hamburger menu di klik
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             mainContent.classList.toggle('active');
         });
 
+        // Menutup sidebar saat tombol close (×) di klik
         closeButton.addEventListener('click', () => {
             sidebar.classList.remove('active');
             mainContent.classList.remove('active');
