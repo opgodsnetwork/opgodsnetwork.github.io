@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="apk.css">
+    <link rel="stylesheet" href="apk2.css">
     <style>
         * {
             margin: 0;
@@ -94,17 +95,6 @@
             text-align: center;
         }
 
-        /* Mobile Menu Button (Hamburger) */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            color: #fff;
-            font-size: 1.5rem;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-        
         /* Main Content Styles */
         .main-content {
             margin-left: 280px;
@@ -269,7 +259,7 @@
             <div class="template-card">
                 <img src="preset2.jpeg" alt="Preset 2" class="template-image">
                 <h3 class="template-title">Preset Sorry - Justin Bieber 😔❤️</h3>
-                <button class="template-button" data-modal="modal1" data-preset-url="preset2-url">Klick Cuy 🚀</button>
+                <button class="template-button" data-modal="modal2" data-preset-url="preset2-url">Klick Cuy 🚀</button>
             </div>
 
             <!-- Modal for Preset 2 -->
@@ -289,19 +279,19 @@
                      </div>
                 </div>
             </div>
-            
-            <script src="apk.js"></script>
-            <script>
-                // Toggle sidebar on mobile
-                const menuToggle = document.querySelector('.menu-toggle');
-                const sidebar = document.querySelector('.sidebar');
-                const mainContent = document.querySelector('.main-content');
-
-                menuToggle.addEventListener('click', () => {
-                    sidebar.classList.toggle('active');
-                    mainContent.classList.toggle('active');
-                });
-            </script>
     </main>
+
+    <script src="apk.js"></script>
+    <script>
+        // Toggle sidebar on mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
