@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Jedag Jedug</title>
+    <link rel="stylesheet" src="sidebar.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         /* Reset & Base Styles */
@@ -20,133 +21,6 @@
             padding: 40px 20px;
             overflow-x: hidden;
             padding-top: 80px;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-            width: 250px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-right: 2px solid rgba(79, 70, 229, 0.1);
-            padding: 20px;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar-hidden {
-            transform: translateX(-250px);
-        }
-
-        .toggle-sidebar {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            z-index: 1001;
-            background: rgba(79, 70, 229, 0.9);
-            border: none;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: none;
-        }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(79, 70, 229, 0.1);
-        }
-
-        .sidebar-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover {
-            background: rgba(79, 70, 229, 0.1);
-            color: #fff;
-            transform: translateX(5px);
-        }
-
-        .menu-item i {
-            font-size: 1.2rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        .menu-item.active {
-            background: rgba(79, 70, 229, 0.2);
-            color: #fff;
-        }
-
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 15px 0;
-        }
-
-        .badge-count {
-            background: #4f46e5;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-left: auto;
-        }
-
-        /* Main Content Wrapper */
-        .content-wrapper {
-            margin-left: 250px;
-            padding: 20px;
-            transition: margin-left 0.3s ease;
-        }
-
-        .content-wrapper.full-width {
-            margin-left: 0;
-        }
-
-        /* Search Bar in Sidebar */
-        .sidebar-search {
-            margin-bottom: 20px;
-            padding: 0 10px;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 2px solid rgba(79, 70, 229, 0.3);
-            background: rgba(15, 23, 42, 0.8);
-            color: #fff;
-            font-size: 0.9rem;
-        }
-
-        .search-bar:focus {
-            outline: none;
-            border-color: #4f46e5;
         }
 
         /* Mobile Responsive */
@@ -594,73 +468,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar Toggle Button -->
-    <button class="toggle-sidebar" onclick="toggleSidebar()">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <a href="#" class="sidebar-logo">
-            🔥 Opgods Preset
-        </a>
-
-        <div class="sidebar-search">
-            <input type="text" class="search-bar" placeholder="Search preset...">
-        </div>
-
-        <div class="sidebar-menu">
-            <!-- Main Menu -->
-            <a href="#" class="menu-item active">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-fire"></i>
-                Trending
-                <span class="badge-count">5</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-th-large"></i>
-                Categories
-            </a>
-
-            <div class="menu-divider"></div>
-
-            <!-- Communication -->
-            <a href="https://wa.me/your-number" class="menu-item">
-                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                WhatsApp
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-store" style="color: #4f46e5;"></i>
-                Store
-            </a>
-            <a href="#" class="menu-item" onclick="toggleBadgePopup()">
-                <i class="fas fa-medal" style="color: #FFD700;"></i>
-                Badges
-                <span class="badge-count">New</span>
-            </a>
-
-            <div class="menu-divider"></div>
-
-            <!-- Additional Links -->
-            <a href="/about" class="menu-item">
-                <i class="fas fa-info-circle"></i>
-                About
-            </a>
-            <a href="/contact" class="menu-item">
-                <i class="fas fa-envelope"></i>
-                Contact
-            </a>
-            <a href="/updates" class="menu-item">
-                <i class="fas fa-bell"></i>
-                Updates
-                <span class="badge-count">1</span>
-            </a>
-        </div>
-    </div>
-
+    
     <div class="container">
         <div class="header">
             <h1>🔥 Template Jedag Jedug</h1>
@@ -757,6 +565,8 @@
 
     <div id="toastNotification">Link berhasil disalin!</div>
 
+    
+    <script src="sidebar.js"></script>
     <script>
         // Modal Functions
         function showModal(templateName, creatorName, imageSrc, link) {
