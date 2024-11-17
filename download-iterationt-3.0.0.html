@@ -1,94 +1,240 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Redirect - OPGODS Shaders</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>Download Redirect Page</title>
     <style>
-        .redirect-animation {
-            animation: pulse 2s infinite;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #0ea5e9, #6366f1);
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #22d3ee, #818cf8);
+            border-radius: 10px;
+            transition: width 3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+
+        .message {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .countdown {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+            background: linear-gradient(to right, #22d3ee, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+        }
+
+        .download-link {
+            display: none;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .download-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .file-icon {
+            font-size: 2rem;
+        }
+
+        .file-details {
+            text-align: left;
+        }
+
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .file-size {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        .countdown.ending {
+            animation: pulse 1s infinite;
+            color: #22d3ee;
+        }
     </style>
-    <script>
-        window.onload = function() {
-            // Get the shader type from URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const shader = urlParams.get('shader');
-            
-            // Define mediafire links
-            const links = {
-                'iterationt': 'https://www.mediafire.com/file/3cx2n57aig5snxq/IterationT-Shaders-All-Versions.zip/file',
-            };
-            
-            // Show correct shader name and update countdown
-            const shaderName = document.getElementById('shaderName');
-            const countdownElement = document.getElementById('countdown');
-            let countdown = 5;
-            
-            if (shader === 'seus') {
-                shaderName.textContent = 'SEUS PTGI E12';
-            } else if (shader === 'bsl') {
-                shaderName.textContent = 'BSL Shaders v8.2.04';
-            } else if (shader === 'complementary') {
-                shaderName.textContent = 'Complementary v4.6';
-            }
-            
-            // Update countdown every second
-            const timer = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                
-                if (countdown <= 0) {
-                    clearInterval(timer);
-                    // Redirect to mediafire
-                    window.location.href = links[shader];
-                }
-            }, 1000);
-            
-            // Allow instant redirect with button
-            document.getElementById('redirectButton').onclick = function() {
-                window.location.href = links[shader];
-            };
-        };
-    </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="max-w-md w-full mx-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 text-center">
-            <div class="mb-6">
-                <img src="iterationt.jpeg" alt="Download Icon" class="w-24 h-24 mx-auto redirect-animation">
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Preparing Your Download</h1>
+            
+            <div class="file-info">
+                <div class="file-icon">📁</div>
+                <div class="file-details">
+                    <div class="file-name">IterationT-Shaders-All-Versions</div>
+                    <div class="file-size">Size: 33.5 MB</div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
             </div>
             
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">Downloading</h1>
-            <h2 class="text-xl text-green-600 font-semibold mb-4" id="shaderName"></h2>
+            <div class="message">Your download will start automatically</div>
+            <div class="countdown" id="countdown">5</div>
             
-            <p class="text-gray-600 mb-6">
-                Anda akan dialihkan ke Mediafire dalam 
-                <span class="font-bold text-green-600" id="countdown">5</span> 
-                detik...
-            </p>
-            
-            <button id="redirectButton" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 font-semibold mb-4">
-                Download Sekarang
-            </button>
-            
-            <div class="text-sm text-gray-500">
-                <p class="mb-2">Jika tidak dialihkan secara otomatis, klik tombol di atas.</p>
-                <p>Pastikan untuk mengaktifkan popup blocker untuk situs ini.</p>
-            </div>
-        </div>
-        
-        <div class="mt-6 text-center">
-            <a href="index.html" class="text-green-600 hover:text-green-700 font-medium">
-                ← Kembali ke Halaman Utama
+            <a href="#" class="download-link" id="downloadLink">
+                Click here if download doesn't start automatically
             </a>
         </div>
     </div>
+
+    <script>
+        // Ganti URL download di sini
+        const downloadUrl = 'https://example.com/your-file.zip';
+        
+        // Progress bar animation
+        setTimeout(() => {
+            document.getElementById('progressBar').style.width = '100%';
+        }, 100);
+
+        // Countdown timer with pulse animation
+        let timeLeft = 5;
+        const countdownElement = document.getElementById('countdown');
+        const downloadLink = document.getElementById('downloadLink');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            // Add pulse animation for last 3 seconds
+            if (timeLeft <= 3) {
+                countdownElement.classList.add('ending');
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                countdownElement.style.display = 'none';
+                downloadLink.style.display = 'block';
+                downloadLink.href = downloadUrl;
+                
+                // Start download
+                window.location.href = downloadUrl;
+            }
+        }, 1000);
+
+        // Setup download link
+        downloadLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = downloadUrl;
+        });
+
+        // Update file information
+        function updateFileInfo(filename, filesize) {
+            document.querySelector('.file-name').textContent = filename;
+            document.querySelector('.file-size').textContent = `Size: ${filesize}`;
+        }
+    </script>
 </body>
 </html>
