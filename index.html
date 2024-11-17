@@ -14,22 +14,10 @@
             color: #4CAF50;
             transition: color 0.3s ease;
         }
-        .download-dropdown {
-            display: none;
-            position: absolute;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            z-index: 10;
-        }
-        .download-container:hover .download-dropdown {
-            display: block;
-        }
     </style>
 </head>
 <body class="bg-gray-100">
-    <!-- Navbar - Sama seperti sebelumnya -->
+    <!-- Navbar -->
     <nav class="bg-white shadow-lg fixed w-full z-10">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
@@ -51,7 +39,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Sama seperti sebelumnya -->
+    <!-- Hero Section -->
     <div class="pt-24 pb-8 bg-gradient-to-r from-green-500 to-green-600">
         <div class="max-w-6xl mx-auto px-4 text-center text-white">
             <h1 class="text-4xl font-bold mb-4">Minecraft Shaders Download</h1>
@@ -68,7 +56,7 @@
     <!-- Main Content -->
     <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- SEUS PTGI Card -->
+            <!-- Shader Card 1 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
                 <img src="/api/placeholder/400/225" alt="SEUS PTGI Preview" class="w-full h-48 object-cover">
                 <div class="p-6">
@@ -88,26 +76,13 @@
                             <span class="font-medium">4.8 ⭐</span>
                         </div>
                     </div>
-                    <div class="relative download-container">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Download SEUS PTGI
-                        </button>
-                        <div class="download-dropdown">
-                            <a href="https://www.mediafire.com/file/seus-ptgi-e12" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
-                                SEUS PTGI E12 (1.18.2)
-                            </a>
-                            <a href="https://www.mediafire.com/file/seus-ptgi-e12-117" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                SEUS PTGI E12 (1.17.1)
-                            </a>
-                            <a href="https://www.mediafire.com/file/seus-ptgi-e12-116" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-b-lg">
-                                SEUS PTGI E12 (1.16.5)
-                            </a>
-                        </div>
-                    </div>
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300" href="download-seuz-ptgi-e12">
+                        Download
+                    </button>
                 </div>
             </div>
 
-            <!-- BSL Shaders Card -->
+            <!-- Shader Card 2 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
                 <img src="/api/placeholder/400/225" alt="BSL Preview" class="w-full h-48 object-cover">
                 <div class="p-6">
@@ -127,26 +102,13 @@
                             <span class="font-medium">4.7 ⭐</span>
                         </div>
                     </div>
-                    <div class="relative download-container">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Download BSL
-                        </button>
-                        <div class="download-dropdown">
-                            <a href="https://www.mediafire.com/file/bsl-8204-119" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
-                                BSL v8.2.04 (1.19)
-                            </a>
-                            <a href="https://www.mediafire.com/file/bsl-8204-118" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                BSL v8.2.04 (1.18.2)
-                            </a>
-                            <a href="https://www.mediafire.com/file/bsl-8204-117" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-b-lg">
-                                BSL v8.2.04 (1.17.1)
-                            </a>
-                        </div>
-                    </div>
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Download
+                    </button>
                 </div>
             </div>
 
-            <!-- Complementary Card -->
+            <!-- Shader Card 3 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
                 <img src="/api/placeholder/400/225" alt="Complementary Preview" class="w-full h-48 object-cover">
                 <div class="p-6">
@@ -166,28 +128,15 @@
                             <span class="font-medium">4.6 ⭐</span>
                         </div>
                     </div>
-                    <div class="relative download-container">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Download Complementary
-                        </button>
-                        <div class="download-dropdown">
-                            <a href="https://www.mediafire.com/file/complementary-46-119" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
-                                Complementary v4.6 (1.19)
-                            </a>
-                            <a href="https://www.mediafire.com/file/complementary-46-118" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                Complementary v4.6 (1.18.2)
-                            </a>
-                            <a href="https://www.mediafire.com/file/complementary-46-117" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-b-lg">
-                                Complementary v4.6 (1.17.1)
-                            </a>
-                        </div>
-                    </div>
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Download
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer - Sama seperti sebelumnya -->
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
