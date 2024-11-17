@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Redirect - MC Shaders</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .redirect-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Get the shader type from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const shader = urlParams.get('shader');
+            
+            // Define mediafire links
+            const links = {
+                'seus': 'https://www.mediafire.com/file/seus-ptgi-e12-latest/file',
+                'bsl': 'https://www.mediafire.com/file/bsl-shaders-8204/file',
+                'complementary': 'https://www.mediafire.com/file/complementary-shaders-46/file'
+            };
+            
+            // Show correct shader name and update countdown
+            const shaderName = document.getElementById('shaderName');
+            const countdownElement = document.getElementById('countdown');
+            let countdown = 5;
+            
+            if (shader === 'seus') {
+                shaderName.textContent = 'SEUS PTGI E12';
+            } else if (shader === 'bsl') {
+                shaderName.textContent = 'BSL Shaders v8.2.04';
+            } else if (shader === 'complementary') {
+                shaderName.textContent = 'Complementary v4.6';
+            }
+            
+            // Update countdown every second
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    // Redirect to mediafire
+                    window.location.href = links[shader];
+                }
+            }, 1000);
+            
+            // Allow instant redirect with button
+            document.getElementById('redirectButton').onclick = function() {
+                window.location.href = links[shader];
+            };
+        };
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+        <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+            <div class="mb-6">
+                <img src="/api/placeholder/100/100" alt="Download Icon" class="w-24 h-24 mx-auto redirect-animation">
+            </div>
+            
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Downloading</h1>
+            <h2 class="text-xl text-green-600 font-semibold mb-4" id="shaderName"></h2>
+            
+            <p class="text-gray-600 mb-6">
+                Anda akan dialihkan ke Mediafire dalam 
+                <span class="font-bold text-green-600" id="countdown">5</span> 
+                detik...
+            </p>
+            
+            <button id="redirectButton" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 font-semibold mb-4">
+                Download Sekarang
+            </button>
+            
+            <div class="text-sm text-gray-500">
+                <p class="mb-2">Jika tidak dialihkan secara otomatis, klik tombol di atas.</p>
+                <p>Pastikan untuk mengaktifkan popup blocker untuk situs ini.</p>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-green-600 hover:text-green-700 font-medium">
+                ← Kembali ke Halaman Utama
+            </a>
+        </div>
+    </div>
+</body>
+</html>
