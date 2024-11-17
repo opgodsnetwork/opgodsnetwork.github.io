@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Redirect Page</title>
+    <title>Link Redirect Page</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, #0ea5e9, #6366f1);
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
             padding: 20px;
             color: white;
         }
@@ -25,216 +25,188 @@
         .container {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 3rem;
+            border-radius: 16px;
+            padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 500px;
+            max-width: 400px;
             width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: rotate 15s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
+            text-align: center;
         }
 
         h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(to right, #fff, #e0e7ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 2rem 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #22d3ee, #818cf8);
-            border-radius: 10px;
-            transition: width 3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-        }
-
-        .message {
-            text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .progress-ring {
+            width: 80px;
+            height: 80px;
+            margin: 1rem auto;
+            position: relative;
+        }
+
+        .progress-ring circle {
+            fill: transparent;
+            stroke-width: 8;
+        }
+
+        .progress-ring .background {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-ring .progress {
+            stroke: #fff;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 1s linear;
         }
 
         .countdown {
-            font-size: 3.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 1rem 0;
-            background: linear-gradient(to right, #22d3ee, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
-        .download-link {
+        .destination {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .manual-link {
             display: none;
-            text-align: center;
             color: white;
             text-decoration: none;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
-            margin-top: 1rem;
-            font-weight: 500;
+            font-size: 0.9rem;
         }
 
-        .download-link:hover {
+        .manual-link:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .file-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-        }
-
-        .file-icon {
-            font-size: 2rem;
-        }
-
-        .file-details {
-            text-align: left;
-        }
-
-        .file-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .file-size {
+        .message {
+            margin-top: 1rem;
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
-        .countdown.ending {
-            animation: pulse 1s infinite;
-            color: #22d3ee;
+        .message.waiting {
+            animation: pulse 1.5s infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="content">
-            <h1>Preparing Your Download</h1>
-            
-            <div class="file-info">
-                <div class="file-icon">📁</div>
-                <div class="file-details">
-                    <div class="file-name">IterationT-Shaders-All-Versions</div>
-                    <div class="file-size">Size: 33.5 MB</div>
-                </div>
-            </div>
-
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            
-            <div class="message">Your download will start automatically</div>
+        <h1>Redirecting you to your destination</h1>
+        
+        <div class="progress-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+                <circle class="background" cx="40" cy="40" r="34"></circle>
+                <circle class="progress" cx="40" cy="40" r="34"></circle>
+            </svg>
             <div class="countdown" id="countdown">5</div>
-            
-            <a href="#" class="download-link" id="downloadLink">
-                Click here if download doesn't start automatically
-            </a>
         </div>
+
+        <div class="destination" id="destination">
+            Loading destination...
+        </div>
+
+        <div class="message waiting" id="message">Please wait while we redirect you...</div>
+        
+        <a href="#" class="manual-link" id="manualLink">
+            Click here if you are not redirected automatically
+        </a>
     </div>
 
     <script>
-        // Ganti URL download di sini
-        const downloadUrl = 'https://example.com/your-file.zip';
+        // Konfigurasi
+        const redirectUrl = 'https://www.mediafire.com/file/3cx2n57aig5snxq/IterationT-Shaders-All-Versions.zip/file';
+        const countdownTime = 5; // dalam detik
         
-        // Progress bar animation
-        setTimeout(() => {
-            document.getElementById('progressBar').style.width = '100%';
-        }, 100);
+        // Setup elemen
+        const countdownEl = document.getElementById('countdown');
+        const messageEl = document.getElementById('message');
+        const manualLink = document.getElementById('manualLink');
+        const destinationEl = document.getElementById('destination');
+        const progressCircle = document.querySelector('.progress');
 
-        // Countdown timer with pulse animation
-        let timeLeft = 5;
-        const countdownElement = document.getElementById('countdown');
-        const downloadLink = document.getElementById('downloadLink');
-        
+        // Setup progress ring
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        // Fungsi untuk update progress ring
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100 * circumference);
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        // Tampilkan URL tujuan (shortened jika terlalu panjang)
+        function displayDestination(url) {
+            const maxLength = 40;
+            let displayUrl = url;
+            if (url.length > maxLength) {
+                displayUrl = url.substring(0, maxLength - 3) + '...';
+            }
+            destinationEl.textContent = displayUrl;
+        }
+
+        // Setup countdown dan redirect
+        let timeLeft = countdownTime;
+        displayDestination(redirectUrl);
+        manualLink.href = redirectUrl;
+
         const countdown = setInterval(() => {
             timeLeft--;
-            countdownElement.textContent = timeLeft;
+            countdownEl.textContent = timeLeft;
             
-            // Add pulse animation for last 3 seconds
-            if (timeLeft <= 3) {
-                countdownElement.classList.add('ending');
-            }
+            // Update progress ring
+            const progressPercent = ((countdownTime - timeLeft) / countdownTime) * 100;
+            setProgress(progressPercent);
             
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                countdownElement.style.display = 'none';
-                downloadLink.style.display = 'block';
-                downloadLink.href = downloadUrl;
+                messageEl.textContent = 'Redirecting...';
+                messageEl.classList.add('waiting');
+                manualLink.style.display = 'inline-block';
                 
-                // Start download
-                window.location.href = downloadUrl;
+                // Redirect
+                window.location.href = redirectUrl;
             }
         }, 1000);
 
-        // Setup download link
-        downloadLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = downloadUrl;
-        });
+        // Start progress animation
+        setProgress(0);
 
-        // Update file information
-        function updateFileInfo(filename, filesize) {
-            document.querySelector('.file-name').textContent = filename;
-            document.querySelector('.file-size').textContent = `Size: ${filesize}`;
-        }
+        // Setup manual link
+        manualLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = redirectUrl;
+        });
     </script>
 </body>
 </html>
