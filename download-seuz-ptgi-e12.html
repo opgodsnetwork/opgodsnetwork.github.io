@@ -1,96 +1,212 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Redirect - MC Shaders</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>Link Redirect Page</title>
     <style>
-        .redirect-animation {
-            animation: pulse 2s infinite;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .progress-ring {
+            width: 80px;
+            height: 80px;
+            margin: 1rem auto;
+            position: relative;
+        }
+
+        .progress-ring circle {
+            fill: transparent;
+            stroke-width: 8;
+        }
+
+        .progress-ring .background {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-ring .progress {
+            stroke: #fff;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 1s linear;
+        }
+
+        .countdown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .destination {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .manual-link {
+            display: none;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .manual-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .message.waiting {
+            animation: pulse 1.5s infinite;
         }
     </style>
-    <script>
-        window.onload = function() {
-            // Get the shader type from URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const shader = urlParams.get('shader');
-            
-            // Define mediafire links
-            const links = {
-                'seus': 'https://www.mediafire.com/file/seus-ptgi-e12-latest/file',
-                'bsl': 'https://www.mediafire.com/file/bsl-shaders-8204/file',
-                'complementary': 'https://www.mediafire.com/file/complementary-shaders-46/file'
-            };
-            
-            // Show correct shader name and update countdown
-            const shaderName = document.getElementById('shaderName');
-            const countdownElement = document.getElementById('countdown');
-            let countdown = 5;
-            
-            if (shader === 'seus') {
-                shaderName.textContent = 'SEUS PTGI E12';
-            } else if (shader === 'bsl') {
-                shaderName.textContent = 'BSL Shaders v8.2.04';
-            } else if (shader === 'complementary') {
-                shaderName.textContent = 'Complementary v4.6';
-            }
-            
-            // Update countdown every second
-            const timer = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                
-                if (countdown <= 0) {
-                    clearInterval(timer);
-                    // Redirect to mediafire
-                    window.location.href = links[shader];
-                }
-            }, 1000);
-            
-            // Allow instant redirect with button
-            document.getElementById('redirectButton').onclick = function() {
-                window.location.href = links[shader];
-            };
-        };
-    </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="max-w-md w-full mx-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 text-center">
-            <div class="mb-6">
-                <img src="/api/placeholder/100/100" alt="Download Icon" class="w-24 h-24 mx-auto redirect-animation">
-            </div>
-            
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">Downloading</h1>
-            <h2 class="text-xl text-green-600 font-semibold mb-4" id="shaderName"></h2>
-            
-            <p class="text-gray-600 mb-6">
-                Anda akan dialihkan ke Mediafire dalam 
-                <span class="font-bold text-green-600" id="countdown">5</span> 
-                detik...
-            </p>
-            
-            <button id="redirectButton" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 font-semibold mb-4">
-                Download Sekarang
-            </button>
-            
-            <div class="text-sm text-gray-500">
-                <p class="mb-2">Jika tidak dialihkan secara otomatis, klik tombol di atas.</p>
-                <p>Pastikan untuk mengaktifkan popup blocker untuk situs ini.</p>
-            </div>
-        </div>
+<body>
+    <div class="container">
+        <h1>Redirecting you to your destination</h1>
         
-        <div class="mt-6 text-center">
-            <a href="index.html" class="text-green-600 hover:text-green-700 font-medium">
-                ← Kembali ke Halaman Utama
-            </a>
+        <div class="progress-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+                <circle class="background" cx="40" cy="40" r="34"></circle>
+                <circle class="progress" cx="40" cy="40" r="34"></circle>
+            </svg>
+            <div class="countdown" id="countdown">5</div>
         </div>
+
+        <div class="destination" id="destination">
+            Loading destination...
+        </div>
+
+        <div class="message waiting" id="message">Please wait while we redirect you...</div>
+        
+        <a href="#" class="manual-link" id="manualLink">
+            Click here if you are not redirected automatically
+        </a>
     </div>
+
+    <script>
+        // Konfigurasi
+        const redirectUrl = 'https://www.mediafire.com/file/gzp9btyfa5fffht/SEUS-PTGI-E12.zip/file';
+        const countdownTime = 5; // dalam detik
+        
+        // Setup elemen
+        const countdownEl = document.getElementById('countdown');
+        const messageEl = document.getElementById('message');
+        const manualLink = document.getElementById('manualLink');
+        const destinationEl = document.getElementById('destination');
+        const progressCircle = document.querySelector('.progress');
+
+        // Setup progress ring
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        // Fungsi untuk update progress ring
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100 * circumference);
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        // Tampilkan URL tujuan (shortened jika terlalu panjang)
+        function displayDestination(url) {
+            const maxLength = 40;
+            let displayUrl = url;
+            if (url.length > maxLength) {
+                displayUrl = url.substring(0, maxLength - 3) + '...';
+            }
+            destinationEl.textContent = displayUrl;
+        }
+
+        // Setup countdown dan redirect
+        let timeLeft = countdownTime;
+        displayDestination(redirectUrl);
+        manualLink.href = redirectUrl;
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownEl.textContent = timeLeft;
+            
+            // Update progress ring
+            const progressPercent = ((countdownTime - timeLeft) / countdownTime) * 100;
+            setProgress(progressPercent);
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                messageEl.textContent = 'Redirecting...';
+                messageEl.classList.add('waiting');
+                manualLink.style.display = 'inline-block';
+                
+                // Redirect
+                window.location.href = redirectUrl;
+            }
+        }, 1000);
+
+        // Start progress animation
+        setProgress(0);
+
+        // Setup manual link
+        manualLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = redirectUrl;
+        });
+    </script>
 </body>
 </html>
