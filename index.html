@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPGODS Shaders - Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .navbar-link:hover {
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('minecraft-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4">
+                            <img src="120.png" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Shaders</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="navbar-link py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">Home</a>
+                    <a href="list.html" class="navbar-link py-4 px-2 text-gray-700 font-semibold hover:text-green-500">List</a>
+                    <a href="about.html" class="navbar-link py-4 px-2 text-gray-700 font-semibold hover:text-green-500">About</a>
+                    <a href="contact.html" class="navbar-link py-4 px-2 text-gray-700 font-semibold hover:text-green-500">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 text-center text-white">
+            <h1 class="text-5xl font-bold mb-6">Welcome to OPGODS Shaders</h1>
+            <p class="text-xl mb-8">Discover the best Minecraft shaders to enhance your gaming experience</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                <a href="list.html" class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300">
+                    Browse Shaders
+                </a>
+                <a href="#featured" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                    Featured Packs
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Section -->
+    <div id="featured" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Shaders</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Featured Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <img src="iterationt.jpeg" alt="ITERATIONT 3.0.0" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">ITERATION T</h3>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">New</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Experience next-gen graphics with advanced ray tracing technology</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">Version 3.0.0</span>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-1">⭐</span>
+                                <span class="font-medium">5.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <img src="seus-ptgi-e12.jpeg" alt="SEUS PTGI" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">SEUS PTGI</h3>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Popular</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">The most popular realistic shader pack with stunning visuals</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">Version E12</span>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-1">⭐</span>
+                                <span class="font-medium">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <img src="complementary.jpeg" alt="Complementary" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Complementary</h3>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">Featured</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Highly customizable shader pack for all types of builds</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">Version 4.6</span>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-1">⭐</span>
+                                <span class="font-medium">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose OPGODS Shaders</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fast Downloads</h3>
+                    <p class="text-gray-600">Direct downloads from our high-speed servers</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Safe & Verified</h3>
+                    <p class="text-gray-600">All shaders are tested and virus-free</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Community Support</h3>
+                    <p class="text-gray-600">Active Discord community and support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">About Us</h4>
+                    <p class="text-gray-300">Your ultimate destination for Minecraft shaders. We provide the best collection of shaders to enhance your gameplay experience.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="list.html" class="text-gray-300 hover:text-white">Shader List</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Email: contact@mcshaders.com</li>
+                        <li class="text-gray-300">Discord: MCShaders</li>
+                        <li class="text-gray-300">Instagram: @opgods.shaders</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 OPGODS Shaders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
