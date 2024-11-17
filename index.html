@@ -43,13 +43,13 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
     <!-- Navbar -->
     <nav x-data="{ isOpen: false }" class="bg-white/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-3">
+                    <a href="/" class="flex items-center space-x-3">
                         <img src="120.png" alt="Logo" class="h-10 w-10">
                         <span class="gradient-text font-bold text-xl">OPGODS Shaders</span>
                     </a>
@@ -59,8 +59,8 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Home</a>
                     <a href="shaders" class="nav-link text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">List</a>
-                    <a href="about.html" class="nav-link text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">About</a>
-                    <a href="contact.html" class="nav-link text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">Contact</a>
+                    <a href="about" class="nav-link text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="contact" class="nav-link text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">Contact</a>
                     <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300">
                         Download Now
                     </button>
@@ -81,10 +81,10 @@
         <!-- Mobile Menu -->
         <div x-show="isOpen" class="md:hidden bg-white border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-900">Home</a>
-                <a href="list.html" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">List</a>
-                <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">About</a>
-                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">Contact</a>
+                <a href="/" class="block px-3 py-2 text-base font-medium text-gray-900">Home</a>
+                <a href="shaders" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">List</a>
+                <a href="about" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">About</a>
+                <a href="contact" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900">Contact</a>
                 <button class="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-full text-base font-medium transition-colors duration-300">
                     Download Now
                 </button>
