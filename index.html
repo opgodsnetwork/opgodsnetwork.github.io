@@ -238,7 +238,7 @@
                         <div class="space-y-4">
                             <div class="flex items-center space-x-4">
                                 <div class="w-1/2">
-                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <select id="shaderSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                                         <option value="">Pilih Shader</option>
                                         <option value="seus">SEUS PTGI</option>
                                         <option value="bsl">BSL Shaders</option>
@@ -246,7 +246,7 @@
                                     </select>
                                 </div>
                                 <div class="w-1/2">
-                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <select id="shaderPcSpec" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                                         <option value="">Spesifikasi PC</option>
                                         <option value="low">Low-End PC</option>
                                         <option value="mid">Mid-End PC</option>
@@ -254,7 +254,26 @@
                                     </select>
                                 </div>
                             </div>
-                            <button class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
+                            <div id="shaderFpsResult" class="hidden bg-gray-50 p-6 rounded-lg">
+                                <div class="text-center">
+                                    <h4 class="text-xl font-semibold mb-2">Hasil Review FPS</h4>
+                                    <div class="flex justify-center items-center space-x-4">
+                                        <div>
+                                            <p class="text-gray-600">Average FPS:</p>
+                                            <p id="shaderAvgFps" class="text-3xl font-bold text-green-600">-- FPS</p>
+                                        </div>
+                                        <div class="border-l border-gray-300 h-16"></div>
+                                        <div>
+                                            <p class="text-gray-600">FPS Range:</p>
+                                            <p id="shaderFpsRange" class="text-xl font-semibold text-gray-800">-- ~ -- FPS</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p id="shaderPerformanceNote" class="text-sm text-gray-600"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="checkShaderFps()" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                 </svg>
@@ -272,7 +291,7 @@
                         <div class="space-y-4">
                             <div class="flex items-center space-x-4">
                                 <div class="w-1/2">
-                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <select id="textureSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                                         <option value="">Pilih Texture Pack</option>
                                         <option value="faithful">Faithful 32x</option>
                                         <option value="sphax">Sphax PureBDCraft</option>
@@ -280,7 +299,7 @@
                                     </select>
                                 </div>
                                 <div class="w-1/2">
-                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <select id="texturePcSpec" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                                         <option value="">Spesifikasi PC</option>
                                         <option value="low">Low-End PC</option>
                                         <option value="mid">Mid-End PC</option>
@@ -288,7 +307,26 @@
                                     </select>
                                 </div>
                             </div>
-                            <button class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
+                            <div id="textureFpsResult" class="hidden bg-gray-50 p-6 rounded-lg">
+                                <div class="text-center">
+                                    <h4 class="text-xl font-semibold mb-2">Hasil Review FPS</h4>
+                                    <div class="flex justify-center items-center space-x-4">
+                                        <div>
+                                            <p class="text-gray-600">Average FPS:</p>
+                                            <p id="textureAvgFps" class="text-3xl font-bold text-green-600">-- FPS</p>
+                                        </div>
+                                        <div class="border-l border-gray-300 h-16"></div>
+                                        <div>
+                                            <p class="text-gray-600">FPS Range:</p>
+                                            <p id="textureFpsRange" class="text-xl font-semibold text-gray-800">-- ~ -- FPS</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p id="texturePerformanceNote" class="text-sm text-gray-600"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="checkTextureFps()" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                 </svg>
@@ -300,6 +338,78 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Data FPS untuk setiap kombinasi shader dan spesifikasi PC
+        const shaderFpsData = {
+            seus: {
+                low: { avg: 25, min: 20, max: 30, note: "Performa rendah, disarankan menurunkan setting shader" },
+                mid: { avg: 45, min: 35, max: 55, note: "Performa cukup baik dengan setting medium" },
+                high: { avg: 85, min: 75, max: 95, note: "Performa sangat baik, bisa menggunakan setting maksimal" }
+            },
+            bsl: {
+                low: { avg: 35, min: 30, max: 40, note: "Performa cukup, bisa dimainkan dengan setting rendah" },
+                mid: { avg: 60, min: 50, max: 70, note: "Performa baik, nyaman dimainkan" },
+                high: { avg: 120, min: 100, max: 140, note: "Performa excellent, sangat smooth" }
+            },
+            complementary: {
+                low: { avg: 30, min: 25, max: 35, note: "Performa moderate, sesuaikan setting untuk FPS lebih baik" },
+                mid: { avg: 55, min: 45, max: 65, note: "Performa baik dengan setting default" },
+                high: { avg: 100, min: 90, max: 110, note: "Performa sangat baik, bisa maksimalkan setting" }
+            }
+        };
+
+        // Data FPS untuk setiap kombinasi texture pack dan spesifikasi PC
+        const textureFpsData = {
+            faithful: {
+                low: { avg: 45, min: 40, max: 50, note: "Performa baik, texture pack ringan" },
+                mid: { avg: 80, min: 70, max: 90, note: "Performa sangat baik" },
+                high: { avg: 150, min: 130, max: 170, note: "Performa excellent" }
+            },
+            sphax: {
+                low: { avg: 35, min: 30, max: 40, note: "Performa cukup, gunakan resolusi lebih rendah jika lag" },
+                mid: { avg: 65, min: 55, max: 75, note: "Performa baik untuk resolusi 128x" },
+                high: { avg: 120, min: 100, max: 140, note: "Performa sangat baik, bisa gunakan resolusi tertinggi" }
+            },
+            dokucraft: {
+                low: { avg: 40, min: 35, max: 45, note: "Performa cukup baik untuk resolusi 64x" },
+                mid: { avg: 70, min: 60, max: 80, note: "Performa baik, smooth gameplay" },
+                high: { avg: 130, min: 110, max: 150, note: "Performa excellent, sangat smooth" }
+            }
+        };
+
+        function checkShaderFps() {
+            const shader = document.getElementById('shaderSelect').value;
+            const spec = document.getElementById('shaderPcSpec').value;
+            const resultDiv = document.getElementById('shaderFpsResult');
+            
+            if (shader && spec) {
+                const fpsData = shaderFpsData[shader][spec];
+                document.getElementById('shaderAvgFps').textContent = fpsData.avg + " FPS";
+                document.getElementById('shaderFpsRange').textContent = `${fpsData.min} ~ ${fpsData.max} FPS`;
+                document.getElementById('shaderPerformanceNote').textContent = fpsData.note;
+                resultDiv.classList.remove('hidden');
+            } else {
+                alert('Silakan pilih shader dan spesifikasi PC');
+            }
+        }
+
+        function checkTextureFps() {
+            const texture = document.getElementById('textureSelect').value;
+            const spec = document.getElementById('texturePcSpec').value;
+            const resultDiv = document.getElementById('textureFpsResult');
+            
+            if (texture && spec) {
+                const fpsData = textureFpsData[texture][spec];
+                document.getElementById('textureAvgFps').textContent = fpsData.avg + " FPS";
+                document.getElementById('textureFpsRange').textContent = `${fpsData.min} ~ ${fpsData.max} FPS`;
+                document.getElementById('texturePerformanceNote').textContent = fpsData.note;
+                resultDiv.classList.remove('hidden');
+            } else {
+                alert('Silakan pilih texture pack dan spesifikasi PC');
+            }
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
