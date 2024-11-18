@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPS Game</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-xl font-bold">FPS Game</h1>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="#home" class="text-gray-300 hover:text-white px-3 py-2">
+                            <i class="fas fa-gamepad"></i> Home
+                        </a>
+                        <a href="#profile" class="text-gray-300 hover:text-white px-3 py-2">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#shop" class="text-gray-300 hover:text-white px-3 py-2">
+                            <i class="fas fa-shopping-bag"></i> Shop
+                        </a>
+                        <a href="#royalpass" class="text-gray-300 hover:text-white px-3 py-2">
+                            <i class="fas fa-crown"></i> Royal Pass
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Game Lobby Section -->
+        <section id="home" class="space-y-8">
+            <h2 class="text-3xl font-bold">Game Lobby</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Map Card 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/300/200" alt="Desert Storm" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Desert Storm</h3>
+                        <p class="text-gray-400">Players: 24/32</p>
+                        <p class="text-gray-400 my-2">Mode: Team Deathmatch</p>
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700">
+                            Join Game
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map Card 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/300/200" alt="Urban City" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Urban City</h3>
+                        <p class="text-gray-400">Players: 18/32</p>
+                        <p class="text-gray-400 my-2">Mode: Capture Point</p>
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700">
+                            Join Game
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map Card 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/300/200" alt="Forest Base" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Forest Base</h3>
+                        <p class="text-gray-400">Players: 29/32</p>
+                        <p class="text-gray-400 my-2">Mode: Free for All</p>
+                        <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700">
+                            Join Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="space-y-8 hidden">
+            <div class="flex items-center space-x-4">
+                <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-4xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold">PlayerName</h2>
+                    <p class="text-gray-400">Level 42</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Statistics</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span>K/D Ratio</span>
+                            <span class="text-blue-400">1.59</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Accuracy</span>
+                            <span class="text-blue-400">68%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Playtime</span>
+                            <span class="text-blue-400">126h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="space-y-8 hidden">
+            <h2 class="text-3xl font-bold">Shop</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Shop Item 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/200/200" alt="Premium Skin" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Premium Skin</h3>
+                        <p class="text-gray-400">1000 Credits</p>
+                        <button class="mt-4 w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">
+                            Purchase
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shop Item 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/200/200" alt="Legendary Weapon" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Legendary Weapon</h3>
+                        <p class="text-gray-400">2000 Credits</p>
+                        <button class="mt-4 w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">
+                            Purchase
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shop Item 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="/api/placeholder/200/200" alt="Character Bundle" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Character Bundle</h3>
+                        <p class="text-gray-400">3000 Credits</p>
+                        <button class="mt-4 w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">
+                            Purchase
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Royal Pass Section -->
+        <section id="royalpass" class="space-y-8 hidden">
+            <div class="flex justify-between items-center">
+                <h2 class="text-3xl font-bold">Royal Pass</h2>
+                <button class="bg-yellow-600 text-white px-6 py-2 rounded font-semibold hover:bg-yellow-700">
+                    Upgrade Pass
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Pass Tier 1 -->
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img src="/api/placeholder/100/100" alt="Basic Skin Pack" class="w-16 h-16 rounded">
+                        <div>
+                            <h3 class="font-semibold">Level 1</h3>
+                            <p class="text-gray-400">Basic Skin Pack</p>
+                        </div>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700">
+                        Claim
+                    </button>
+                </div>
+
+                <!-- Pass Tier 2 -->
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img src="/api/placeholder/100/100" alt="Premium Character" class="w-16 h-16 rounded">
+                        <div>
+                            <h3 class="font-semibold">Level 5</h3>
+                            <p class="text-gray-400">Premium Character</p>
+                        </div>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700">
+                        Claim
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Simple navigation handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = ['home', 'profile', 'shop', 'royalpass'];
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').slice(1);
+                    
+                    sections.forEach(section => {
+                        const element = document.getElementById(section);
+                        if (element) {
+                            element.classList.add('hidden');
+                        }
+                    });
+
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
