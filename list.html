@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Resources Download</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #10B981;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .selection-card {
+            transition: all 0.3s ease;
+        }
+
+        .selection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4">
+                            <img src="120.png" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Resources</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Home</a>
+                    <a href="list" class="py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">List</a>
+                    <a href="about" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">About</a>
+                    <a href="contact" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="pt-24 pb-8 bg-gradient-to-r from-green-500 to-green-600">
+        <div class="max-w-6xl mx-auto px-4 text-center text-white">
+            <h1 class="text-4xl font-bold mb-4">Minecraft Resources</h1>
+            <p class="text-xl mb-8">Pilih kategori resource yang Anda inginkan</p>
+        </div>
+    </div>
+
+    <!-- Selection Cards -->
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Shaders Card -->
+            <a href="shaders.html" class="block">
+                <div class="selection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="shader-banner.jpg" alt="Minecraft Shaders" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">Minecraft Shaders</h2>
+                        <p class="text-gray-600 mb-4">Tingkatkan grafik Minecraft Anda dengan shader terbaik. Tersedia berbagai pilihan dari yang ringan hingga ultra realistic.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-green-500 font-semibold">50+ Shaders</span>
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                                Lihat Shaders
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Texture Packs Card -->
+            <a href="texturepack.html" class="block">
+                <div class="selection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="texture-banner.jpg" alt="Minecraft Texture Packs" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">Texture Packs</h2>
+                        <p class="text-gray-600 mb-4">Ubah tampilan Minecraft Anda dengan texture pack berkualitas tinggi. Tersedia berbagai style dari vanilla-style hingga realistic.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-green-500 font-semibold">100+ Texture Packs</span>
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                                Lihat Texture Packs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Featured Section -->
+        <div class="mt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Resource Terpopuler</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Featured Shader -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <div class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-1">Shader</div>
+                    <img src="seus-ptgi-e12.jpeg" alt="SEUS PTGI" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">SEUS PTGI</h3>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>Rating: 4.8 ⭐</span>
+                            <span>4.1 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Texture Pack -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <div class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1">Texture Pack</div>
+                    <img src="faithful.jpeg" alt="Faithful" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Faithful 32x</h3>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>Rating: 4.8 ⭐</span>
+                            <span>18.5 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Shader -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <div class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-1">Shader</div>
+                    <img src="bsl.jpeg" alt="BSL Shaders" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">BSL Shaders</h3>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>Rating: 4.7 ⭐</span>
+                            <span>1.0 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Texture Pack -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card">
+                    <div class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1">Texture Pack</div>
+                    <img src="sphax.jpeg" alt="Sphax PureBDCraft" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Sphax PureBDCraft</h3>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>Rating: 4.7 ⭐</span>
+                            <span>64.2 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Tentang Kami</h4>
+                    <p class="text-gray-300">Portal download resource Minecraft terlengkap dengan koleksi shader dan texture pack terbaik untuk meningkatkan pengalaman bermain Anda.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">List Resources</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Email: contact@opgods.com</li>
+                        <li class="text-gray-300">Discord: OPGODS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 OPGODS Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
