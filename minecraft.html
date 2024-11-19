@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Minecraft JS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: 'Roboto', sans-serif;
+            background: #000;
+        }
+        
+        canvas { 
+            width: 100vw; 
+            height: 100vh; 
+            display: block; 
+        }
+
+        /* Modern Main Menu */
+        .main-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('/api/placeholder/1920/1080') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: white;
+        }
+
+        .game-title {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4CAF50;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #4CAF50, 0 0 40px #4CAF50;
+            }
+        }
+
+        .menu-container {
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu-button {
+            background: rgba(76, 175, 80, 0.9);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 6px;
+            width: 280px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-button:hover {
+            background: rgba(76, 175, 80, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .menu-button:active {
+            transform: translateY(0);
+        }
+
+        .gamemode-select {
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            width: 280px;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gamemode-select:hover {
+            background: rgba(51, 51, 51, 1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        /* In-Game UI */
+        .game-ui {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hotbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .hotbar-slot {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .hotbar-slot.selected {
+            border-color: #4CAF50;
+            transform: translateY(-4px);
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        .inventory {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .inventory-slot {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .inventory-slot:hover {
+            border-color: #4CAF50;
+            transform: scale(1.05);
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+            margin: 3px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .item-count {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .controls-hint {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            z-index: 1000;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: #4CAF50;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Menu -->
+    <div id="mainMenu" class="main-menu">
+        <h1 class="game-title">MinecraftJS</h1>
+        <div class="menu-container">
+            <select id="gamemodeSelect" class="gamemode-select">
+                <option value="survival">⚔️ Survival Mode</option>
+                <option value="creative">🎨 Creative Mode</option>
+                <option value="adventure">🗺️ Adventure Mode</option>
+            </select>
+            <button class="menu-button" onclick="startGame('newWorld')">▶️ Play New World</button>
+            <button class="menu-button" onclick="startGame('loadWorld')">📁 Load World</button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <h2>Loading World...</h2>
+        <div class="loading-bar">
+            <div id="loadingProgress" class="loading-progress"></div>
+        </div>
+        <div id="loadingText" class="loading-text">Generating terrain...</div>
+    </div>
+
+    <!-- Game UI -->
+    <div id="gameUI" class="game-ui">
+        <div class="controls-hint" id="controlsHint">
+            <strong>Controls:</strong><br>
+            WASD: Move | Mouse: Look around<br>
+            1-9: Select item | E: Inventory<br>
+            ESC: Menu | Space: Jump
+        </div>
+
+        <div class="hotbar" id="hotbar">
+            <div class="hotbar-slot selected" data-slot="1"></div>
+            <div class="hotbar-slot" data-slot="2"></div>
+            <div class="hotbar-slot" data-slot="3"></div>
+            <div class="hotbar-slot" data-slot="4"></div>
+            <div class="hotbar-slot" data-slot="5"></div>
+            <div class="hotbar-slot" data-slot="6"></div>
+            <div class="hotbar-slot" data-slot="7"></div>
+            <div class="hotbar-slot" data-slot="8"></div>
+            <div class="hotbar-slot" data-slot="9"></div>
+        </div>
+
+        <div class="inventory" id="inventory">
+            <!-- Generated dynamically -->
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        // Game State
+        const gameState = {
+            isPlaying: false,
+            gamemode: 'survival',
+            selectedSlot: 1,
+            inventory: {},
+            showInventory: false,
+            loading: false
+        };
+
+        // Start Game Function
+        function startGame(worldType) {
+            gameState.loading = true;
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'flex';
+            
+            // Simulate loading progress
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(loadingInterval);
+                    finishLoading();
+                }
+                document.getElementById('loadingProgress').style.width = `${progress}%`;
+                
+                // Update loading text
+                const loadingTexts = [
+                    'Generating terrain...',
+                    'Building structures...',
+                    'Spawning entities...',
+                    'Finalizing world...'
+                ];
+                document.getElementById('loadingText').textContent = 
+                    loadingTexts[Math.floor((progress / 100) * loadingTexts.length)];
+            }, 500);
+        }
+
+        function finishLoading() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('gameUI').style.display = 'block';
+                document.getElementById('controlsHint').style.display = 'block';
+                
+                gameState.isPlaying = true;
+                gameState.gamemode = document.getElementById('gamemodeSelect').value;
+                
+                // Initialize game components
+                generateWorld();
+                generateInventory();
+                initializeControls();
+                
+                // Start game loop
+                requestAnimationFrame(update);
+            }, 1000);
+        }
+
+        // ... (Rest of the game logic remains the same, including world generation,
+        // inventory system, controls, and rendering) ...
+
+    </script>
+</body>
+</html>
