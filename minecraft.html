@@ -39,6 +39,7 @@
             align-items: center;
             gap: 20px;
             color: white;
+            z-index: 100;
         }
 
         .game-title {
@@ -118,6 +119,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            z-index: 10;
         }
 
         .hotbar {
@@ -167,60 +169,6 @@
             backdrop-filter: blur(10px);
         }
 
-        .inventory-slot {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .inventory-slot:hover {
-            border-color: #4CAF50;
-            transform: scale(1.05);
-        }
-
-        .item {
-            width: 50px;
-            height: 50px;
-            margin: 3px;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .item-count {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            background: rgba(0,0,0,0.7);
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 12px;
-            color: white;
-        }
-
-        .controls-hint {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: white;
-            background: rgba(0,0,0,0.7);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            display: none;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .loading-screen {
             position: fixed;
             top: 0;
@@ -262,7 +210,7 @@
 <body>
     <!-- Main Menu -->
     <div id="mainMenu" class="main-menu">
-        <h1 class="game-title">MinecraftJS</h1>
+        <h1 class="game-title">OpgodsCraft</h1>
         <div class="menu-container">
             <select id="gamemodeSelect" class="gamemode-select">
                 <option value="survival">⚔️ Survival Mode</option>
@@ -322,8 +270,318 @@
             loading: false
         };
 
-        // Start Game Function
-        function startGame(worldType) {
+        // Initialize WebGL
+        const canvas = document.getElementById('gameCanvas');
+        const gl = canvas.getContext('webgl');
+
+        if (!gl) {
+            alert('WebGL not supported');
+            throw new Error('WebGL not supported');
+        }
+
+        // Vertex shader program
+        const vsSource = `
+            attribute vec4 aVertexPosition;
+            attribute vec3 aNormal;
+            attribute vec2 aTextureCoord;
+
+            uniform mat4 uModelViewMatrix;
+            uniform mat4 uProjectionMatrix;
+            uniform mat4 uNormalMatrix;
+            uniform vec3 uLightDirection;
+
+            varying float vLighting;
+            varying vec2 vTextureCoord;
+            varying float vHeight;
+
+            void main() {
+                gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+                
+                // Calculate lighting
+                vec3 normal = normalize((uNormalMatrix * vec4(aNormal, 0.0)).xyz);
+                float lightIntensity = max(dot(normal, normalize(uLightDirection)), 0.0);
+                vLighting = 0.7 + (lightIntensity * 0.3); // Ambient + Diffuse lighting
+                
+                vTextureCoord = aTextureCoord;
+                vHeight = aVertexPosition.y;
+            }
+        `;
+
+        // Fragment shader program
+        const fsSource = `
+            precision mediump float;
+
+            varying float vLighting;
+            varying vec2 vTextureCoord;
+            varying float vHeight;
+
+            uniform sampler2D uSampler;
+            uniform float uTime;
+
+            void main() {
+                vec4 texelColor;
+                
+                // Height-based terrain coloring
+                if (vHeight < 0.0) {
+                    // Water
+                    float wave = sin(vTextureCoord.x * 10.0 + uTime) * 0.05;
+                    texelColor = vec4(0.0, 0.3, 0.8, 0.8 + wave);
+                } else if (vHeight < 2.0) {
+                    // Sand
+                    texelColor = vec4(0.76, 0.70, 0.50, 1.0);
+                } else if (vHeight < 8.0) {
+                    // Grass
+                    texelColor = vec4(0.33, 0.55, 0.23, 1.0);
+                } else if (vHeight < 12.0) {
+                    // Stone
+                    texelColor = vec4(0.5, 0.5, 0.5, 1.0);
+                } else {
+                    // Snow
+                    texelColor = vec4(0.95, 0.95, 0.95, 1.0);
+                }
+
+                gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
+            }
+        `;
+
+        // Initialize shaders
+        function initShaderProgram(gl, vsSource, fsSource) {
+            const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
+            const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+            const shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, vertexShader);
+            gl.attachShader(shaderProgram, fragmentShader);
+            gl.linkProgram(shaderProgram);
+
+            if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+                alert('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
+                return null;
+            }
+
+            return shaderProgram;
+        }
+
+        function loadShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                alert('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+
+            return shader;
+        }
+
+        // Generate terrain using Perlin noise
+        function generateTerrain(size, scale) {
+            const vertices = [];
+            const indices = [];
+            const normals = [];
+            const textureCoords = [];
+
+            // Generate heightmap using simplex noise
+            function noise(x, z) {
+                return Math.sin(x * 0.1) * Math.cos(z * 0.1) * 5
+                     + Math.sin(x * 0.05) * Math.cos(z * 0.05) * 10;
+            }
+
+            // Generate vertices
+            for (let z = 0; z < size; z++) {
+                for (let x = 0; x < size; x++) {
+                    const xPos = (x - size/2) * scale;
+                    const zPos = (z - size/2) * scale;
+                    const yPos = noise(xPos, zPos);
+
+                    vertices.push(xPos, yPos, zPos);
+                    textureCoords.push(x/size, z/size);
+                }
+            }
+
+            // Generate indices for triangles
+            for (let z = 0; z < size-1; z++) {
+                for (let x = 0; x < size-1; x++) {
+                    const topLeft = z * size + x;
+                    const topRight = topLeft + 1;
+                    const bottomLeft = (z + 1) * size + x;
+                    const bottomRight = bottomLeft + 1;
+
+                    indices.push(topLeft, bottomLeft, topRight);
+                    indices.push(topRight, bottomLeft, bottomRight);
+                }
+            }
+
+            // Calculate normals
+            for (let i = 0; i < vertices.length; i += 3) {
+                normals.push(0, 1, 0);
+            }
+
+            return {
+                vertices: new Float32Array(vertices),
+                indices: new Uint16Array(indices),
+                normals: new Float32Array(normals),
+                textureCoords: new Float32Array(textureCoords),
+            }
+            };
+        }
+
+        // Initialize buffers
+        function initBuffers(gl, terrain) {
+            // Position buffer
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, terrain.vertices, gl.STATIC_DRAW);
+
+            // Normal buffer
+            const normalBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, terrain.normals, gl.STATIC_DRAW);
+
+            // Texture coordinate buffer
+            const textureCoordBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, terrain.textureCoords, gl.STATIC_DRAW);
+
+            // Index buffer
+            const indexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, terrain.indices, gl.STATIC_DRAW);
+
+            return {
+                position: positionBuffer,
+                normal: normalBuffer,
+                textureCoord: textureCoordBuffer,
+                indices: indexBuffer,
+                count: terrain.indices.length,
+            };
+        }
+
+        // Main game loop
+        function gameLoop(now) {
+            if (!gameState.isPlaying) return;
+
+            now *= 0.001; // Convert to seconds
+            drawScene(gl, programInfo, buffers, now);
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Draw the scene
+        function drawScene(gl, programInfo, buffers, time) {
+            gl.clearColor(0.529, 0.808, 0.922, 1.0); // Sky blue
+            gl.clearDepth(1.0);
+            gl.enable(gl.DEPTH_TEST);
+            gl.depthFunc(gl.LEQUAL);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+            // Create perspective matrix
+            const fieldOfView = 45 * Math.PI / 180;
+            const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+            const zNear = 0.1;
+            const zFar = 100.0;
+            const projectionMatrix = mat4.create();
+
+            mat4.perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
+
+            // Set camera position and look at
+            const modelViewMatrix = mat4.create();
+            const cameraPosition = [20, 20, 20];
+            const lookAt = [0, 0, 0];
+            const up = [0, 1, 0];
+            
+            mat4.lookAt(modelViewMatrix, cameraPosition, lookAt, up);
+
+            // Calculate normal matrix
+            const normalMatrix = mat4.create();
+            mat4.invert(normalMatrix, modelViewMatrix);
+            mat4.transpose(normalMatrix, normalMatrix);
+
+            // Bind position buffer
+            {
+                const numComponents = 3;
+                const type = gl.FLOAT;
+                const normalize = false;
+                const stride = 0;
+                const offset = 0;
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
+                gl.vertexAttribPointer(
+                    programInfo.attribLocations.vertexPosition,
+                    numComponents,
+                    type,
+                    normalize,
+                    stride,
+                    offset);
+                gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+            }
+
+            // Bind normal buffer
+            {
+                const numComponents = 3;
+                const type = gl.FLOAT;
+                const normalize = false;
+                const stride = 0;
+                const offset = 0;
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffers.normal);
+                gl.vertexAttribPointer(
+                    programInfo.attribLocations.normal,
+                    numComponents,
+                    type,
+                    normalize,
+                    stride,
+                    offset);
+                gl.enableVertexAttribArray(programInfo.attribLocations.normal);
+            }
+
+            // Bind texture coordinate buffer
+            {
+                const numComponents = 2;
+                const type = gl.FLOAT;
+                const normalize = false;
+                const stride = 0;
+                const offset = 0;
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffers.textureCoord);
+                gl.vertexAttribPointer(
+                    programInfo.attribLocations.textureCoord,
+                    numComponents,
+                    type,
+                    normalize,
+                    stride,
+                    offset);
+                gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
+            }
+
+            // Tell WebGL to use our program
+            gl.useProgram(programInfo.program);
+
+            // Set shader uniforms
+            gl.uniformMatrix4fv(
+                programInfo.uniformLocations.projectionMatrix,
+                false,
+                projectionMatrix);
+            gl.uniformMatrix4fv(
+                programInfo.uniformLocations.modelViewMatrix,
+                false,
+                modelViewMatrix);
+            gl.uniformMatrix4fv(
+                programInfo.uniformLocations.normalMatrix,
+                false,
+                normalMatrix);
+            gl.uniform3fv(
+                programInfo.uniformLocations.lightDirection,
+                [1, 1, 1]);
+            gl.uniform1f(
+                programInfo.uniformLocations.time,
+                time);
+
+            // Draw the terrain
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
+            gl.drawElements(gl.TRIANGLES, buffers.count, gl.UNSIGNED_SHORT, 0);
+        }
+
+        // Handle game start
+        function startGame(mode) {
             gameState.loading = true;
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('loadingScreen').style.display = 'flex';
@@ -331,48 +589,100 @@
             // Simulate loading progress
             let progress = 0;
             const loadingInterval = setInterval(() => {
-                progress += Math.random() * 15;
+                progress += Math.random() * 10;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(loadingInterval);
                     finishLoading();
                 }
                 document.getElementById('loadingProgress').style.width = `${progress}%`;
-                
-                // Update loading text
-                const loadingTexts = [
-                    'Generating terrain...',
-                    'Building structures...',
-                    'Spawning entities...',
-                    'Finalizing world...'
-                ];
-                document.getElementById('loadingText').textContent = 
-                    loadingTexts[Math.floor((progress / 100) * loadingTexts.length)];
-            }, 500);
+                document.getElementById('loadingText').textContent = getLoadingText(progress);
+            }, 200);
+        }
+
+        function getLoadingText(progress) {
+            if (progress < 25) return 'Generating terrain...';
+            if (progress < 50) return 'Loading textures...';
+            if (progress < 75) return 'Spawning entities...';
+            return 'Finalizing world...';
         }
 
         function finishLoading() {
             setTimeout(() => {
                 document.getElementById('loadingScreen').style.display = 'none';
                 document.getElementById('gameUI').style.display = 'block';
-                document.getElementById('controlsHint').style.display = 'block';
-                
                 gameState.isPlaying = true;
-                gameState.gamemode = document.getElementById('gamemodeSelect').value;
-                
-                // Initialize game components
-                generateWorld();
-                generateInventory();
-                initializeControls();
-                
-                // Start game loop
-                requestAnimationFrame(update);
-            }, 1000);
+                initGame();
+            }, 500);
         }
 
-        // ... (Rest of the game logic remains the same, including world generation,
-        // inventory system, controls, and rendering) ...
+        // Initialize game
+        function initGame() {
+            // Initialize shaders and get program info
+            const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
+            const programInfo = {
+                program: shaderProgram,
+                attribLocations: {
+                    vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
+                    normal: gl.getAttribLocation(shaderProgram, 'aNormal'),
+                    textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'),
+                },
+                uniformLocations: {
+                    projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
+                    modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
+                    normalMatrix: gl.getUniformLocation(shaderProgram, 'uNormalMatrix'),
+                    lightDirection: gl.getUniformLocation(shaderProgram, 'uLightDirection'),
+                    time: gl.getUniformLocation(shaderProgram, 'uTime'),
+                },
+            };
 
+            // Generate terrain and initialize buffers
+            const terrain = generateTerrain(32, 1.0);
+            const buffers = initBuffers(gl, terrain);
+
+            // Start game loop
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Event listeners
+        document.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('resize', handleResize);
+
+        function handleKeyDown(event) {
+            if (!gameState.isPlaying) return;
+
+            switch(event.key) {
+                case 'e':
+                    toggleInventory();
+                    break;
+                case 'Escape':
+                    togglePause();
+                    break;
+            }
+        }
+
+        function handleResize() {
+            const canvas = document.getElementById('gameCanvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        function toggleInventory() {
+            gameState.showInventory = !gameState.showInventory;
+            document.getElementById('inventory').style.display = 
+                gameState.showInventory ? 'grid' : 'none';
+        }
+
+        function togglePause() {
+            gameState.isPlaying = !gameState.isPlaying;
+            if (gameState.isPlaying) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        // Initial setup
+        handleResize();
     </script>
 </body>
 </html>
