@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 523 | Origin is unreachable</title>
+    <style>
+        body {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+
+        .error-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #d63626;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .status-label {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .status-value {
+            font-weight: 500;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-value.error {
+            color: #d63626;
+        }
+
+        .status-value.working {
+            color: #198754;
+        }
+
+        .check-icon {
+            width: 16px;
+            height: 16px;
+            fill: #198754;
+        }
+
+        .x-icon {
+            width: 16px;
+            height: 16px;
+            fill: #d63626;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .ray-id {
+            font-family: monaco, monospace;
+            background: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="header">
+            <h1>Origin is unreachable</h1>
+            <div class="timestamp">2024-11-22 07:15:04 UTC</div>
+        </div>
+
+        <div class="status-grid">
+            <div class="status-item">
+                <div class="status-label">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21,3H3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3M21,19H3V5H21V19M14,17H17V15H14V17M15,7V13H13V7H15Z"/>
+                    </svg>
+                    Browser
+                </div>
+                <div class="status-value working">
+                    Working
+                    <svg class="check-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"/>
+                    </svg>
+                    Indonesia
+                </div>
+                <div class="status-value working">
+                    Working
+                    <svg class="check-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">
+                    Cloudflare
+                </div>
+                <div class="status-value working">
+                    Working
+                    <svg class="check-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M4,1H20A1,1 0 0,1 21,2V6A1,1 0 0,1 20,7H4A1,1 0 0,1 3,6V2A1,1 0 0,1 4,1M4,9H20A1,1 0 0,1 21,10V14A1,1 0 0,1 20,15H4A1,1 0 0,1 3,14V10A1,1 0 0,1 4,9M4,17H20A1,1 0 0,1 21,18V22A1,1 0 0,1 20,23H4A1,1 0 0,1 3,22V18A1,1 0 0,1 4,17Z"/>
+                    </svg>
+                    Host
+                </div>
+                <div class="status-value error">
+                    Error
+                    <svg class="x-icon" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <h2>What happened?</h2>
+        <p>The origin web server is not reachable.</p>
+
+        <h2>What can I do?</h2>
+        <p><strong>If you're a visitor of this website:</strong><br>
+        Please try again in a few minutes.</p>
+
+        <p><strong>If you're the owner of this website:</strong><br>
+        Check your DNS Settings. A 523 error means that Cloudflare could not reach your host web server. The most common cause is that your DNS settings are incorrect. Please contact your hosting provider to confirm your origin IP and then make sure the correct IP is listed for your A record in your Cloudflare DNS Settings page.</p>
+
+        <div class="footer">
+            Cloudflare Ray ID: <span class="ray-id">8e672042bfc82f26</span> • 
+            Performance & security by Cloudflare
+        </div>
+    </div>
+</body>
+</html>
