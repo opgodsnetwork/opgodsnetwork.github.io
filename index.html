@@ -39,9 +39,43 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Video styling */
+        #logo-video {
+            width: 200px;  /* Adjust the size of the video */
+            height: auto;
+            object-fit: contain;  /* Ensure video fits well in the container */
+        }
+
+        /* Content Styles (hidden by default) */
+        #content {
+            padding: 20px;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+
+    <!-- Preloader with Video -->
+    <div id="preloader">
+        <video id="logo-video" autoplay loop muted>
+            <source src="logo-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
     <!-- Navbar -->
     <nav class="bg-white shadow-lg fixed w-full z-10">
         <div class="max-w-6xl mx-auto px-4">
@@ -414,6 +448,11 @@
             } else {
                 alert('Silakan pilih texture pack dan spesifikasi PC');
             }
+        }
+
+        window.onload = function() {
+            document.getElementById('preloader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
         }
     </script>
 
