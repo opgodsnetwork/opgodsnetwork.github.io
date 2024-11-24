@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugin Details - OPGODS Premium</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #10B981;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .premium-badge {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .image-gallery {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4">
+                            <img src="120.png" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Premium</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Home</a>
+                    <a href="premium" class="py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">Premium</a>
+                    <a href="about" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">About</a>
+                    <a href="contact" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- Product Header -->
+            <div class="flex flex-col md:flex-row gap-8 mb-8">
+                <!-- Left Column - Images -->
+                <div class="w-full md:w-1/2">
+                    <div class="image-gallery rounded-lg shadow-lg mb-4">
+                        <img src="nexus.jpeg" alt="Plugin Preview" id="mainImage" class="rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                        <img src="nexus.jpeg" alt="Thumbnail 1" class="thumbnail rounded-lg shadow cursor-pointer">
+                        <img src="nexus.jpeg" alt="Thumbnail 2" class="thumbnail rounded-lg shadow cursor-pointer">
+                        <img src="nexus.jpeg" alt="Thumbnail 3" class="thumbnail rounded-lg shadow cursor-pointer">
+                        <img src="nexus.jpeg" alt="Thumbnail 4" class="thumbnail rounded-lg shadow cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Right Column - Details -->
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h1 class="text-3xl font-bold">Nexus Animated Weapons & Tools Set</h1>
+                            <span class="premium-badge">Premium</span>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-500 text-xl">⭐</span>
+                                <span class="text-xl font-semibold ml-2">6.4</span>
+                                <span class="text-gray-500 ml-2">(128 reviews)</span>
+                            </div>
+                            <p class="text-2xl font-bold text-green-600 mb-4">Rp 790.000</p>
+                            <p class="text-gray-600">Pack dengan fitur Animasi Senjata Dan 1 Set Tools berkualitas tinggi untuk meningkatkan pengalaman bermain Minecraft Anda.</p>
+                        </div>
+                        <button class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 mb-4">
+                            Beli Sekarang
+                        </button>
+                        <div class="border-t pt-4">
+                            <h3 class="font-semibold mb-2">Includes:</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li>✓ Full animated weapons set</li>
+                                <li>✓ Complete tools collection</li>
+                                <li>✓ Custom sound effects</li>
+                                <li>✓ Lifetime updates</li>
+                                <li>✓ Premium support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">Deskripsi Produk</h2>
+                        <div class="prose text-gray-600">
+                            <p class="mb-4">
+                                Nexus Animated Weapons & Tools Set adalah koleksi lengkap senjata dan alat yang dianimasikan untuk Minecraft. Pack ini dirancang khusus untuk meningkatkan pengalaman bermain dengan animasi berkualitas tinggi dan efek visual yang menakjubkan.
+                            </p>
+                            <h3 class="text-xl font-semibold mb-2">Fitur Utama:</h3>
+                            <ul class="list-disc pl-6 mb-4">
+                                <li>Animasi halus dan realistis untuk setiap senjata</li>
+                                <li>Set lengkap alat dengan tekstur HD</li>
+                                <li>Efek partikel kustom</li>
+                                <li>Suara yang ditingkatkan</li>
+                                <li>Kompatibel dengan versi terbaru Minecraft</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2">Spesifikasi Teknis:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Versi Minecraft: 1.16+</li>
+                                <li>Resolusi Tekstur: 32x32</li>
+                                <li>Format File: .json, .png</li>
+                                <li>Ukuran Pack: 24MB</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">Informasi Penjual</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="font-semibold text-gray-700">Developer</h3>
+                                <p class="text-gray-600">OPGODS Premium Team</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-700">Last Updated</h3>
+                                <p class="text-gray-600">November 20, 2024</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-700">Support</h3>
+                                <p class="text-gray-600">Premium 24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Tentang Kami</h4>
+                    <p class="text-gray-300">Platform terpercaya untuk plugin Minecraft premium dengan kualitas terbaik untuk meningkatkan performa server Anda.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Premium Plugins</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Email: premium@mcplugins.com</li>
+                        <li class="text-gray-300">Discord: MCPluginsPro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 MC Plugins Premium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
