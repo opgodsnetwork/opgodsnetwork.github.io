@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OPGODS Resources - Home</title>
+    <title>OPGODS Plugin Store - Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         .card:hover {
@@ -53,16 +53,10 @@
             z-index: 9999;
         }
 
-        /* Video styling */
         #logo-video {
-            width: 200px;  /* Adjust the size of the video */
+            width: 200px;
             height: auto;
-            object-fit: contain;  /* Ensure video fits well in the container */
-        }
-
-        /* Content Styles (hidden by default) */
-        #content {
-            padding: 20px;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -84,15 +78,16 @@
                     <div>
                         <a href="#" class="flex items-center py-4">
                             <img src="120.png" alt="Logo" class="h-8 w-8 mr-2">
-                            <span class="font-semibold text-gray-700 text-lg">OPGODS Resources</span>
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Plugin Store</span>
                         </a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-8">
                     <a href="/" class="py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">Home</a>
-                    <a href="list" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">List</a>
+                    <a href="marketplace" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Marketplace</a>
                     <a href="about" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">About</a>
                     <a href="contact" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Contact</a>
+                    <a href="login" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Login</a>
                 </div>
             </div>
         </div>
@@ -103,135 +98,105 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="text-white">
-                    <h1 class="text-5xl font-bold mb-6">Tingkatkan Visual Minecraft Anda</h1>
-                    <p class="text-xl mb-8">Koleksi terlengkap shader dan texture pack untuk pengalaman bermain yang lebih maksimal.</p>
+                    <h1 class="text-5xl font-bold mb-6">Tingkatkan Server Minecraft Anda</h1>
+                    <p class="text-xl mb-8">Koleksi plugin premium dan free untuk memaksimalkan performa dan fitur server Minecraft Anda.</p>
                     <div class="flex space-x-4">
-                        <a href="shaders" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                            Lihat Shaders
+                        <a href="premium" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Premium Plugins
                         </a>
-                        <a href="texturepack" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition duration-300">
-                            Lihat Texture Packs
+                        <a href="free" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition duration-300">
+                            Free Plugins
                         </a>
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <img src="hero-minecraft.jpeg" alt="Minecraft Scene" class="rounded-lg shadow-xl">
+                    <img src="server-plugins.jpeg" alt="Minecraft Server" class="rounded-lg shadow-xl">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Featured Shaders Section -->
+    <!-- Featured Plugins Section -->
     <div class="max-w-6xl mx-auto px-4 py-16">
         <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-800">Featured Shaders</h2>
-            <a href="shaders" class="text-green-600 hover:text-green-700 font-semibold">Lihat Semua</a>
+            <h2 class="text-3xl font-bold text-gray-800">Featured Plugins</h2>
+            <a href="marketplace" class="text-green-600 hover:text-green-700 font-semibold">Lihat Semua</a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Shader Card 1 -->
+            <!-- Plugin Card 1 -->
             <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="seus-ptgi-e12.jpeg" alt="SEUS PTGI" class="w-full h-48 object-cover">
+                <img src="essentials.jpeg" alt="EssentialsX" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold">SEUS PTGI</h3>
+                        <h3 class="text-xl font-semibold">EssentialsX Pro</h3>
+                        <span class="text-yellow-500">⭐ 4.9</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Plugin esensial untuk manajemen server</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-green-600 font-bold">Rp 250.000</span>
+                        <a href="plugin-details" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plugin Card 2 -->
+            <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <img src="worldguard.jpeg" alt="WorldGuard" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-xl font-semibold">WorldGuard Plus</h3>
                         <span class="text-yellow-500">⭐ 4.8</span>
                     </div>
-                    <p class="text-gray-600 mb-4">Shader realistic dengan ray tracing</p>
+                    <p class="text-gray-600 mb-4">Proteksi wilayah server premium</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">Size: 4.1 MB</span>
-                        <a href="shaders-version" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
+                        <span class="text-green-600 font-bold">Rp 180.000</span>
+                        <a href="plugin-details" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Beli Sekarang</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Shader Card 2 -->
+            <!-- Plugin Card 3 -->
             <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="bsl.jpeg" alt="BSL Shaders" class="w-full h-48 object-cover">
+                <img src="economy.jpeg" alt="Economy" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold">BSL Shaders</h3>
+                        <h3 class="text-xl font-semibold">EconomyPro</h3>
                         <span class="text-yellow-500">⭐ 4.7</span>
                     </div>
-                    <p class="text-gray-600 mb-4">Shader ringan dengan visual memukau</p>
+                    <p class="text-gray-600 mb-4">Sistem ekonomi server lengkap</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">Size: 1.0 MB</span>
-                        <a href="shaders-version" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Shader Card 3 -->
-            <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="complementary.jpeg" alt="Complementary" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold">Complementary</h3>
-                        <span class="text-yellow-500">⭐ 4.6</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Shader yang dapat dikustomisasi</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">Size: 3.3 MB</span>
-                        <a href="shaders-version" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
+                        <span class="text-green-600 font-bold">Rp 200.000</span>
+                        <a href="plugin-details" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Beli Sekarang</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Featured Texture Packs Section -->
+    <!-- Categories Section -->
     <div class="bg-gray-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Featured Texture Packs</h2>
-                <a href="texturepack" class="text-green-600 hover:text-green-700 font-semibold">Lihat Semua</a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Texture Pack Card 1 -->
-                <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                    <img src="faithful.jpeg" alt="Faithful" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-semibold">Faithful</h3>
-                            <span class="text-yellow-500">⭐ 4.8</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Texture pack HD dengan tampilan vanilla</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Resolution: 32x32</span>
-                            <a href="texturepack-version" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
-                        </div>
-                    </div>
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Kategori Plugin</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <img src="admin-tools.png" alt="Admin Tools" class="w-16 h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Admin Tools</h3>
+                    <p class="text-gray-600 mt-2">20+ Plugins</p>
                 </div>
-
-                <!-- Texture Pack Card 2 -->
-                <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                    <img src="sphax.jpeg" alt="Sphax PureBDCraft" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-semibold">Sphax PureBDCraft</h3>
-                            <span class="text-yellow-500">⭐ 4.7</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Texture pack dengan gaya kartun unik</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Resolution: 128x128</span>
-                            <a href="texturepack-version" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
-                        </div>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <img src="economy.png" alt="Economy" class="w-16 h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Economy</h3>
+                    <p class="text-gray-600 mt-2">15+ Plugins</p>
                 </div>
-
-                <!-- Texture Pack Card 3 -->
-                <div class="featured-card bg-white rounded-xl shadow-lg overflow-hidden">
-                    <img src="dokucraft.jpeg" alt="Dokucraft" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-semibold">Dokucraft</h3>
-                            <span class="text-yellow-500">⭐ 4.6</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Texture pack bergaya RPG medieval</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Resolution: 64x64</span>
-                            <a href="download" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Download</a>
-                        </div>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <img src="minigames.png" alt="Minigames" class="w-16 h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Minigames</h3>
+                    <p class="text-gray-600 mt-2">30+ Plugins</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <img src="protection.png" alt="Protection" class="w-16 h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Protection</h3>
+                    <p class="text-gray-600 mt-2">25+ Plugins</p>
                 </div>
             </div>
         </div>
@@ -241,12 +206,12 @@
     <div class="max-w-6xl mx-auto px-4 py-16">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <h3 class="text-4xl font-bold text-green-600 mb-2">50+</h3>
-                <p class="text-gray-600">Shaders</p>
+                <h3 class="text-4xl font-bold text-green-600 mb-2">100+</h3>
+                <p class="text-gray-600">Premium Plugins</p>
             </div>
             <div class="text-center">
-                <h3 class="text-4xl font-bold text-green-600 mb-2">100+</h3>
-                <p class="text-gray-600">Texture Packs</p>
+                <h3 class="text-4xl font-bold text-green-600 mb-2">50+</h3>
+                <p class="text-gray-600">Free Plugins</p>
             </div>
             <div class="text-center">
                 <h3 class="text-4xl font-bold text-green-600 mb-2">10K+</h3>
@@ -254,207 +219,10 @@
             </div>
             <div class="text-center">
                 <h3 class="text-4xl font-bold text-green-600 mb-2">5K+</h3>
-                <p class="text-gray-600">Users</p>
+                <p class="text-gray-600">Active Users</p>
             </div>
         </div>
     </div>
-
-    <!-- FPS Review Section -->
-    <div class="bg-gray-100 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Review Performa FPS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Shader FPS Review Card -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Review FPS Shaders</h3>
-                        <p class="text-gray-600 mb-6">Cek performa FPS dari berbagai shader pack pada spesifikasi komputer yang berbeda</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-1/2">
-                                    <select id="shaderSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                                        <option value="">Pilih Shader</option>
-                                        <option value="iterationt">ITERATION T</option>
-                                        <option value="seus">SEUS PTGI</option>
-                                        <option value="bsl">BSL Shaders</option>
-                                        <option value="complementary">Complementary</option>
-                                    </select>
-                                </div>
-                                <div class="w-1/2">
-                                    <select id="shaderPcSpec" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                                        <option value="">Spesifikasi PC</option>
-                                        <option value="low">Low-End PC</option>
-                                        <option value="mid">Mid-End PC</option>
-                                        <option value="high">High-End PC</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="shaderFpsResult" class="hidden bg-gray-50 p-6 rounded-lg">
-                                <div class="text-center">
-                                    <h4 class="text-xl font-semibold mb-2">Hasil Review FPS</h4>
-                                    <div class="flex justify-center items-center space-x-4">
-                                        <div>
-                                            <p class="text-gray-600">Average FPS:</p>
-                                            <p id="shaderAvgFps" class="text-3xl font-bold text-green-600">-- FPS</p>
-                                        </div>
-                                        <div class="border-l border-gray-300 h-16"></div>
-                                        <div>
-                                            <p class="text-gray-600">FPS Range:</p>
-                                            <p id="shaderFpsRange" class="text-xl font-semibold text-gray-800">-- ~ -- FPS</p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p id="shaderPerformanceNote" class="text-sm text-gray-600"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onclick="checkShaderFps()" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Lihat Review FPS Shader</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Texture Pack FPS Review Card -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Review FPS Texture Pack</h3>
-                        <p class="text-gray-600 mb-6">Cek performa FPS dari berbagai texture pack pada spesifikasi komputer yang berbeda</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-1/2">
-                                    <select id="textureSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                                        <option value="">Pilih Texture Pack</option>
-                                        <option value="faithful">Faithful 32x</option>
-                                        <option value="sphax">Sphax PureBDCraft</option>
-                                        <option value="dokucraft">Dokucraft</option>
-                                    </select>
-                                </div>
-                                <div class="w-1/2">
-                                    <select id="texturePcSpec" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                                        <option value="">Spesifikasi PC</option>
-                                        <option value="low">Low-End PC</option>
-                                        <option value="mid">Mid-End PC</option>
-                                        <option value="high">High-End PC</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="textureFpsResult" class="hidden bg-gray-50 p-6 rounded-lg">
-                                <div class="text-center">
-                                    <h4 class="text-xl font-semibold mb-2">Hasil Review FPS</h4>
-                                    <div class="flex justify-center items-center space-x-4">
-                                        <div>
-                                            <p class="text-gray-600">Average FPS:</p>
-                                            <p id="textureAvgFps" class="text-3xl font-bold text-green-600">-- FPS</p>
-                                        </div>
-                                        <div class="border-l border-gray-300 h-16"></div>
-                                        <div>
-                                            <p class="text-gray-600">FPS Range:</p>
-                                            <p id="textureFpsRange" class="text-xl font-semibold text-gray-800">-- ~ -- FPS</p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p id="texturePerformanceNote" class="text-sm text-gray-600"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onclick="checkTextureFps()" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Lihat Review FPS Texture Pack</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Data FPS untuk setiap kombinasi shader dan spesifikasi PC
-        const shaderFpsData = {
-             iterationt: {
-                low: { avg: 10, min: 17, max: 24, note: "Performa rendah, disarankan menurunkan setting shader" },
-                mid: { avg: 32, min: 43, max: 59, note: "Performa cukup baik dengan setting medium" },
-                high: { avg: 85, min: 102, max: 195, note: "Performa sangat baik, bisa menggunakan setting maksimal" }
-            },
-            seus: {
-                low: { avg: 25, min: 20, max: 30, note: "Performa rendah, disarankan menurunkan setting shader" },
-                mid: { avg: 45, min: 35, max: 55, note: "Performa cukup baik dengan setting medium" },
-                high: { avg: 85, min: 75, max: 95, note: "Performa sangat baik, bisa menggunakan setting maksimal" }
-            },
-            bsl: {
-                low: { avg: 35, min: 30, max: 40, note: "Performa cukup, bisa dimainkan dengan setting rendah" },
-                mid: { avg: 60, min: 50, max: 70, note: "Performa baik, nyaman dimainkan" },
-                high: { avg: 120, min: 100, max: 140, note: "Performa excellent, sangat smooth" }
-            },
-            complementary: {
-                low: { avg: 30, min: 25, max: 35, note: "Performa moderate, sesuaikan setting untuk FPS lebih baik" },
-                mid: { avg: 55, min: 45, max: 65, note: "Performa baik dengan setting default" },
-                high: { avg: 100, min: 90, max: 110, note: "Performa sangat baik, bisa maksimalkan setting" }
-            }
-        };
-
-        // Data FPS untuk setiap kombinasi texture pack dan spesifikasi PC
-        const textureFpsData = {
-            faithful: {
-                low: { avg: 45, min: 40, max: 50, note: "Performa baik, texture pack ringan" },
-                mid: { avg: 80, min: 70, max: 90, note: "Performa sangat baik" },
-                high: { avg: 150, min: 130, max: 170, note: "Performa excellent" }
-            },
-            sphax: {
-                low: { avg: 35, min: 30, max: 40, note: "Performa cukup, gunakan resolusi lebih rendah jika lag" },
-                mid: { avg: 65, min: 55, max: 75, note: "Performa baik untuk resolusi 128x" },
-                high: { avg: 120, min: 100, max: 140, note: "Performa sangat baik, bisa gunakan resolusi tertinggi" }
-            },
-            dokucraft: {
-                low: { avg: 40, min: 35, max: 45, note: "Performa cukup baik untuk resolusi 64x" },
-                mid: { avg: 70, min: 60, max: 80, note: "Performa baik, smooth gameplay" },
-                high: { avg: 130, min: 110, max: 150, note: "Performa excellent, sangat smooth" }
-            }
-        };
-
-        function checkShaderFps() {
-            const shader = document.getElementById('shaderSelect').value;
-            const spec = document.getElementById('shaderPcSpec').value;
-            const resultDiv = document.getElementById('shaderFpsResult');
-            
-            if (shader && spec) {
-                const fpsData = shaderFpsData[shader][spec];
-                document.getElementById('shaderAvgFps').textContent = fpsData.avg + " FPS";
-                document.getElementById('shaderFpsRange').textContent = `${fpsData.min} ~ ${fpsData.max} FPS`;
-                document.getElementById('shaderPerformanceNote').textContent = fpsData.note;
-                resultDiv.classList.remove('hidden');
-            } else {
-                alert('Silakan pilih shader dan spesifikasi PC');
-            }
-        }
-
-        function checkTextureFps() {
-            const texture = document.getElementById('textureSelect').value;
-            const spec = document.getElementById('texturePcSpec').value;
-            const resultDiv = document.getElementById('textureFpsResult');
-            
-            if (texture && spec) {
-                const fpsData = textureFpsData[texture][spec];
-                document.getElementById('textureAvgFps').textContent = fpsData.avg + " FPS";
-                document.getElementById('textureFpsRange').textContent = `${fpsData.min} ~ ${fpsData.max} FPS`;
-                document.getElementById('texturePerformanceNote').textContent = fpsData.note;
-                resultDiv.classList.remove('hidden');
-            } else {
-                alert('Silakan pilih texture pack dan spesifikasi PC');
-            }
-        }
-
-        window.onload = function() {
-            document.getElementById('preloader').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-        }
-    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
@@ -462,13 +230,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h4 class="text-xl font-semibold mb-4">Tentang Kami</h4>
-                    <p class="text-gray-300">Portal download resource Minecraft terlengkap dengan koleksi shader dan texture pack terbaik untuk meningkatkan pengalaman bermain Anda.</p>
+                    <p class="text-gray-300">Marketplace plugin Minecraft terpercaya dengan koleksi plugin premium dan free untuk meningkatkan performa server Anda.</p>
                 </div>
                 <div>
                     <h4 class="text-xl font-semibold mb-4">Links</h4>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">List Resources</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Marketplace</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
                     </ul>
@@ -476,16 +244,22 @@
                 <div>
                     <h4 class="text-xl font-semibold mb-4">Kontak</h4>
                     <ul class="space-y-2">
-                        <li class="text-gray-300">Email: contact@opgods.com</li>
-                        <li class="text-gray-300">Discord: OPGODS</li>
+                        <li class="text-gray-300">Email: store@opgods.com</li>
+                        <li class="text-gray-300">Discord: OPGODS Store</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt
-                <div class="border-t border-gray-700 mt-8 pt-6 text-center">
-                <p class="text-gray-400">&copy; 2024 OPGODS Resources. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p class="text-gray-400">&copy; 2024 OPGODS Plugin Store. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('preloader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
