@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPGODS Packs Store - Marketplace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #10B981;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 24px;
+            right: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 20;
+        }
+        
+        .image-container {
+            width: 225px;
+            height: 225px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .filter-active {
+            background-color: #10B981;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4">
+                            <img src="120.png" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Packs Store</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Home</a>
+                    <a href="marketplace" class="py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">Marketplace</a>
+                    <a href="about" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">About</a>
+                    <a href="contact" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Contact</a>
+                    <a href="login" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Marketplace Header -->
+    <div class="pt-24 pb-6 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Marketplace</h1>
+            <p class="text-gray-600">Temukan packs terbaik untuk server Minecraft Anda</p>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="bg-white border-t border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex flex-wrap gap-4 items-center justify-between">
+                <div class="flex-1 min-w-[300px]">
+                    <input type="text" placeholder="Cari plugin..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors filter-active">Semua</button>
+                    <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Premium</button>
+                    <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Free</button>
+                    <select class="px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option>Sort by: Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Rating</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plugin Grid -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Nexus Plugin Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+                <span class="premium-badge">Premium</span>
+                <div class="pt-4">
+                    <div class="image-container rounded-lg">
+                        <img src="nexus.jpeg" alt="Nexus Animated Weapons & Tools Set Preview">
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Nexus Animated Weapons & Tools Set</h3>
+                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Harga:</span>
+                            <span class="font-medium text-green-600">Rp 790.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Rating:</span>
+                            <span class="font-medium">6.4 ⭐</span>
+                        </div>
+                    </div>
+                    <a href="plugin-details-Nexus" class="block w-full">
+                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Legacy Plugin Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+                <span class="premium-badge">Premium</span>
+                <div class="pt-4">
+                    <div class="image-container rounded-lg">
+                        <img src="legacy.jpeg" alt="Legends Of Legacy Animated Weapons & Tools Set Preview">
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Legends Of Legacy Animated Weapons & Tools Set</h3>
+                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Harga:</span>
+                            <span class="font-medium text-green-600">Rp 620.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Rating:</span>
+                            <span class="font-medium">5.3 ⭐</span>
+                        </div>
+                    </div>
+                    <a href="plugin-details-legacy" class="block w-full">
+                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Steam Sparks Plugin Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+                <span class="premium-badge">Premium</span>
+                <div class="pt-4">
+                    <div class="image-container rounded-lg">
+                        <img src="steam-sparks.jpeg" alt="Steam Sparks Animated Weapons & Tools Set Preview">
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Steam Sparks Animated Weapons & Tools Set</h3>
+                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Harga:</span>
+                            <span class="font-medium text-green-600">Rp 467.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Rating:</span>
+                            <span class="font-medium">4.7 ⭐</span>
+                        </div>
+                    </div>
+                    <a href="plugin-details-steam-sparks" class="block w-full">
+                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Add more plugin cards here -->
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="flex justify-center space-x-2">
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Previous</button>
+            <button class="px-4 py-2 rounded-lg border bg-green-500 text-white">1</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">2</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">3</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Next</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Tentang Kami</h4>
+                    <p class="text-gray-300">Marketplace plugin Minecraft terpercaya dengan koleksi plugin premium dan free untuk meningkatkan performa server Anda.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Marketplace</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Email: store@opgods.com</li>
+                        <li class="text-gray-300">Discord: OPGODS Store</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p class="text-gray-400">&copy; 2024 OPGODS Plugin Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
