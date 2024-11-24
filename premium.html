@@ -47,6 +47,26 @@
             color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
+
+        .image-container {
+            width: 225px;
+            height: 225px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -89,149 +109,172 @@
     <!-- Main Content -->
     <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Plugin Cards -->
+            
             <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="nexus.jpeg" alt="Nexus Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Nexus Animated Weapons & Tools Set</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 790.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">6.4 ⭐</span>
-                        </div>
-                    </div>
-                    <a href="plugin-details-Nexus" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="nexus.jpeg" alt="Nexus Animated Weapons & Tools Set Preview">
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="legacy.jpeg" alt="Legends Of Legacy Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Legends Of Legacy Animated Weapons & Tools Set</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 620.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">5.3 ⭐</span>
-                        </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Nexus Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 790.000</span>
                     </div>
-                    <a href="plugin-details-legacy" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">6.4 ⭐</span>
+                    </div>
+                </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="nexus.jpeg" alt="Legends Of Legacy Animated Weapons & Tools Set Preview">
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="steam-sparks.jpeg" alt="Steam Sparks Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Steam Sparks Animated Weapons & Tools Set Preview</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 467.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">4.7 ⭐</span>
-                        </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Legends Of Legacy Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 620.000</span>
                     </div>
-                    <a href="plugin-details-steam-sparks" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">5.3 ⭐</span>
+                    </div>
+                </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+            
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="steam-sparks.jpeg" alt="Steam Sparks Animated Weapons & Tools Set Preview">
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="malika.jpeg" alt="Malika Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Malika Animated Weapons & Tools Set Preview</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 780.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">4.9 ⭐</span>
-                        </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Steam Sparks Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 467.000</span>
                     </div>
-                    <a href="plugin-details-malika" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">4.7 ⭐</span>
+                    </div>
+                </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="malika.jpeg" alt="Malika Animated Weapons & Tools Set Preview">
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="asura.jpeg" alt="Asura Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Asura Animated Weapons & Tools Set Preview</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 922.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">4.8 ⭐</span>
-                        </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Malika Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 780.000</span>
                     </div>
-                    <a href="plugin-details-asura" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">4.9 ⭐</span>
+                    </div>
+                </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="asura.jpeg" alt="Asura Animated Weapons & Tools Set Preview">
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
-                <span class="premium-badge">Premium</span>
-                <img src="steam-punk.jpeg" alt="Steam Punk Ice Animated Weapons & Tools Set Preview" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Steam Punk Ice Animated Weapons & Tools Set Preview</h3>
-                    <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Harga:</span>
-                            <span class="font-medium text-green-600">Rp 1.390.000</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Rating:</span>
-                            <span class="font-medium">6.7 ⭐</span>
-                        </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Asura Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 922.000</span>
                     </div>
-                    <a href="plugin-details-steam-punk" class="block w-full">
-                        <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-                            Beli Sekarang
-                        </button>
-                    </a>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">4.8 ⭐</span>
+                    </div>
                 </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
+            <span class="premium-badge">Premium</span>
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="steam-punk.jpeg" alt="Steam Punk Ice Animated Weapons & Tools Set Preview">
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Steam Punk Ice Animated Weapons & Tools Set</h3>
+                <p class="text-gray-600 mb-4">Pack dengan fitur Animasi Senjata Dan 1 Set Tools</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-medium text-green-600">Rp 1.390.000</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Rating:</span>
+                        <span class="font-medium">6.7 ⭐</span>
+                    </div>
+                </div>
+                <a href="plugin-details-nexus" class="block w-full">
+                    <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Beli Sekarang
+                    </button>
+                </a>
             </div>
         </div>
     </div>
