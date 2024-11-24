@@ -64,17 +64,6 @@
             background-color: #10B981;
             color: white;
         }
-
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: block;
-        }
-        .pagination-button.active {
-            background-color: #10B981;
-            color: white;
-        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -134,9 +123,6 @@
     <!-- Plugin Grid -->
     <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Page 1 -->
-            <div class="page active" id="page1">
-               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Nexus Plugin Card -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
                 <span class="premium-badge">Premium</span>
@@ -231,47 +217,14 @@
     <!-- Pagination -->
     <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="flex justify-center space-x-2">
-            <button onclick="changePage('prev')" class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Previous</button>
-            <button onclick="changePage(1)" class="pagination-button px-4 py-2 rounded-lg border active">1</button>
-            <button onclick="changePage(2)" class="pagination-button px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">2</button>
-            <button onclick="changePage(3)" class="pagination-button px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">3</button>
-            <button onclick="changePage('next')" class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Next</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Previous</button>
+            <button class="px-4 py-2 rounded-lg border bg-green-500 text-white">1</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">2</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">3</button>
+            <button class="px-4 py-2 rounded-lg border hover:bg-green-500 hover:text-white transition-colors">Next</button>
         </div>
     </div>
 
-    <script>
-        let currentPage = 1;
-        const totalPages = 3;
-
-        function changePage(page) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            
-            // Remove active class from all pagination buttons
-            document.querySelectorAll('.pagination-button').forEach(btn => btn.classList.remove('active'));
-            
-            if (page === 'prev') {
-                currentPage = Math.max(1, currentPage - 1);
-            } else if (page === 'next') {
-                currentPage = Math.min(totalPages, currentPage + 1);
-            } else {
-                currentPage = page;
-            }
-
-            // Show current page
-            document.getElementById(`page${currentPage}`).classList.add('active');
-            
-            // Update active pagination button
-            document.querySelector(`.pagination-button:nth-child(${currentPage + 1})`).classList.add('active');
-
-            // Scroll to top of the page
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
-            
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
