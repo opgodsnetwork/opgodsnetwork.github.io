@@ -59,21 +59,6 @@
             object-fit: contain;
         }
 
-        .image-container {
-            position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            overflow: hidden;
-        }
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
         .premium-badge {
             position: absolute;
             top: 10px;
@@ -84,6 +69,26 @@
             font-weight: bold;
             color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .image-container {
+            width: 225px;
+            height: 225px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -146,15 +151,18 @@
     <!-- Featured Plugins Section -->
     <div class="max-w-6xl mx-auto px-4 py-16">
         <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-800">Featured Plugins</h2>
+            <h2 class="text-3xl font-bold text-gray-800">Featured Packs</h2>
             <a href="marketplace" class="text-green-600 hover:text-green-700 font-semibold">Lihat Semua</a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
             <!-- Nexus Plugin Card -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
             <span class="premium-badge">Premium</span>
-            <div class="image-container">
-                <img src="nexus.jpeg" alt="Nexus Animated Weapons & Tools Set Preview" class="transition-transform duration-300 hover:scale-105">
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="nexus.jpeg" alt="Nexus Animated Weapons & Tools Set Preview">
+                </div>
             </div>
             <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2">Nexus Animated Weapons & Tools Set</h3>
@@ -180,8 +188,10 @@
         <!-- Legacy Plugin Card -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
             <span class="premium-badge">Premium</span>
-            <div class="image-container">
-                <img src="legacy.jpeg" alt="Legends Of Legacy Animated Weapons & Tools Set Preview" class="transition-transform duration-300 hover:scale-105">
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="legacy.jpeg" alt="Legends Of Legacy Animated Weapons & Tools Set Preview">
+                </div>
             </div>
             <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2">Legends Of Legacy Animated Weapons & Tools Set</h3>
@@ -207,8 +217,10 @@
         <!-- Steam Sparks Plugin Card -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden card relative">
             <span class="premium-badge">Premium</span>
-            <div class="image-container">
-                <img src="steam-sparks.jpeg" alt="Steam Sparks Animated Weapons & Tools Set Preview" class="transition-transform duration-300 hover:scale-105">
+            <div class="pt-4">
+                <div class="image-container rounded-lg">
+                    <img src="steam-sparks.jpeg" alt="Steam Sparks Animated Weapons & Tools Set Preview">
+                </div>
             </div>
             <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2">Steam Sparks Animated Weapons & Tools Set Preview</h3>
