@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPGODS - Lihat Paket Server Minecraft</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #059669 200%);
+        }
+        .package-card {
+            transition: all 0.3s ease;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center py-4">
+                        <img src="server-icon.png" alt="Logo" class="h-8 w-8 mr-2">
+                        <span class="font-semibold text-gray-700 text-lg">OPGODS Server Hosting</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500">Home</a>
+                    <a href="#" class="text-green-500 border-b-2 border-green-500">Paket Server</a>
+                    <a href="#" class="text-gray-700 hover:text-green-500">Fitur</a>
+                    <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Order Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient pt-32 pb-20 text-center text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-4">Paket Server Minecraft Lengkap</h1>
+            <p class="text-xl mb-8">Temukan paket server yang sesuai dengan kebutuhan permainan Anda</p>
+        </div>
+    </div>
+
+    <!-- Detailed Server Packages -->
+    <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- 1GB Server Package -->
+            <div class="bg-white rounded-xl shadow-lg p-6 package-card">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-green-600">1 GB Server</h3>
+                    <div class="mt-4">
+                        <span class="text-4xl font-bold text-gray-800">Rp 50.000</span>
+                        <span class="block text-gray-600">/bulan</span>
+                    </div>
+                </div>
+                <div class="border-t pt-6">
+                    <h4 class="text-xl font-semibold mb-4">Spesifikasi</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            1 GB RAM
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Intel Xeon E5 Processor
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            SSD Storage 20 GB
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            1 Slot Pemain
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <a href="#" class="block w-full bg-green-500 text-white py-3 text-center rounded-lg hover:bg-green-600">
+                        Pilih Paket 1 GB
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4GB Server Package -->
+            <div class="bg-white rounded-xl shadow-lg p-6 package-card">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-green-600">4 GB Server</h3>
+                    <div class="mt-4">
+                        <span class="text-4xl font-bold text-gray-800">Rp 120.000</span>
+                        <span class="block text-gray-600">/bulan</span>
+                    </div>
+                </div>
+                <div class="border-t pt-6">
+                    <h4 class="text-xl font-semibold mb-4">Spesifikasi</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            4 GB RAM
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Intel Xeon E5-2680 Processor
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            SSD NVMe 50 GB
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            4 Slot Pemain
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <a href="#" class="block w-full bg-green-500 text-white py-3 text-center rounded-lg hover:bg-green-600">
+                        Pilih Paket 4 GB
+                    </a>
+                </div>
+            </div>
+
+            <!-- 8GB Server Package -->
+            <div class="bg-white rounded-xl shadow-lg p-6 package-card">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-green-600">8 GB Server</h3>
+                    <div class="mt-4">
+                        <span class="text-4xl font-bold text-gray-800">Rp 220.000</span>
+                        <span class="block text-gray-600">/bulan</span>
+                    </div>
+                </div>
+                <div class="border-t pt-6">
+                    <h4 class="text-xl font-semibold mb-4">Spesifikasi</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            8 GB RAM
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Intel Xeon E5-2690 v3 Processor
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            SSD NVMe 100 GB
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            8 Slot Pemain
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <a href="#" class="block w-full bg-green-500 text-white py-3 text-center rounded-lg hover:bg-green-600">
+                        Pilih Paket 8 GB
+                    </a>
+                </div>
+            </div>
+
+            <!-- 32GB Server Package -->
+            <div class="bg-white rounded-xl shadow-lg p-6 package-card">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-green-600">32 GB Server</h3>
+                    <div class="mt-4">
+                        <span class="text-4xl font-bold text-gray-800">Rp 750.000</span>
+                        <span class="block text-gray-600">/bulan</span>
+                    </div>
+                </div>
+                <div class="border-t pt-6">
+                    <h4 class="text-xl font-semibold mb-4">Spesifikasi</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            32 GB RAM
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Intel Xeon Gold 6248 Processor
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            SSD NVMe 500 GB
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Unlimited Slot Pemain
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
