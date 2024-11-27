@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPGODS Minecraft Server Hosting</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #059669 200%);
+        }
+        .server-card {
+            transition: all 0.3s ease;
+        }
+        .server-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4">
+                            <img src="server-icon.png" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-semibold text-gray-700 text-lg">OPGODS Server Hosting</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="py-4 px-2 text-green-500 border-b-2 border-green-500 font-semibold">Home</a>
+                    <a href="#plans" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Server Plans</a>
+                    <a href="#features" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Features</a>
+                    <a href="#contact" class="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 transition duration-300">Contact</a>
+                    <a href="#order" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Order Server</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient pt-32 pb-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center text-white">
+                <h1 class="text-5xl font-bold mb-6">Hosting Server Minecraft Terbaik</h1>
+                <p class="text-xl mb-8">Pilih server berkualitas dengan performa tinggi dan harga terjangkau</p>
+                <a href="paket_server" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                    Lihat Paket Server
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Plans Section -->
+    <div id="plans" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Paket Server Minecraft</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- 1GB Server Plan -->
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center server-card">
+                <h3 class="text-2xl font-bold text-green-600 mb-4">1 GB Server</h3>
+                <div class="mb-4">
+                    <span class="text-4xl font-bold">Rp 50.000</span>
+                    <span class="text-gray-600 block">/bulan</span>
+                </div>
+                <ul class="text-gray-700 mb-6 space-y-2">
+                    <li>1 GB RAM</li>
+                    <li>Intel Xeon E5</li>
+                    <li>SSD Storage</li>
+                    <li>1 Slot Pemain</li>
+                    <li>Bandwidth Unlimited</li>
+                </ul>
+                <a href="#order" class="block bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                    Pilih Paket
+                </a>
+            </div>
+
+            <!-- 4GB Server Plan -->
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center server-card">
+                <h3 class="text-2xl font-bold text-green-600 mb-4">4 GB Server</h3>
+                <div class="mb-4">
+                    <span class="text-4xl font-bold">Rp 120.000</span>
+                    <span class="text-gray-600 block">/bulan</span>
+                </div>
+                <ul class="text-gray-700 mb-6 space-y-2">
+                    <li>4 GB RAM</li>
+                    <li>Intel Xeon E5-2680</li>
+                    <li>SSD NVMe</li>
+                    <li>4 Slot Pemain</li>
+                    <li>Bandwidth Unlimited</li>
+                </ul>
+                <a href="#order" class="block bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                    Pilih Paket
+                </a>
+            </div>
+
+            <!-- 8GB Server Plan -->
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center server-card">
+                <h3 class="text-2xl font-bold text-green-600 mb-4">8 GB Server</h3>
+                <div class="mb-4">
+                    <span class="text-4xl font-bold">Rp 220.000</span>
+                    <span class="text-gray-600 block">/bulan</span>
+                </div>
+                <ul class="text-gray-700 mb-6 space-y-2">
+                    <li>8 GB RAM</li>
+                    <li>Intel Xeon E5-2690 v3</li>
+                    <li>SSD NVMe</li>
+                    <li>8 Slot Pemain</li>
+                    <li>Bandwidth Unlimited</li>
+                </ul>
+                <a href="#order" class="block bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                    Pilih Paket
+                </a>
+            </div>
+
+            <!-- 32GB Server Plan -->
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center server-card">
+                <h3 class="text-2xl font-bold text-green-600 mb-4">32 GB Server</h3>
+                <div class="mb-4">
+                    <span class="text-4xl font-bold">Rp 750.000</span>
+                    <span class="text-gray-600 block">/bulan</span>
+                </div>
+                <ul class="text-gray-700 mb-6 space-y-2">
+                    <li>32 GB RAM</li>
+                    <li>Intel Xeon Gold 6248</li>
+                    <li>SSD NVMe</li>
+                    <li>Unlimited Slot</li>
+                    <li>Bandwidth Unlimited</li>
+                </ul>
+                <a href="#order" class="block bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                    Pilih Paket
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="bg-gray-100 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Fitur Unggulan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Infrastruktur Modern</h3>
+                    <p class="text-gray-600">Server berbasis teknologi terkini dengan prosesor Intel Xeon dan SSD NVMe</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Keamanan Terjamin</h3>
+                    <p class="text-gray-600">Perlindungan DDoS dan sistem keamanan canggih untuk server Anda</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M13 5a2 2 0 00-2-2H9a2 2 0 00-2 2v.207A7.001 7.001 0 0010 19h3a7 7 0 006-4.243m-6-1.757V5z"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Support 24/7</h3>
+                    <p class="text-gray-600">Tim support siap membantu Anda kapan pun dibutuhkan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Tentang Kami</h4>
+                    <p class="text-gray-300">Penyedia hosting server Minecraft terpercaya dengan infrastruktur berkualitas tinggi.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Email: hosting@opgods.com</li>
+                        <li class="text-gray-300">Telepon: +62 812-3456-7890</li>
+                        <li class="text-gray-300">WhatsApp: +62 812-3456-7890</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Sosial Media</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">Facebook</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Instagram</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Discord</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p class="text-gray-400">&copy; 2024 OPGODS Minecraft Server Hosting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
