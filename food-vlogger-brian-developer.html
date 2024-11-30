@@ -3,151 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vlogger Food By Brian</title>
+    <title>Brian's Food Journey</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --background-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--background-light);
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
 
-.container {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    overflow: hidden;
-}
+        .container {
+            max-width: 640px;
+            margin: 2rem auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-.profile-section {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #e0e0e0;
-}
+        .container:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
 
-.profile-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
-}
+        .profile-section {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+        }
 
-.profile-info {
-    flex-grow: 1;
-}
+        .profile-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-right: 1.5rem;
+            transition: transform 0.3s ease;
+        }
 
-.profile-name {
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-}
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
 
-.profile-badge {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-}
+        .profile-info {
+            flex-grow: 1;
+        }
 
-.role {
-    margin-right: 10px;
-    color: #666;
-}
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-.badge {
-    background-color: #007bff;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 20px;
-    font-size: 12px;
-}
+        .profile-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.video-container {
-    background-color: black;
-    width: 100%;
-}
+        .role {
+            color: var(--text-light);
+            font-weight: 500;
+        }
 
-.video-player {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-}
+        .badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
 
-.video-description {
-    background-color: #f9f9f9;
-    padding: 15px;
-}
+        .video-container {
+            background-color: #000;
+            position: relative;
+        }
 
-.video-title {
-    margin-top: 0;
-    color: #333;
-    font-size: 18px;
-}
+        .video-player {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
 
-.description-text {
-    color: #666;
-    line-height: 1.6;
-}
+        .video-description {
+            padding: 1.5rem;
+            background-color: white;
+        }
 
-.interaction-section {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    background-color: #f4f4f4;
-}
+        .video-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
 
-.like-button {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    padding: 10px;
-    border-radius: 25px;
-}
+        .description-text {
+            color: var(--text-light);
+        }
 
-.like-button:hover {
-    background-color: #ffe0e0;
-}
+        .interaction-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--background-light);
+        }
+
+        .like-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .like-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="profile-section">
-            <img src="brian_profile.jpeg" alt="Profile" class="profile-image">
+            <img src="brian_tiktok.jpeg" alt="Profile" class="profile-image">
             <div class="profile-info">
                 <h1 class="profile-name">Brian Tiktok</h1>
                 <div class="profile-badge">
                     <span class="role">Food Vlogger</span>
-                    <span class="badge">Developer</span>
+                    <span class="badge">Developer Website</span>
                 </div>
             </div>
         </div>
-
         <div class="video-container">
             <video controls class="video-player">
-                <source src="video.mp4" type="video/mp4">
+                <source src="/api/placeholder/640/360" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
-
         <div class="video-description">
-            <h2 class="video-title">Food Vlog || Makan Ayam Geprek</h2>
+            <h2 class="video-title">Food Vlog: Ayam Geprek Adventure</h2>
             <p class="description-text">
-                Dalam video kali ini, saya akan ngeriview makanan yang bernama Ayam Geprek
+                Saya Disini Akan Ngereview Makan Ayam Geprek ya guys 
             </p>
         </div>
-
         <div class="interaction-section">
-            <button class="like-button">❤️ 0 Likes (Kamu tidak bisa like karena video ini hanya di tayangkan secara privasi!)</button>
+            <button class="like-button">
+                <i class="fas fa-heart"></i> 0 Likes (Anda tidak dapat ngelike video ini karena panduan privacy yang di telah di terapkan!)
+            </button>
         </div>
     </div>
 </body>
