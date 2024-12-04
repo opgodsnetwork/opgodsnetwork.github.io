@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OPGODS Plugin Store - Profile</title>
+    <title>OPGODS Plugin Store - Profile List</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         .card:hover {
@@ -59,22 +59,9 @@
             object-fit: contain;
         }
 
-        .premium-badge {
-            position: absolute;
-            top: 24px;
-            right: 10px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            z-index: 20;
-        }
-
         .image-container {
-            width: 225px;
-            height: 225px;
+            width: 150px;
+            height: 150px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -90,6 +77,15 @@
 
         .image-container:hover img {
             transform: scale(1.05);
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -126,40 +122,62 @@
         </div>
     </nav>
 
-    <!-- Profile Section -->
+    <!-- Hero Section -->
     <div class="hero-gradient pt-32 pb-20">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="text-white">
-                    <h1 class="text-5xl font-bold mb-6">John Doe - Lead Developer</h1>
-                    <p class="text-xl mb-8">Creator of the OPGODS Plugin Store, building tools for Minecraft enthusiasts to elevate their server performance.</p>
-                </div>
-                <div class="hidden md:block">
-                    <div class="image-container">
-                        <img src="john-doe.jpg" alt="John Doe Profile Picture" class="rounded-full shadow-xl">
-                    </div>
-                </div>
+            <div class="text-center text-white">
+                <h1 class="text-5xl font-bold mb-6">Meet the Creators & Developers</h1>
+                <p class="text-xl mb-8">Explore the talented team behind the OPGODS Plugin Store.</p>
             </div>
         </div>
     </div>
 
-    <!-- Detailed Profile Information Section -->
+    <!-- Profile List Section -->
     <div class="max-w-6xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">About John Doe</h2>
-        <p class="text-gray-600 text-lg mb-8">
-            With over 10 years of experience in web development and Minecraft plugin creation, John has transformed OPGODS into a go-to resource for Minecraft server owners. Known for his deep technical knowledge and commitment to community-driven development, John has been a leading figure in making Minecraft plugins more accessible and functional.
-        </p>
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Skills & Expertise</h3>
-        <ul class="list-disc pl-8 text-gray-600 mb-8">
-            <li>Advanced knowledge in Java and plugin development</li>
-            <li>Strong experience in server performance optimization</li>
-            <li>Community-focused development approach</li>
-            <li>Expertise in backend architecture and API development</li>
-        </ul>
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Projects</h3>
-        <p class="text-gray-600">
-            John has worked on a variety of open-source and paid Minecraft plugins, many of which have been featured on the OPGODS Plugin Store. His projects aim to enhance server functionality, ensuring smooth operations and an immersive user experience.
-        </p>
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Our Team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <!-- Profile Card 1 -->
+            <div class="card bg-white rounded-lg shadow-lg overflow-hidden p-6">
+                <div class="image-container mb-4">
+                    <img src="john-doe.jpg" alt="John Doe" class="rounded-full mx-auto">
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">John Doe</h3>
+                <p class="text-center text-gray-600">Lead Developer</p>
+                <p class="text-gray-600 text-center mt-4">John is the mastermind behind the OPGODS Plugin Store, responsible for the core development and the overall vision of the platform.</p>
+            </div>
+
+            <!-- Profile Card 2 -->
+            <div class="card bg-white rounded-lg shadow-lg overflow-hidden p-6">
+                <div class="image-container mb-4">
+                    <img src="jane-smith.jpg" alt="Jane Smith" class="rounded-full mx-auto">
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">Jane Smith</h3>
+                <p class="text-center text-gray-600">Front-End Developer</p>
+                <p class="text-gray-600 text-center mt-4">Jane ensures that the OPGODS Plugin Store is both beautiful and easy to navigate with her front-end expertise and design skills.</p>
+            </div>
+
+            <!-- Profile Card 3 -->
+            <div class="card bg-white rounded-lg shadow-lg overflow-hidden p-6">
+                <div class="image-container mb-4">
+                    <img src="mike-jones.jpg" alt="Mike Jones" class="rounded-full mx-auto">
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">Mike Jones</h3>
+                <p class="text-center text-gray-600">Back-End Developer</p>
+                <p class="text-gray-600 text-center mt-4">Mike specializes in server-side technologies, ensuring that the platform is fast, secure, and scalable.</p>
+            </div>
+
+            <!-- Profile Card 4 -->
+            <div class="card bg-white rounded-lg shadow-lg overflow-hidden p-6">
+                <div class="image-container mb-4">
+                    <img src="lisa-green.jpg" alt="Lisa Green" class="rounded-full mx-auto">
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">Lisa Green</h3>
+                <p class="text-center text-gray-600">Community Manager</p>
+                <p class="text-gray-600 text-center mt-4">Lisa is dedicated to fostering a vibrant community, assisting users, and ensuring the success of the platform.</p>
+            </div>
+
+        </div>
     </div>
 
     <!-- Footer -->
