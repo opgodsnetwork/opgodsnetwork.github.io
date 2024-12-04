@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* Background Animasi Gradient Bergerak */
+        /* Previous styles remain the same */
         @keyframes gradientAnimation {
             0% {
                 background-position: 0% 50%;
@@ -46,154 +46,29 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Border Animasi Teks */
-        .animated-border-text {
-            position: relative;
-            display: inline-block;
-            padding: 10px 15px;
-            border: 3px solid transparent;
+        /* Existing styles... */
+
+        /* Code Example Styles */
+        .code-example {
+            background-color: rgba(0,0,0,0.2);
+            border: 2px solid transparent;
             animation: borderAnimation 5s linear infinite;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
             transition: all 0.3s ease;
         }
 
-        .animated-border-text:hover {
-            transform: scale(1.05);
-        }
-
-        /* Border Animasi Gambar */
-        .animated-border-image {
-            position: relative;
-            display: inline-block;
-            padding: 6px;
-            border: 4px solid transparent;
-            animation: borderAnimation 5s linear infinite;
-            transition: all 0.4s ease;
-        }
-
-        .animated-border-image::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            z-index: -1;
-            animation: gradientAnimation 10s ease infinite;
-            opacity: 0.7;
-        }
-
-        .animated-border-image:hover {
-            transform: rotate(3deg) scale(1.05);
-        }
-
-        /* Existing styles from previous version */
-        .glass-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .modern-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .modern-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg, 
-                transparent, 
-                rgba(255,255,255,0.3), 
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-
-        .modern-button:hover::before {
-            left: 100%;
-        }
-
-        .modern-button:hover {
-            transform: translateY(-5px);
+        .code-example:hover {
+            transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
-        /* Styling Tombol Media Sosial */
-        .social-button {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items-center;
-            justify-content: center;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .social-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg, 
-                transparent, 
-                rgba(255,255,255,0.3), 
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-
-        .social-button:hover::before {
-            left: 100%;
-        }
-
-        .social-button:hover {
-            transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            animation: socialHover 1s infinite;
-        }
-
-        .social-button i {
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Instagram gradient */
-        .instagram {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-
-        /* YouTube merah */
-        .youtube {
-            background: #FF0000;
-        }
-
-        /* TikTok hitam */
-        .tiktok {
-            background: #000000;
-        }
-
-        /* Existing styles dari versi sebelumnya tetap sama */
-        .glass-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .code-example pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #e0e0e0;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -210,7 +85,7 @@
                 </div>
             </div>
 
-            <!-- Sisa konten sama seperti sebelumnya -->
+            <!-- Teknologi yang Dikuasai -->
             <div class="mb-8">
                 <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Teknologi yang Dikuasai</h2>
                 <div class="grid grid-cols-3 md:grid-cols-5 gap-6">
@@ -237,7 +112,65 @@
                 </div>
             </div>
 
-            <!-- Sisa konten tetap sama -->
+            <!-- Contoh Kode -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Contoh Kode</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="code-example">
+                        <h3 class="text-lg font-semibold mb-2">HTML & CSS</h3>
+                        <pre>
+&lt;div class="card"&gt;
+    &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+    &lt;p&gt;Ini adalah contoh sederhana.&lt;/p&gt;
+&lt;/div&gt;
+
+.card {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+                        </pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 class="text-lg font-semibold mb-2">JavaScript</h3>
+                        <pre>
+function hitungLuas(panjang, lebar) {
+    return panjang * lebar;
+}
+
+const luas = hitungLuas(5, 10);
+console.log(`Luas: ${luas} m²`);
+                        </pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 class="text-lg font-semibold mb-2">PHP</h3>
+                        <pre>
+&lt;?php
+$nama = "John Doe";
+$umur = 25;
+
+echo "Nama saya $nama, ";
+echo "umur saya $umur tahun.";
+?&gt;
+                        </pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 class="text-lg font-semibold mb-2">C++</h3>
+                        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 5, b = 10;
+    cout &lt;&lt; "Jumlah: " &lt;&lt; (a + b);
+    return 0;
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Existing contact sections remain the same -->
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
                     <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Kontak Saya</h2>
@@ -257,22 +190,6 @@
                     <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="modern-button w-full bg-green-500 text-white py-4 px-6 rounded-lg flex items-center justify-center">
                         <i class="fab fa-whatsapp mr-3 text-2xl"></i>
                         Chat di WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Bagian Baru: Media Sosial -->
-            <div class="mt-8">
-                <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 text-center">Temukan Saya di Media Sosial</h2>
-                <div class="flex justify-center space-x-6">
-                    <a href="#" target="_blank" class="social-button instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" target="_blank" class="social-button youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" target="_blank" class="social-button tiktok">
-                        <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
             </div>
