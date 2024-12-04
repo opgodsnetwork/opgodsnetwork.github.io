@@ -127,6 +127,74 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
+
+        /* Styling Tombol Media Sosial */
+        .social-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items-center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent
+            );
+            transition: all 0.5s ease;
+        }
+
+        .social-button:hover::before {
+            left: 100%;
+        }
+
+        .social-button:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            animation: socialHover 1s infinite;
+        }
+
+        .social-button i {
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Instagram gradient */
+        .instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        /* YouTube merah */
+        .youtube {
+            background: #FF0000;
+        }
+
+        /* TikTok hitam */
+        .tiktok {
+            background: #000000;
+        }
+
+        /* Existing styles dari versi sebelumnya tetap sama */
+        .glass-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
