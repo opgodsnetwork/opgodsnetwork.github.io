@@ -10,15 +10,33 @@
     <style>
         /* Background Animasi Gradient Bergerak */
         @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        @keyframes socialHover {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @keyframes borderAnimation {
+            0% {
+                border-color: #ee7752;
+            }
+            25% {
+                border-color: #e73c7e;
+            }
+            50% {
+                border-color: #23a6d5;
+            }
+            75% {
+                border-color: #23d5ab;
+            }
+            100% {
+                border-color: #ee7752;
+            }
         }
 
         body {
@@ -28,21 +46,64 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Styling Tombol Media Sosial */
-        .social-button {
+        /* Border Animasi Teks */
+        .animated-border-text {
+            position: relative;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 3px solid transparent;
+            animation: borderAnimation 5s linear infinite;
             transition: all 0.3s ease;
+        }
+
+        .animated-border-text:hover {
+            transform: scale(1.05);
+        }
+
+        /* Border Animasi Gambar */
+        .animated-border-image {
+            position: relative;
+            display: inline-block;
+            padding: 6px;
+            border: 4px solid transparent;
+            animation: borderAnimation 5s linear infinite;
+            transition: all 0.4s ease;
+        }
+
+        .animated-border-image::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientAnimation 10s ease infinite;
+            opacity: 0.7;
+        }
+
+        .animated-border-image:hover {
+            transform: rotate(3deg) scale(1.05);
+        }
+
+        /* Existing styles from previous version */
+        .glass-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .modern-button {
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items-center;
-            justify-content: center;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .social-button::before {
+        .modern-button::before {
             content: '';
             position: absolute;
             top: 0;
@@ -58,50 +119,80 @@
             transition: all 0.5s ease;
         }
 
-        .social-button:hover::before {
+        .modern-button:hover::before {
             left: 100%;
         }
 
-        .social-button:hover {
-            transform: scale(1.1) rotate(360deg);
+        .modern-button:hover {
+            transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            animation: socialHover 1s infinite;
-        }
-
-        .social-button i {
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Instagram gradient */
-        .instagram {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-
-        /* YouTube merah */
-        .youtube {
-            background: #FF0000;
-        }
-
-        /* TikTok hitam */
-        .tiktok {
-            background: #000000;
-        }
-
-        /* Existing styles dari versi sebelumnya tetap sama */
-        .glass-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="container mx-auto max-w-4xl">
         <div class="glass-card rounded-2xl p-8 text-white">
-            <!-- Konten sebelumnya tetap sama -->
-            
+            <div class="flex flex-col md:flex-row items-center mb-8">
+                <div class="animated-border-image mb-4 md:mb-0 md:mr-8">
+                    <img src="/api/placeholder/250/250" alt="Foto Profil" class="w-48 h-48 rounded-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold animated-border-text">Nama Lengkap Anda</h1>
+                    <p class="text-2xl text-white/80 mt-2 animated-border-text">Web Developer & Programmer</p>
+                </div>
+            </div>
+
+            <!-- Sisa konten sama seperti sebelumnya -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Teknologi yang Dikuasai</h2>
+                <div class="grid grid-cols-3 md:grid-cols-5 gap-6">
+                    <div class="text-center animated-border-image">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-20 h-20 mx-auto">
+                        <span class="block mt-2 text-white/80">HTML</span>
+                    </div>
+                    <div class="text-center animated-border-image">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-20 h-20 mx-auto">
+                        <span class="block mt-2 text-white/80">CSS</span>
+                    </div>
+                    <div class="text-center animated-border-image">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-20 h-20 mx-auto">
+                        <span class="block mt-2 text-white/80">JavaScript</span>
+                    </div>
+                    <div class="text-center animated-border-image">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-20 h-20 mx-auto">
+                        <span class="block mt-2 text-white/80">PHP</span>
+                    </div>
+                    <div class="text-center animated-border-image">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-20 h-20 mx-auto">
+                        <span class="block mt-2 text-white/80">C++</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sisa konten tetap sama -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Kontak Saya</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-white/80"></i>
+                            <span>email@example.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-white/80"></i>
+                            <span>+62 XXX-XXXX-XXXX</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 animated-border-text">Hubungi Saya</h2>
+                    <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="modern-button w-full bg-green-500 text-white py-4 px-6 rounded-lg flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-3 text-2xl"></i>
+                        Chat di WhatsApp
+                    </a>
+                </div>
+            </div>
+
             <!-- Bagian Baru: Media Sosial -->
             <div class="mt-8">
                 <h2 class="text-2xl font-semibold border-b-2 border-white/30 pb-2 mb-4 text-center">Temukan Saya di Media Sosial</h2>
