@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linktree Modern</title>
+    <title>Linktree Brian</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Modern Custom CSS */
         :root {
             --primary-color: #20D5EC;
             --secondary-color: #6A5ACD;
@@ -96,10 +95,11 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: slideIn 0.5s ease;
+            animation: slideInFromRight 0.5s ease forwards, slideOutToRight 0.5s ease 3s forwards;
+            opacity: 0;
         }
 
-        @keyframes slideIn {
+        @keyframes slideInFromRight {
             from {
                 opacity: 0;
                 transform: translateX(100%);
@@ -107,6 +107,17 @@
             to {
                 opacity: 1;
                 transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
             }
         }
 
@@ -119,6 +130,17 @@
         .link-button:hover {
             transform: scale(1.05);
             background: rgba(230,230,230,0.9);
+        }
+
+        .verified-icon {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%2320D5EC' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.603 3.625a1.875 1.875 0 0 1 2.645 0l3.878 3.667c.258.243.627.44 1.004.42l5.134-.27a1.872 1.872 0 0 1 1.954 1.634l.396 5.018c.043.462.263.875.595 1.149l3.882 3.099a1.876 1.876 0 0 1 0 2.918l-3.882 3.099a1.63 1.63 0 0 0-.595 1.148l-.396 5.019a1.87 1.87 0 0 1-1.954 1.633l-5.134-.27c-.377-.02-.746.177-1.004.42l-3.878 3.666a1.875 1.875 0 0 1-2.645 0l-3.878-3.666c-.258-.243-.627-.44-1.004-.42l-5.134.27a1.872 1.872 0 0 1-1.954-1.634l-.396-5.018a1.63 1.63 0 0 0-.595-1.149L.47 12.85a1.876 1.876 0 0 1 0-2.918l3.882-3.099c.332-.274.552-.687.595-1.148l.396-5.019a1.87 1.87 0 0 1 1.954-1.633l5.134.27c.377.02.746-.177 1.004-.42l3.878-3.667z'/%3E%3Cpath fill='%23FFFFFF' d='M9.55 15.879a.958.958 0 0 1-.735-.33l-2.385-2.628a.987.987 0 0 1 .045-1.383.958.958 0 0 1 1.362.047l1.711 1.873 4.302-4.785a.958.958 0 0 1 1.363-.086c.407.365.443 1 .08 1.386l-5.033 5.6a.958.958 0 0 1-.71.306z'/%3E%3C/svg%3E");
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5rem;
         }
     </style>
 </head>
@@ -137,15 +159,7 @@
         <div class="mt-16 text-center">
             <h1 class="text-xl font-bold flex items-center justify-center">
                 Nama Pengguna 
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="#20D5EC" 
-                    class="w-6 h-6 ml-2"
-                >
-                    <path fill-rule="evenodd" d="M8.603 3.625a1.875 1.875 0 0 1 2.645 0l3.878 3.667c.258.243.627.44 1.004.42l5.134-.27a1.872 1.872 0 0 1 1.954 1.634l.396 5.018c.043.462.263.875.595 1.149l3.882 3.099a1.876 1.876 0 0 1 0 2.918l-3.882 3.099a1.63 1.63 0 0 0-.595 1.148l-.396 5.019a1.87 1.87 0 0 1-1.954 1.633l-5.134-.27c-.377-.02-.746.177-1.004.42l-3.878 3.666a1.875 1.875 0 0 1-2.645 0l-3.878-3.666c-.258-.243-.627-.44-1.004-.42l-5.134.27a1.872 1.872 0 0 1-1.954-1.634l-.396-5.018a1.63 1.63 0 0 0-.595-1.149L.47 12.85a1.876 1.876 0 0 1 0-2.918l3.882-3.099c.332-.274.552-.687.595-1.148l.396-5.019a1.87 1.87 0 0 1 1.954-1.633l5.134.27c.377.02.746-.177 1.004-.42l3.878-3.667z" clip-rule="evenodd" />
-                    <path fill="#FFFFFF" d="M9.55 15.879a.958.958 0 0 1-.735-.33l-2.385-2.628a.987.987 0 0 1 .045-1.383.958.958 0 0 1 1.362.047l1.711 1.873 4.302-4.785a.958.958 0 0 1 1.363-.086c.407.365.443 1 .08 1.386l-5.033 5.6a.958.958 0 0 1-.71.306z"/>
-                </svg>
+                <div class="verified-icon"></div>
             </h1>
             <p class="text-gray-600 mt-2">Kreator Konten & Musisi</p>
         </div>
@@ -176,7 +190,7 @@
         <!-- Notifikasi Musik (Awalnya Tersembunyi) -->
         <div 
             id="musicNotification" 
-            class="notification fixed top-4 right-4 flex items-center space-x-4 hidden p-4"
+            class="notification fixed top-4 right-4 flex items-center space-x-4 p-4"
         >
             <img 
                 src="https://placekitten.com/80/80" 
