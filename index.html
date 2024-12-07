@@ -2,189 +2,177 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkHub - Hubungkan Semua Koneksi Anda</title>
+    <title>Opgods Store - Top Up Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        :root {
-            --primary-color: #20D5EC;
-            --secondary-color: #6A5ACD;
-            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --text-color: #333;
-            --card-background: rgba(255, 255, 255, 0.9);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        /* Custom CSS Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         body {
-            background: var(--background-gradient);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            perspective: 1000px;
-            padding: 60px 20px 20px;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
 
-        .top-border {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 10;
+        /* Loading Screen Animations */
+        @keyframes pulse-custom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        .top-border .logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #20D5EC, #6A5ACD);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
+        #loading-screen h1 {
+            animation: pulse-custom 1.5s infinite;
         }
 
-        .top-border .logo-text {
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .home-card {
-            background: var(--card-background);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+        /* Game Card Hover Effects */
+        .game-card {
             transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            width: full;
-            max-width: 600px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .home-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            background: linear-gradient(45deg, #6A5ACD, #20D5EC);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-        }
-
-        .action-button {
-            background: rgba(245,245,245,0.8);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .action-button:hover {
+        .game-card:hover {
             transform: scale(1.05);
-            background: rgba(230,230,230,0.9);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
         }
 
-        .creator-card {
-            background: rgba(255,255,255,0.8);
-            border-radius: 20px;
-            padding: 20px;
-            max-width: 600px;
-            width: full;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .game-card img {
+            transition: transform 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.2);
         }
 
-        .creator-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 10px;
-            border: 3px solid var(--primary-color);
+        .game-card:hover img {
+            transform: rotate(5deg);
+        }
+
+        /* Login Modal Enhancements */
+        #login-modal input {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            color: #1e3a8a;
+        }
+
+        #login-modal input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30,58,138,0.2);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .game-card {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Top Border with Logo and Website Name -->
-    <div class="top-border">
-        <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-            </svg>
-        </div>
-        <div class="logo-text">LinkHub</div>
-    </div>
-
-    <div class="home-card">
-        <div class="feature-icon text-4xl">🌐</div>
-        <h1 class="text-3xl font-bold mb-4">Selamat Datang di LinkHub</h1>
-        <p class="text-gray-600 mb-6">Satu platform untuk menghubungkan semua profil dan kreasi Anda.</p>
-        
-        <div class="space-y-4">
-            <a href="#" class="action-button block py-3 rounded-lg font-semibold">
-                🔗 Buat Profil Baru
-            </a>
-            <a href="#" class="action-button block py-3 rounded-lg font-semibold">
-                👤 Masuk
-            </a>
-            <a href="#" class="action-button block py-3 rounded-lg font-semibold">
-                🌟 Fitur Premium
-            </a>
-        </div>
-
-        <div class="mt-6 text-sm text-gray-500">
-            <p>Hubungkan. Bagikan. Terhubung.</p>
+<body class="bg-gradient-to-br from-blue-900 via-blue-800 to-yellow-600 min-h-screen flex items-center justify-center">
+    <div id="loading-screen" class="fixed inset-0 z-50 bg-blue-900 flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-white animate__animated animate__pulse">Memuat Website...</h1>
+            <div class="mt-4 animate__animated animate__spin">🎮</div>
         </div>
     </div>
 
-    <div class="creator-card">
-        <img 
-            src="https://placekitten.com/200/200" 
-            alt="Creator" 
-            class="creator-avatar"
-        >
-        <h2 class="text-xl font-bold flex items-center justify-center">
-            Nama Kreator
-            <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="#20D5EC" 
-                class="w-6 h-6 ml-2"
-            >
-                <path fill-rule="evenodd" d="M8.603 3.625a1.875 1.875 0 0 1 2.645 0l3.878 3.667c.258.243.627.44 1.004.42l5.134-.27a1.872 1.872 0 0 1 1.954 1.634l.396 5.018c.043.462.263.875.595 1.149l3.882 3.099a1.876 1.876 0 0 1 0 2.918l-3.882 3.099a1.63 1.63 0 0 0-.595 1.148l-.396 5.019a1.87 1.87 0 0 1-1.954 1.633l-5.134-.27c-.377-.02-.746.177-1.004.42l-3.878 3.666a1.875 1.875 0 0 1-2.645 0l-3.878-3.666c-.258-.243-.627-.44-1.004-.42l-5.134.27a1.872 1.872 0 0 1-1.954-1.634l-.396-5.018a1.63 1.63 0 0 0-.595-1.149L.47 12.85a1.876 1.876 0 0 1 0-2.918l3.882-3.099c.332-.274.552-.687.595-1.148l.396-5.019a1.87 1.87 0 0 1 1.954-1.633l5.134.27c.377.02.746-.177 1.004-.42l3.878-3.667z" clip-rule="evenodd" />
-                <path fill="#FFFFFF" d="M9.55 15.879a.958.958 0 0 1-.735-.33l-2.385-2.628a.987.987 0 0 1 .045-1.383.958.958 0 0 1 1.362.047l1.711 1.873 4.302-4.785a.958.958 0 0 1 1.363-.086c.407.365.443 1 .08 1.386l-5.033 5.6a.958.958 0 0 1-.71.306z"/>
-            </svg>
-        </h2>
-        <p class="text-gray-600 mt-2">Kreator & Pengembang LinkHub</p>
-        <div class="mt-4 space-x-2">
-            <a href="#" class="inline-block bg-gray-200 px-3 py-2 rounded-lg text-sm">Instagram</a>
-            <a href="#" class="inline-block bg-gray-200 px-3 py-2 rounded-lg text-sm">GitHub</a>
-            <a href="#" class="inline-block bg-gray-200 px-3 py-2 rounded-lg text-sm">LinkedIn</a>
+    <div id="app" class="hidden">
+        <div class="container mx-auto p-8">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-4xl font-bold text-white">Opgods Store</h1>
+                    <button id="login-btn" class="bg-yellow-500 text-blue-900 px-6 py-2 rounded-full hover:bg-yellow-600 transition">Login</button>
+                </div>
+
+                <div id="login-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-40">
+                    <div class="bg-white rounded-2xl p-8 w-96 animate__animated animate__bounceIn">
+                        <h2 class="text-2xl font-bold mb-4">Login</h2>
+                        <input type="text" placeholder="Username" class="w-full p-2 border rounded mb-4">
+                        <input type="password" placeholder="Password" class="w-full p-2 border rounded mb-4">
+                        <button class="w-full bg-blue-900 text-white py-2 rounded">Masuk</button>
+                        <button id="close-login" class="w-full mt-2 text-gray-600">Tutup</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Free Fire" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Free Fire</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Minecraft" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Minecraft</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Mobile Legends" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Mobile Legends</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="PUBG Mobile" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">PUBG Mobile</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Call of Duty" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Call of Duty</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Roblox" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Roblox</h3>
+                    </div>
+                    <div class="game-card bg-white/20 rounded-2xl p-4 text-center hover:scale-105 transition transform">
+                        <img src="/api/placeholder/200/200" alt="Valorant" class="mx-auto mb-4 rounded-lg">
+                        <h3 class="text-white font-bold">Valorant</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+                document.getElementById('app').classList.remove('hidden');
+                document.getElementById('app').classList.add('block');
+            }, 2000);
+
+            const loginBtn = document.getElementById('login-btn');
+            const loginModal = document.getElementById('login-modal');
+            const closeLogin = document.getElementById('close-login');
+
+            loginBtn.addEventListener('click', () => {
+                loginModal.classList.remove('hidden');
+                loginModal.classList.add('flex');
+            });
+
+            closeLogin.addEventListener('click', () => {
+                loginModal.classList.add('hidden');
+                loginModal.classList.remove('flex');
+            });
+        });
+    </script>
 </body>
 </html>
