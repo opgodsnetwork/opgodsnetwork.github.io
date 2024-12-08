@@ -3,206 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opgods Store - Top Up Game</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>Pencarian Modern dengan Tab</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
+        :root {
+            --primary-color: #3498db;
+            --background-color: #f4f7f6;
+            --text-color: #2c3e50;
+            --card-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a, #2563eb, #eab308);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .game-card {
+
+        .container {
+            background-color: var(--card-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 700px;
+            padding: 40px;
             transition: all 0.3s ease;
-            perspective: 1000px;
         }
-        
-        .game-card:hover {
-            transform: scale(1.05) rotateY(10deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
         }
-        
-        .card-inner {
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
+
+        .tab {
+            padding: 10px 15px;
+            margin-right: 5px;
+            background-color: #f1f3f4;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
         }
-        
-        .game-card:hover .card-inner {
-            transform: rotateY(180deg);
+
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
         }
-        
-        .modal-overlay {
+
+        .tab-close {
+            margin-left: 10px;
+            color: #6c757d;
+        }
+
+        .tab.active .tab-close {
+            color: white;
+        }
+
+        .tab-add {
+            background-color: #f1f3f4;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            color: #a0a0a0;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #f1f3f4;
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e7e9ea;
+        }
+
+        #results {
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .result-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .result-item small {
+            color: #6c757d;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .settings-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .settings-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings-content {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .settings-option {
+            margin-bottom: 20px;
+        }
+
+        .settings-option label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .search-engine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .search-engine-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-engine-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .search-engine-item.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .ai-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen flex items-center justify-center">
-    <div id="loading-screen" class="fixed inset-0 z-50 bg-blue-900 flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="text-4xl font-bold text-white animate__animated animate__pulse">Memuat Website...</h1>
-            <div class="mt-4 text-6xl animate__animated animate__spin">🎮</div>
-        </div>
+<body>
+    <div class="settings-icon" id="settingsToggle">
+        <i class="fas fa-cog"></i>
     </div>
 
-    <div id="main-content" class="hidden container mx-auto p-6">
-        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
-            <div class="flex justify-between items-center mb-10">
-                <h1 class="text-5xl font-bold text-white tracking-tight">Opgods Store</h1>
-                <button id="loginBtn" class="bg-yellow-500 text-blue-900 px-6 py-3 rounded-full hover:bg-yellow-600 transition-all flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                    </svg>
-                    <span>Login</span>
-                </button>
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-content">
+            <h2>Pengaturan Pencarian</h2>
+            
+            <div class="settings-option">
+                <label>Pilih Mesin Pencari</label>
+                <div class="search-engine-grid" id="searchEngineGrid">
+                    <div class="search-engine-item" data-engine="google">
+                        <img src="https://www.google.com/favicon.ico" alt="Google">
+                        <span>Google</span>
+                    </div>
+                    <div class="search-engine-item" data-engine="bing">
+                        <img src="https://www.bing.com/favicon.ico" alt="Bing">
+                        <span>Bing</span>
+                    </div>
+                    <div class="search-engine-item selected" data-engine="duckduckgo">
+                        <img src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo">
+                        <span>DuckDuckGo</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="free fire.webp" alt="Free Fire" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Free Fire</h3>
-                        </div>
-                    </div>
+            <div class="settings-option">
+                <label>Integrasi AI</label>
+                <div class="ai-option">
+                    <span>Aktifkan AI Asisten</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="aiToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
                 </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="minecraft.webp" alt="Minecraft" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Minecraft</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="mlbb.webp" alt="Mobile Legends" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Mobile Legends</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="pubgm.webp" alt="PUBG Mobile" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">PUBG Mobile</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="codm.webp" alt="Call of Duty" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Call of Duty</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="roblox.webp" alt="Roblox" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Roblox</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card perspective">
-                    <div class="card-inner relative">
-                        <div class="absolute inset-0 bg-white/20 rounded-2xl transform rotateY-180 backface-hidden"></div>
-                        <div class="relative z-10 bg-white/20 rounded-2xl p-4 text-center">
-                            <img src="valorant.webp" alt="Valorant" class="mx-auto mb-4 rounded-lg w-full aspect-square object-cover">
-                            <h3 class="text-white font-bold">Valorant</h3>
-                        </div>
-                    </div>
-                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="saveSettings" class="btn btn-primary">Simpan Pengaturan</button>
+                <button id="cancelSettings" class="btn btn-secondary">Batal</button>
             </div>
         </div>
     </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="hidden fixed inset-0 z-50 modal-overlay items-center justify-center">
-        <div class="bg-white rounded-2xl p-8 w-96 animate__animated animate__bounceIn shadow-2xl">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-blue-900">Login</h2>
-                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <form id="loginForm">
-                <input type="text" placeholder="Username" required class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 transition">
-                <input type="password" placeholder="Password" required class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 transition">
-                <button type="submit" class="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition">
-                    Masuk
-                </button>
-            </form>
+    
+    <div class="container">
+        <div class="tab-container">
+            <div class="tab active" data-tab="1">Tab 1 <i class="fas fa-times tab-close"></i></div>
+            <div class="tab-add" id="addTabBtn"><i class="fas fa-plus"></i></div>
         </div>
+
+        <div class="search-header">
+            <h1>Cari Apa Pun</h1>
+            <p>Temukan informasi yang Anda butuhkan</p>
+        </div>
+        
+        <div class="search-wrapper">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Masukkan kata kunci pencarian..."
+            >
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="button-group">
+            <button id="searchButton" class="btn btn-primary">
+                <i class="fas fa-search"></i> Cari
+            </button>
+            <button id="luckyButton" class="btn btn-secondary">
+                <i class="fas fa-dice"></i> Saya Lagi Beruntung
+            </button>
+        </div>
+
+        <div id="results"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Loading Screen
-            const loadingScreen = document.getElementById('loading-screen');
-            const mainContent = document.getElementById('main-content');
+        const searchData = [
+            { title: "Tutorial Pemrograman Python", url: "https://example.com/python", description: "Panduan komprehensif untuk pemula dan tingkat menengah" },
+            { title: "Desain Website Modern", url: "https://example.com/desain", description: "Teknik dan strategi desain web terkini" },
+            { title: "Keamanan Jaringan Terbaru", url: "https://example.com/keamanan", description: "Perlindungan dan praktik terbaik keamanan digital" },
+            { title: "Kecerdasan Buatan", url: "https://example.com/ai", description: "Perkembangan terbaru dalam teknologi AI" }
+        ];
 
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                mainContent.classList.remove('hidden');
-                mainContent.classList.add('block');
-            }, 2000);
+        const tabContainer = document.querySelector('.tab-container');
+        const addTabBtn = document.getElementById('addTabBtn');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const luckyButton = document.getElementById('luckyButton');
+        const resultsDiv = document.getElementById('results');
 
-            // Login Modal
-            const loginBtn = document.getElementById('loginBtn');
-            const loginModal = document.getElementById('loginModal');
-            const closeModalBtn = document.getElementById('closeModal');
-            const loginForm = document.getElementById('loginForm');
+        let tabCounter = 1;
 
-            loginBtn.addEventListener('click', () => {
-                loginModal.classList.remove('hidden');
-                loginModal.classList.add('flex');
+        function performSearch() {
+            const query = searchInput.value.toLowerCase();
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.description.toLowerCase().includes(query)
+            );
+
+            displayResults(filteredResults);
+        }
+
+        function displayResults(results) {
+            resultsDiv.innerHTML = '';
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>Tidak ada hasil yang ditemukan.</p>';
+                return;
+            }
+
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `
+                    <h3><a href="${result.url}" target="_blank">${result.title}</a></h3>
+                    <p>${result.description}</p>
+                    <small>${result.url}</small>
+                `;
+                resultsDiv.appendChild(resultItem);
+            });
+        }
+
+        function feelingLucky() {
+            const randomResult = searchData[Math.floor(Math.random() * searchData.length)];
+            window.open(randomResult.url, '_blank');
+        }
+
+        function createNewTab() {
+            tabCounter++;
+            const newTab = document.createElement('div');
+            newTab.classList.add('tab');
+            newTab.setAttribute('data-tab', tabCounter);
+            newTab.innerHTML = `Tab ${tabCounter} <i class="fas fa-times tab-close"></i>`;
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            
+            // Insert new tab before the add tab button
+            tabContainer.insertBefore(newTab, addTabBtn);
+            
+            // Set new tab as active
+            newTab.classList.add('active');
+
+            // Clear search input and results
+            searchInput.value = '';
+            resultsDiv.innerHTML = '';
+
+            // Add close tab functionality
+            const closeIcon = newTab.querySelector('.tab-close');
+            closeIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeTab(newTab);
             });
 
-            closeModalBtn.addEventListener('click', () => {
-                loginModal.classList.add('hidden');
-                loginModal.classList.remove('flex');
+            // Add tab switch functionality
+            newTab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                newTab.classList.add('active');
             });
+        }
 
-            // Close modal when clicking outside
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    loginModal.classList.add('hidden');
-                    loginModal.classList.remove('flex');
+        function closeTab(tabElement) {
+            // Prevent closing the last tab
+            if (tabContainer.querySelectorAll('.tab').length > 1) {
+                // If closing the active tab, activate the previous tab
+                if (tabElement.classList.contains('active')) {
+                    const previousTab = tabElement.previousElementSibling || 
+                                        tabElement.nextElementSibling;
+                    previousTab.classList.add('active');
                 }
-            });
+                tabElement.remove();
+            }
+        }
 
-            // Login Form Submission
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // TODO: Implement actual login logic
-                alert('Login functionality to be implemented');
-                loginModal.classList.add('hidden');
-                loginModal.classList.remove('flex');
-            });
+        // Event Listeners
+        searchButton.addEventListener('click', performSearch);
+        luckyButton.addEventListener('click', feelingLucky);
+        addTabBtn.addEventListener('click', createNewTab);
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Initial tab close functionality
+        document.querySelector('.tab-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeTab(e.target.closest('.tab'));
+        });
+
+         // Search data remains the same as in previous version
+        const searchData = [
+            { title: "Tutorial Pemrograman Python", url: "https://example.com/python", description: "Panduan komprehensif untuk pemula dan tingkat menengah" },
+            { title: "Desain Website Modern", url: "https://example.com/desain", description: "Teknik dan strategi desain web terkini" },
+            { title: "Keamanan Jaringan Terbaru", url: "https://example.com/keamanan", description: "Perlindungan dan praktik terbaik keamanan digital" },
+            { title: "Kecerdasan Buatan", url: "https://example.com/ai", description: "Perkembangan terbaru dalam teknologi AI" }
+        ];
+
+        // Settings Management
+        const settingsToggle = document.getElementById('settingsToggle');
+        const settingsModal = document.getElementById('settingsModal');
+        const saveSettingsBtn = document.getElementById('saveSettings');
+        const cancelSettingsBtn = document.getElementById('cancelSettings');
+        const searchEngineGrid = document.getElementById('searchEngineGrid');
+        const aiToggle = document.getElementById('aiToggle');
+
+        // Settings Toggle
+        settingsToggle.addEventListener('click', () => {
+            settingsModal.style.display = 'flex';
+        });
+
+        // Close Settings Modal
+        cancelSettingsBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+
+        // Search Engine Selection
+        searchEngineGrid.addEventListener('click', (e) => {
+            const selectedEngine = e.target.closest('.search-engine-item');
+            if (selectedEngine) {
+                document.querySelectorAll('.search-engine-item').forEach(engine => {
+                    engine.classList.remove('selected');
+                });
+                selectedEngine.classList.add('selected');
+            }
+        });
+
+        // Save Settings
+        saveSettingsBtn.addEventListener('click', () => {
+            const selectedEngine = document.querySelector('.search-engine-item.selected').dataset.engine;
+            const aiEnabled = aiToggle.checked;
+
+            // Save settings to local storage or use them as needed
+            localStorage.setItem('selectedSearchEngine', selectedEngine);
+            localStorage.setItem('aiAssistantEnabled', aiEnabled);
+
+            settingsModal.style.display = 'none';
+            
+            // Optional: Provide feedback or perform actions based on settings
+            console.log('Mesin Pencari:', selectedEngine);
+            console.log('AI Asisten:', aiEnabled ? 'Aktif' : 'Tidak Aktif');
+        });
+
+        // Restore previous settings on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedEngine = localStorage.getItem('selectedSearchEngine') || 'duckduckgo';
+            const savedAiSetting = localStorage.getItem('aiAssistantEnabled') === 'true';
+
+            document.querySelector(`.search-engine-item[data-engine="${savedEngine}"]`).click();
+            aiToggle.checked = savedAiSetting;
         });
     </script>
 </body>
