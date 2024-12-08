@@ -24,6 +24,11 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen flex items-center justify-center">
@@ -58,7 +63,8 @@
                             <input 
                                 type="radio" 
                                 name="denomination" 
-                                value="50" 
+                                value="70" 
+                                data-price="15000" 
                                 class="hidden peer" 
                                 required
                             >
@@ -71,7 +77,8 @@
                             <input 
                                 type="radio" 
                                 name="denomination" 
-                                value="100" 
+                                value="140" 
+                                data-price="30000" 
                                 class="hidden peer" 
                             >
                             <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition">
@@ -83,7 +90,8 @@
                             <input 
                                 type="radio" 
                                 name="denomination" 
-                                value="200" 
+                                value="355" 
+                                data-price="50000" 
                                 class="hidden peer" 
                             >
                             <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition">
@@ -101,7 +109,7 @@
                             <input 
                                 type="radio" 
                                 name="payment" 
-                                value="dana" 
+                                value="Dana" 
                                 class="hidden peer" 
                                 required
                             >
@@ -114,7 +122,7 @@
                             <input 
                                 type="radio" 
                                 name="payment" 
-                                value="gopay" 
+                                value="Gopay" 
                                 class="hidden peer" 
                             >
                             <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition flex items-center justify-center space-x-2">
@@ -135,13 +143,71 @@
         </div>
     </div>
 
+    <!-- Order Confirmation Modal -->
+    <div id="orderConfirmationModal" class="hidden fixed inset-0 z-50 modal-overlay items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-8 w-96 max-w-full animate__animated animate__bounceIn shadow-2xl border-4 border-blue-900">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-blue-900 mb-4">Detail Pesanan</h2>
+                
+                <div class="mb-6 border-4 border-blue-500 rounded-lg p-4">
+                    <img id="diamondImage" src="diamond-free-fire.png" alt="Diamond" class="mx-auto h-40 w-40 object-contain">
+                </div>
+
+                <div class="space-y-4 text-left">
+                    <div>
+                        <p class="font-semibold text-blue-900">ID Player:</p>
+                        <p id="modalPlayerId" class="text-gray-700"></p>
+                    </div>
+
+                    <div>
+                        <p class="font-semibold text-blue-900">Bayar Dengan:</p>
+                        <p id="modalPaymentMethod" class="text-gray-700"></p>
+                    </div>
+
+                    <div>
+                        <p class="font-semibold text-blue-900">Diamond:</p>
+                        <p id="modalDiamondAmount" class="text-gray-700"></p>
+                    </div>
+
+                    <div>
+                        <p class="font-semibold text-blue-900">Harga:</p>
+                        <p id="modalPrice" class="text-gray-700"></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex space-x-4">
+                    <button 
+                        id="cancelOrderBtn" 
+                        class="flex-1 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition"
+                    >
+                        Batal
+                    </button>
+                    <button 
+                        id="confirmOrderBtn" 
+                        class="flex-1 bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition"
+                    >
+                        Konfirmasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const backBtn = document.getElementById('backBtn');
             const topUpForm = document.getElementById('topUpForm');
+            const orderConfirmationModal = document.getElementById('orderConfirmationModal');
+            const cancelOrderBtn = document.getElementById('cancelOrderBtn');
+            const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+
+            // Modal elements
+            const modalPlayerId = document.getElementById('modalPlayerId');
+            const modalPaymentMethod = document.getElementById('modalPaymentMethod');
+            const modalDiamondAmount = document.getElementById('modalDiamondAmount');
+            const modalPrice = document.getElementById('modalPrice');
 
             backBtn.addEventListener('click', () => {
-                // Redirect to game selection page
                 window.location.href = 'index.html';
             });
 
@@ -149,17 +215,34 @@
                 e.preventDefault();
                 
                 const playerId = document.getElementById('playerId').value;
-                const denomination = document.querySelector('input[name="denomination"]:checked').value;
+                const denominationRadio = document.querySelector('input[name="denomination"]:checked');
+                const diamondAmount = denominationRadio.value;
+                const price = denominationRadio.dataset.price;
                 const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
 
-                // Here you would typically send this data to a backend for processing
-                alert(`Top Up Details:
-Player ID: ${playerId}
-Diamond: ${denomination}
-Payment Method: ${paymentMethod}`);
+                // Populate modal with order details
+                modalPlayerId.textContent = playerId;
+                modalPaymentMethod.textContent = paymentMethod;
+                modalDiamondAmount.textContent = `${diamondAmount} Diamond`;
+                modalPrice.textContent = `Rp ${price}`;
 
-                // Redirect to payment confirmation or processing page
-                // window.location.href = 'payment-confirmation.html';
+                // Show modal
+                orderConfirmationModal.classList.remove('hidden');
+                orderConfirmationModal.classList.add('flex');
+            });
+
+            // Close modal when clicking cancel
+            cancelOrderBtn.addEventListener('click', () => {
+                orderConfirmationModal.classList.add('hidden');
+                orderConfirmationModal.classList.remove('flex');
+            });
+
+            // Confirm order (placeholder)
+            confirmOrderBtn.addEventListener('click', () => {
+                alert('Pesanan Dikonfirmasi! Proses pembayaran akan segera dimulai.');
+                orderConfirmationModal.classList.add('hidden');
+                orderConfirmationModal.classList.remove('flex');
+                // Here you would typically integrate with payment gateway
             });
         });
     </script>
