@@ -406,7 +406,6 @@
         <div id="results"></div>
     </div>
 
-    <!-- Search Animation Loader -->
     <div class="search-animation" id="searchAnimation">
         <div class="search-loader"></div>
     </div>
@@ -430,12 +429,23 @@
 
         function performSearch() {
             const query = searchInput.value.toLowerCase();
-            const filteredResults = searchData.filter(item => 
-                item.title.toLowerCase().includes(query) || 
-                item.description.toLowerCase().includes(query)
-            );
+            const searchAnimation = document.getElementById('searchAnimation');
 
-            displayResults(filteredResults);
+            // Show search animation
+            searchAnimation.style.display = 'flex';
+
+            // Simulate search delay
+            setTimeout(() => {
+                const filteredResults = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.description.toLowerCase().includes(query)
+                );
+
+                displayResults(filteredResults);
+
+                // Hide search animation
+                searchAnimation.style.display = 'none';
+            }, 1500); // 1.5 seconds delay to show animation
         }
 
         function displayResults(results) {
@@ -449,17 +459,28 @@
                 const resultItem = document.createElement('div');
                 resultItem.classList.add('result-item');
                 resultItem.innerHTML = `
-                    <h3><a href="${result.url}" target="_blank">${result.title}</a></h3>
-                    <p>${result.description}</p>
-                    <small>${result.url}</small>
+                    <h3><a href="<span class="math-inline">\{result\.url\}" target\="\_blank"\></span>{result.title}</a></h3>
+                    <p><span class="math-inline">\{result\.description\}</p\>
+<small\></span>{result.url}</small>
                 `;
                 resultsDiv.appendChild(resultItem);
             });
         }
 
         function feelingLucky() {
-            const randomResult = searchData[Math.floor(Math.random() * searchData.length)];
-            window.open(randomResult.url, '_blank');
+            const searchAnimation = document.getElementById('searchAnimation');
+
+            // Show search animation
+            searchAnimation.style.display = 'flex';
+
+            // Simulate search delay
+            setTimeout(() => {
+                const randomResult = searchData[Math.floor(Math.random() * searchData.length)];
+                window.open(randomResult.url, '_blank');
+
+                // Hide search animation
+                searchAnimation.style.display = 'none';
+            }, 1500); // 1.5 seconds delay to show animation
         }
 
         function createNewTab() {
@@ -481,189 +502,7 @@
             // Clear search input and results
             searchInput.value = '';
             resultsDiv.innerHTML = '';
-
-            // Add close tab functionality
-            const closeIcon = newTab.querySelector('.tab-close');
-            closeIcon.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closeTab(newTab);
-            });
-
-            // Add tab switch functionality
-            newTab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-                newTab.classList.add('active');
-            });
-        }
-
-        function closeTab(tabElement) {
-            // Prevent closing the last tab
-            if (tabContainer.querySelectorAll('.tab').length > 1) {
-                // If closing the active tab, activate the previous tab
-                if (tabElement.classList.contains('active')) {
-                    const previousTab = tabElement.previousElementSibling || 
-                                        tabElement.nextElementSibling;
-                    previousTab.classList.add('active');
-                }
-                tabElement.remove();
-            }
-        }
-
-        // Event Listeners
-        searchButton.addEventListener('click', performSearch);
-        luckyButton.addEventListener('click', feelingLucky);
-        addTabBtn.addEventListener('click', createNewTab);
-
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-
-        // Initial tab close functionality
-        document.querySelector('.tab-close').addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeTab(e.target.closest('.tab'));
-        });
-
-        // Settings Management
-        const settingsToggle = document.getElementById('settingsToggle');
-        const settingsModal = document.getElementById('settingsModal');
-        const saveSettingsBtn = document.getElementById('saveSettings');
-        const cancelSettingsBtn = document.getElementById('cancelSettings');
-        const searchEngineGrid = document.getElementById('searchEngineGrid');
-        const aiToggle = document.getElementById('aiToggle');
-
-        // Settings Toggle
-        settingsToggle.addEventListener('click', () => {
-            settingsModal.style.display = 'flex';
-        });
-
-        // Close Settings Modal
-        cancelSettingsBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
-        });
-
-        // Search Engine Selection
-        searchEngineGrid.addEventListener('click', (e) => {
-            const selectedEngine = e.target.closest('.search-engine-item');
-            if (selectedEngine) {
-                document.querySelectorAll('.search-engine-item').forEach(engine => {
-                    engine.classList.remove('selected');
-                });
-                selectedEngine.classList.add('selected');
-            }
-        });
-
-        // Save Settings
-        saveSettingsBtn.addEventListener('click', () => {
-            const selectedEngine = document.querySelector('.search-engine-item.selected').dataset.engine;
-            const aiEnabled = aiToggle.checked;
-
-            // Save settings to local storage or use them as needed
-            localStorage.setItem('selectedSearchEngine', selectedEngine);
-            localStorage.setItem('aiAssistantEnabled', aiEnabled);
-
-            settingsModal.style.display = 'none';
-            
-            // Optional: Provide feedback or perform actions based on settings
-            console.log('Mesin Pencari:', selectedEngine);
-            console.log('AI Asisten:', aiEnabled ? 'Aktif' : 'Tidak Aktif');
-        });
-
-        // Restore previous settings on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedEngine = localStorage.getItem('selectedSearchEngine') || 'duckduckgo';
-            const savedAiSetting = localStorage.getItem('aiAssistantEnabled') === 'true';
-
-            document.querySelector(`.search-engine-item[data-engine="${savedEngine}"]`).click();
-            aiToggle.checked = savedAiSetting;
-        });
-
-        // Enhanced Search Function with Animation
-        function performSearch() {
-            const query = searchInput.value.toLowerCase();
-            const searchAnimation = document.getElementById('searchAnimation');
-            
-            // Show search animation
-            searchAnimation.style.display = 'flex';
-
-            // Simulate search delay
-            setTimeout(() => {
-                const filteredResults = searchData.filter(item => 
-                    item.title.toLowerCase().includes(query) || 
-                    item.description.toLowerCase().includes(query)
-                );
-
-                displayResults(filteredResults);
-
-                // Hide search animation
-                searchAnimation.style.display = 'none';
-            }, 1500); // 1.5 seconds delay to show animation
-        }
-
-        // Enhanced Feeling Lucky Function with Animation
-        function feelingLucky() {
-            const searchAnimation = document.getElementById('searchAnimation');
-            
-            // Show search animation
-            searchAnimation.style.display = 'flex';
-
-            // Simulate search delay
-            setTimeout(() => {
-                const randomResult = searchData[Math.floor(Math.random() * searchData.length)];
-                window.open(randomResult.url, '_blank');
-
-                // Hide search animation
-                searchAnimation.style.display = 'none';
-            }, 1500); // 1.5 seconds delay to show animation
-        }
-
-        // AI Provider Selection
-        const aiProviderGrid = document.getElementById('aiProviderGrid');
-        aiProviderGrid.addEventListener('click', (e) => {
-            const selectedProvider = e.target.closest('.ai-provider-btn');
-            if (selectedProvider) {
-                document.querySelectorAll('.ai-provider-btn').forEach(provider => {
-                    provider.classList.remove('selected');
-                });
-                selectedProvider.classList.add('selected');
-            }
-        });
-
-        // Updated Save Settings to include AI Provider
-        saveSettingsBtn.addEventListener('click', () => {
-            const selectedEngine = document.querySelector('.search-engine-item.selected').dataset.engine;
-            const selectedAiProvider = document.querySelector('.ai-provider-btn.selected')?.dataset.provider || null;
-            const aiEnabled = aiToggle.checked;
-
-            // Save settings
-            localStorage.setItem('selectedSearchEngine', selectedEngine);
-            localStorage.setItem('selectedAiProvider', selectedAiProvider);
-            localStorage.setItem('aiAssistantEnabled', aiEnabled);
-
-            settingsModal.style.display = 'none';
-            
-            console.log('Mesin Pencari:', selectedEngine);
-            console.log('AI Provider:', selectedAiProvider);
-            console.log('AI Asisten:', aiEnabled ? 'Aktif' : 'Tidak Aktif');
-        });
-
-        // Restore previous settings on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedEngine = localStorage.getItem('selectedSearchEngine') || 'duckduckgo';
-            const savedAiProvider = localStorage.getItem('selectedAiProvider');
-            const savedAiSetting = localStorage.getItem('aiAssistantEnabled') === 'true';
-
-            document.querySelector(`.search-engine-item[data-engine="${savedEngine}"]`).click();
-            
-            if (savedAiProvider) {
-                const providerBtn = document.querySelector(`.ai-provider-btn[data-provider="${savedAiProvider}"]`);
-                if (providerBtn) providerBtn.click();
-            }
-
-            aiToggle.checked = savedAiSetting;
-        });
-    </script>
+        ]};
+</script>
 </body>
 </html>
