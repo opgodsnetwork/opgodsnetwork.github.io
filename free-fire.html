@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opgods Store - Top Up Free Fire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb, #eab308);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-6">
+        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-4 border-white/30">
+            <div class="flex items-center mb-10">
+                <button id="backBtn" class="mr-4 text-white hover:text-yellow-500 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-lienjoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <h1 class="text-4xl font-bold text-white tracking-tight">Top Up Free Fire</h1>
+            </div>
+
+            <form id="topUpForm" class="space-y-6">
+                <div>
+                    <label class="block text-white mb-2">Masukkan Player ID</label>
+                    <input 
+                        type="text" 
+                        id="playerId" 
+                        placeholder="Contoh: 1234567890" 
+                        required 
+                        class="w-full p-3 bg-white/20 text-white placeholder-white/70 rounded-lg border-2 border-white/50 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 transition"
+                    >
+                    <p class="text-sm text-white/70 mt-2">Temukan Player ID Anda di dalam game</p>
+                </div>
+
+                <div>
+                    <label class="block text-white mb-2">Pilih Nominal Top Up</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="relative">
+                            <input 
+                                type="radio" 
+                                name="denomination" 
+                                value="50" 
+                                class="hidden peer" 
+                                required
+                            >
+                            <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition">
+                                70 Diamond
+                                <p class="text-sm text-white/70">Rp 15.000</p>
+                            </div>
+                        </label>
+                        <label class="relative">
+                            <input 
+                                type="radio" 
+                                name="denomination" 
+                                value="100" 
+                                class="hidden peer" 
+                            >
+                            <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition">
+                                140 Diamond
+                                <p class="text-sm text-white/70">Rp 30.000</p>
+                            </div>
+                        </label>
+                        <label class="relative">
+                            <input 
+                                type="radio" 
+                                name="denomination" 
+                                value="200" 
+                                class="hidden peer" 
+                            >
+                            <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition">
+                                355 Diamond
+                                <p class="text-sm text-white/70">Rp 50.000</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-white mb-2">Pilih Metode Pembayaran</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="relative">
+                            <input 
+                                type="radio" 
+                                name="payment" 
+                                value="dana" 
+                                class="hidden peer" 
+                                required
+                            >
+                            <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition flex items-center justify-center space-x-2">
+                                <img src="dana-logo.png" alt="Dana" class="h-8 w-auto">
+                                <span>Dana</span>
+                            </div>
+                        </label>
+                        <label class="relative">
+                            <input 
+                                type="radio" 
+                                name="payment" 
+                                value="gopay" 
+                                class="hidden peer" 
+                            >
+                            <div class="p-3 bg-white/20 text-white text-center rounded-lg cursor-pointer border-2 border-transparent peer-checked:border-yellow-500 peer-checked:bg-white/30 transition flex items-center justify-center space-x-2">
+                                <img src="gopay-logo.png" alt="Gopay" class="h-8 w-auto">
+                                <span>Gopay</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button 
+                    type="submit" 
+                    class="w-full bg-yellow-500 text-blue-900 py-4 rounded-lg hover:bg-yellow-600 transition text-lg font-bold border-2 border-blue-900"
+                >
+                    Lanjutkan Pembayaran
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backBtn = document.getElementById('backBtn');
+            const topUpForm = document.getElementById('topUpForm');
+
+            backBtn.addEventListener('click', () => {
+                // Redirect to game selection page
+                window.location.href = 'index.html';
+            });
+
+            topUpForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const playerId = document.getElementById('playerId').value;
+                const denomination = document.querySelector('input[name="denomination"]:checked').value;
+                const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+                // Here you would typically send this data to a backend for processing
+                alert(`Top Up Details:
+Player ID: ${playerId}
+Diamond: ${denomination}
+Payment Method: ${paymentMethod}`);
+
+                // Redirect to payment confirmation or processing page
+                // window.location.href = 'payment-confirmation.html';
+            });
+        });
+    </script>
+</body>
+</html>
