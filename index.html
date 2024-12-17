@@ -2,111 +2,169 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Mesin Pencari Sederhana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile Graphics Modifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            font-family: 'Arial', sans-serif;
         }
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        #searchInput {
-            width: 500px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 2px solid #4285f4;
-            border-radius: 24px;
-            font-size: 16px;
-        }
-        #searchButton {
-            padding: 10px 20px;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        #searchResults {
-            margin-top: 20px;
-            text-align: left;
-        }
-        .search-result {
-            margin-bottom: 15px;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.125);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Mesin Pencari</h1>
-        <input type="text" id="searchInput" placeholder="Masukkan kata kunci pencarian...">
-        <select id="searchType">
-            <option value="web">Pencarian Web</option>
-            <option value="makanan">Pencarian Makanan</option>
-            <option value="berita">Berita</option>
-        </select>
-        <button id="searchButton">Cari</button>
-        <div id="searchResults"></div>
+<body class="min-h-screen flex items-center justify-center text-white p-4">
+    <div class="container mx-auto max-w-md">
+        <div class="bg-gray-900 rounded-2xl shadow-2xl p-6 glass-morphism">
+            <h1 class="text-3xl font-bold text-center mb-6 text-red-500">PUBG Mobile Graphics Mod</h1>
+            
+            <div id="graphicsOptions" class="space-y-4">
+                <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-semibold">60 FPS + Extreme</h2>
+                        <p class="text-sm text-gray-400">Grafik Tingkat Extreme</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="fps60Switch">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-semibold">120 FPS + Ultra Extreme</h2>
+                        <p class="text-sm text-gray-400">Grafik Ultra Tingkat Extreme</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="fps120Switch">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <button id="resetButton" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg mt-4 transition duration-300">
+                    Reset Grafik
+                </button>
+            </div>
+
+            <!-- Modal -->
+            <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                <div class="bg-gray-900 p-6 rounded-2xl max-w-md w-full mx-4 text-center glass-morphism">
+                    <h2 id="modalTitle" class="text-2xl font-bold mb-4 text-green-400"></h2>
+                    <p id="modalDescription" class="mb-6 text-gray-300"></p>
+                    <button id="openPubgButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg">
+                        Buka PUBG Mobile
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <style>
+        /* Switch CSS */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
     <script>
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const searchType = document.getElementById('searchType');
-        const searchResults = document.getElementById('searchResults');
+    document.addEventListener('DOMContentLoaded', function() {
+        const fps60Switch = document.getElementById('fps60Switch');
+        const fps120Switch = document.getElementById('fps120Switch');
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const openPubgButton = document.getElementById('openPubgButton');
+        const resetButton = document.getElementById('resetButton');
 
-        const mockData = {
-            makanan: {
-                'nasi goreng': ['Resep Nasi Goreng Spesial', 'Top 10 Nasi Goreng Ternikmat di Jakarta'],
-                'sate': ['Sate Ayam Madura Terenak', 'Sejarah Sate di Indonesia'],
-                'rendang': ['Cara Membuat Rendang Asli Padang', 'Rendang Masakan Terbaik Dunia']
-            },
-            berita: {
-                'teknologi': ['Inovasi Terbaru Teknologi 2024', 'Perkembangan AI di Indonesia'],
-                'olahraga': ['Prestasi Atlet Indonesia', 'Jadwal Pertandingan Terbaru'],
-                'ekonomi': ['Pertumbuhan Ekonomi Nasional', 'Investasi di Masa Depan']
-            },
-            web: {
-                'tutorial': ['Tutorial Pemrograman', 'Belajar Coding Online'],
-                'kesehatan': ['Informasi Kesehatan Terkini', 'Tips Hidup Sehat'],
-                'travel': ['Destinasi Wisata Terbaik', 'Panduan Traveling Murah']
-            }
-        };
-
-        searchButton.addEventListener('click', () => {
-            const query = searchInput.value.toLowerCase();
-            const type = searchType.value;
-
-            if (query && mockData[type]) {
-                const results = Object.keys(mockData[type])
-                    .filter(key => key.includes(query))
-                    .map(key => mockData[type][key]);
-
-                displayResults(results.flat());
-            } else {
-                searchResults.innerHTML = '<p>Tidak ada hasil yang ditemukan.</p>';
+        // Prevent multiple switches being on simultaneously
+        fps60Switch.addEventListener('change', function() {
+            if (this.checked) {
+                fps120Switch.checked = false;
+                showModal('60 FPS + Extreme', 
+                    'File grafik extreme 60 FPS berhasil dipasang ke dalam PUBG Mobile');
             }
         });
 
-        function displayResults(results) {
-            searchResults.innerHTML = results.length > 0 
-                ? results.map(result => 
-                    `<div class="search-result">${result}</div>`
-                ).join('')
-                : '<p>Tidak ada hasil yang ditemukan.</p>';
+        fps120Switch.addEventListener('change', function() {
+            if (this.checked) {
+                fps60Switch.checked = false;
+                showModal('120 FPS + Ultra Extreme', 
+                    'File grafik ultra extreme 120 FPS berhasil dipasang ke dalam PUBG Mobile');
+            }
+        });
+
+        resetButton.addEventListener('click', function() {
+            fps60Switch.checked = false;
+            fps120Switch.checked = false;
+            alert('Semua modifikasi grafik telah direset ke pengaturan default PUBG Mobile');
+        });
+
+        function showModal(title, description) {
+            modalTitle.textContent = 'Berhasil!';
+            modalDescription.textContent = `${title} - ${description}`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
+
+        openPubgButton.addEventListener('click', function() {
+            // Simulasi buka PUBG Mobile
+            alert('Membuka PUBG Mobile dengan konfigurasi grafik yang dipilih...');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        });
+
+        // Close modal by clicking outside
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        });
+    });
     </script>
 </body>
 </html>
