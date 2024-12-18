@@ -1,170 +1,138 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUBG Mobile Graphics Modifier</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Mobile Camera App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            font-family: 'Arial', sans-serif;
-        }
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.125);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black;
+            color: white;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center text-white p-4">
-    <div class="container mx-auto max-w-md">
-        <div class="bg-gray-900 rounded-2xl shadow-2xl p-6 glass-morphism">
-            <h1 class="text-3xl font-bold text-center mb-6 text-red-500">PUBG Mobile Graphics Mod</h1>
-            
-            <div id="graphicsOptions" class="space-y-4">
-                <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
-                    <div>
-                        <h2 class="text-xl font-semibold">60 FPS + Extreme</h2>
-                        <p class="text-sm text-gray-400">Grafik Tingkat Extreme</p>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="fps60Switch">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+<body>
+    <div id="app" class="min-h-screen">
+        <div id="start-screen" class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-blue-900 to-black">
+            <h1 class="text-4xl font-bold mb-8 text-blue-400">NeoCapture</h1>
+            <button id="start-camera-btn" class="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                    <circle cx="12" cy="13" r="3"></circle>
+                </svg>
+                <span>Buka Kamera</span>
+            </button>
+        </div>
 
-                <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
-                    <div>
-                        <h2 class="text-xl font-semibold">120 FPS + Ultra Extreme</h2>
-                        <p class="text-sm text-gray-400">Grafik Ultra Tingkat Extreme</p>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="fps120Switch">
-                        <span class="slider round"></span>
-                    </label>
+        <div id="camera-view" class="hidden">
+            <div class="absolute top-4 right-4 flex space-x-4">
+                <div id="battery-indicator" class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect>
+                        <line x1="22" y1="10" x2="22" y2="14"></line>
+                    </svg>
+                    <span id="battery-level">85%</span>
                 </div>
-
-                <button id="resetButton" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg mt-4 transition duration-300">
-                    Reset Grafik
-                </button>
+                <div id="network-indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h4l3 3 4-6h6"></path>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Modal -->
-            <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-                <div class="bg-gray-900 p-6 rounded-2xl max-w-md w-full mx-4 text-center glass-morphism">
-                    <h2 id="modalTitle" class="text-2xl font-bold mb-4 text-green-400"></h2>
-                    <p id="modalDescription" class="mb-6 text-gray-300"></p>
-                    <button id="openPubgButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg">
-                        Buka PUBG Mobile
+            <video id="camera-video" class="w-full h-full object-cover"></video>
+
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50">
+                <div class="flex justify-between items-center">
+                    <button id="switch-camera" class="bg-white bg-opacity-20 p-2 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 10L19 7l-3-3"></path>
+                            <path d="M19 7h-8a5 5 0 0 0-5 5v3"></path>
+                            <path d="M8 14l-3 3 3 3"></path>
+                            <path d="M5 17h8a5 5 0 0 0 5-5v-3"></path>
+                        </svg>
+                    </button>
+                    <button id="capture-btn" class="bg-white rounded-full w-16 h-16"></button>
+                    <button id="flash-toggle" class="bg-white bg-opacity-20 p-2 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 10V3L5 14h6v7l8-11h-6z"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
+
+        <canvas id="capture-canvas" class="hidden"></canvas>
     </div>
 
-    <style>
-        /* Switch CSS */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-        }
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .slider.round {
-            border-radius: 34px;
-        }
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
-
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const fps60Switch = document.getElementById('fps60Switch');
-        const fps120Switch = document.getElementById('fps120Switch');
-        const modal = document.getElementById('modal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const openPubgButton = document.getElementById('openPubgButton');
-        const resetButton = document.getElementById('resetButton');
+        const startCameraBtn = document.getElementById('start-camera-btn');
+        const startScreen = document.getElementById('start-screen');
+        const cameraView = document.getElementById('camera-view');
+        const videoElement = document.getElementById('camera-video');
+        const switchCameraBtn = document.getElementById('switch-camera');
+        const captureBtn = document.getElementById('capture-btn');
+        const canvas = document.getElementById('capture-canvas');
 
-        // Prevent multiple switches being on simultaneously
-        fps60Switch.addEventListener('change', function() {
-            if (this.checked) {
-                fps120Switch.checked = false;
-                showModal('60 FPS + Extreme', 
-                    'File grafik extreme 60 FPS berhasil dipasang ke dalam PUBG Mobile');
+        let isFrontCamera = false;
+
+        startCameraBtn.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { 
+                        facingMode: isFrontCamera ? 'user' : 'environment' 
+                    }
+                });
+                
+                videoElement.srcObject = stream;
+                videoElement.play();
+                
+                startScreen.classList.add('hidden');
+                cameraView.classList.remove('hidden');
+            } catch (error) {
+                alert('Error accessing camera: ' + error.message);
             }
         });
 
-        fps120Switch.addEventListener('change', function() {
-            if (this.checked) {
-                fps60Switch.checked = false;
-                showModal('120 FPS + Ultra Extreme', 
-                    'File grafik ultra extreme 120 FPS berhasil dipasang ke dalam PUBG Mobile');
+        switchCameraBtn.addEventListener('click', async () => {
+            const tracks = videoElement.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+
+            isFrontCamera = !isFrontCamera;
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { 
+                        facingMode: isFrontCamera ? 'user' : 'environment' 
+                    }
+                });
+                
+                videoElement.srcObject = stream;
+                videoElement.play();
+            } catch (error) {
+                alert('Error switching camera: ' + error.message);
             }
         });
 
-        resetButton.addEventListener('click', function() {
-            fps60Switch.checked = false;
-            fps120Switch.checked = false;
-            alert('Semua modifikasi grafik telah direset ke pengaturan default PUBG Mobile');
+        captureBtn.addEventListener('click', () => {
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            
+            const context = canvas.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            
+            // You can add logic to save or process the captured image here
+            const imageDataUrl = canvas.toDataURL('image/jpeg');
+            // Example: download the image
+            const link = document.createElement('a');
+            link.download = 'captured-image.jpg';
+            link.href = imageDataUrl;
+            link.click();
         });
-
-        function showModal(title, description) {
-            modalTitle.textContent = 'Berhasil!';
-            modalDescription.textContent = `${title} - ${description}`;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        openPubgButton.addEventListener('click', function() {
-            // Simulasi buka PUBG Mobile
-            alert('Membuka PUBG Mobile dengan konfigurasi grafik yang dipilih...');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        });
-
-        // Close modal by clicking outside
-        modal.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }
-        });
-    });
     </script>
 </body>
 </html>
